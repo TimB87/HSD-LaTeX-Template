@@ -1,0 +1,264 @@
+% file: main.tex
+\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage[a4paper, left=3cm, right=2.5cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{setspace} % 1,5 cm Zeilenabstand
+\onehalfspacing{}
+\usepackage{graphicx}
+%\usepackage{colortbl}
+%\usepackage{array}
+\usepackage{float}
+\usepackage{footnote}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{mathptmx}
+\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
+\renewcommand\familydefault{\sfdefault}
+\usepackage{courier}
+\usepackage{amsmath}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{marvosym} % Verwendung von Symbolen, z.B. perfektes Eurozeichen
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+\definecolor{darkblack}{rgb}{0,0,0}
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
+\fontfamily{ptm}\selectfont
+\usepackage{ragged2e}
+\usepackage{glossaries-extra}
+%\usepackage{glossaries-de}
+\setabbreviationstyle{long-short}
+\usepackage[official]{eurosym}
+
+% Mehrere Fussnoten nacheinander mit Komma separiert
+\usepackage[hang, multiple]{footmisc}
+\setlength{\footnotemargin}{1em}
+
+% Pakete für Tabellen
+\usepackage{epstopdf}
+\usepackage{nicefrac} % Brüche
+\usepackage{multirow}
+%\usepackage{mdwlist}
+
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
+% Colors for listings
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+
+% sauber formatierter Quelltext
+
+% Biblatex
+\usepackage[
+backend=biber,
+style=numeric,
+citestyle=authoryear,
+url=true,
+isbn=false,
+notetype=footonly,
+hyperref=true,
+sortlocale=de]{biblatex}
+
+%\usepackage[backend=biber]{biblatex}
+
+%weitere Anpassungen für BibLaTex
+\input{skripte/modsBiblatex}
+
+
+%Bib-Datei einbinden
+\addbibresource{literatur/literatur.bib}
+
+% Pfad fuer Abbildungen
+\graphicspath{{./}{./abbildungen/}}
+
+%-----------------------------------
+% Weitere Ebene einfügen
+%\input{skripte/weitereEbene}
+
+%-----------------------------------
+% Zeilenabstand 1,5-zeilig
+%-----------------------------------
+
+%-----------------------------------
+% Absätze durch eine neue Zeile
+%-----------------------------------
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
+
+\sloppy %Abstände variieren
+\pagestyle{headings}
+
+% Meta informationen
+%-----------------------------------
+\input{skripte/meta}
+
+
+% PDF Meta Daten setzen
+
+\hypersetup{%
+    pdfinfo={%
+        Title={\myTitel},
+        Subject={\myStudiengang},
+        Author={\myAutor},
+        Build=1.1
+    }
+}
+
+
+% Kopfbereich / Header definieren
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{-\ \thepage\ -}           % Seitenzahl oben, mittg
+%\fancyhead[L]{\leftmark}             % kein Footer vorhanden
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Abkürzungsverzeichnis mit glossaries
+\makenoidxglossaries{}
+%\newabbreviation{}{}{}
+\newabbreviation{EU}{EU}{Europäischen Union}
+\newabbreviation{EFSF}{EFSF}{Europäische Finanzstabilisierungsfazilität}
+\newabbreviation{EFSM}{EFSM}{Europäischer Finanzstabiliserungsmechanismus}
+\newabbreviation{EZB}{EZB}{Europäische Zentralbank}
+\newabbreviation{EFSI}{EFSI}{Europäische Fonds für strategische Investionen}
+\newabbreviation{SWP}{SWP}{Stabilitäts- und Wachstumspakt}
+\newabbreviation{EWU}{EWU}{Europäische Währungsunion}
+\newabbreviation{SSM}{SSM}{Single Supervisory Mechanism}
+\newabbreviation{Euro}{\euro{}}{Euro}
+\newabbreviation{ESM}{ESM}{Europäischer Rettungsschirm}
+\newabbreviation{Eurostat}{Eurostat}{European Statistical Office}
+\newabbreviation{IWF}{IWF}{Internationaler Währungsfonds}
+\newabbreviation{BIP}{BIP}{Bruttoinlandsprodukt}
+\newabbreviation{IMF}{IMF}{International Monetary Fund}
+
+% Start the document here:
+
+\begin{document}
+% Fußnoten mit Zeilenabstand 1cm
+\let\footnoteOld\footnote{}
+\renewcommand{\footnote}[1]{%
+        \linespread{1.0}
+        \footnoteOld{#1}
+        \linespread{1.2}
+}
+%Fußnoten auf Schriftgröße 10
+\setkomafont{footnote}{\footnotesize{10}}
+%\footnotesize{10}
+
+\pagenumbering{Roman} % Seitennumerierung auf römisch umstellen
+\renewcommand{\refname}{Literaturverzeichnis}   % "Literatur" in
+%"Literaturverzeichnis" umbenennen
+\newcolumntype{C}{>{\centering\arraybackslash}X}  % Neuer Tabellen-Spalten-Typ:
+%Zentriert und umbrechbar
+
+
+% Titlepage
+
+\begin{titlepage}
+  \newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+  \begin{center}
+    \textbf{\myHochschulName}\\
+    %\textbf{\myHochschulStandort}\\
+    %\vspace{1.5cm}
+    %  \includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
+    %\vspace{1.5cm}
+    %Berufsbegleitender Studiengang\\
+    \myStudiengang, \mySemesterZahl. Semester\\
+    \vspace{2cm}
+    %\textbf{\myThesisArt}\\
+    %\textbf{zur Erlangung des Grades eines}\\
+    %\textbf{\myAkademischerGrad}\\
+    % Oder für Hausarbeiten:
+    \textbf{Im Rahmen der Lehrveranstaltung}\\
+    \textbf{\myLehrveranstaltung}\\
+    \vspace{2cm}
+    über das Thema\\
+    \Huge{\myTitel}\\
+    \vspace{0.2cm}
+  \end{center}
+  \normalsize
+  \vfill
+  \begin{tabbing}
+    Links \= Mitte \= Rechts\kill
+    Betreuer: \> \> \myBetreuer\\
+    \> \> \\
+
+    Autor: \> \> \myAutor\\
+    \> \>  Matrikelnr.: \myMatrikelNr\\
+    \> \> \myAdresse\\
+    \> \> \\
+    Abgabe: \> \> \myAbgabeDatum{}
+  \end{tabbing}
+\end{titlepage}
+
+%-------Ende Titelseite-------------
+
+
+% Sperrvermerk
+
+%\input{kapitel/anhang/sperrvermerk}
+
+
+% Inhaltsverzeichnis
+
+\setcounter{page}{2}
+\tableofcontents
+\newpage
+
+
+% Abkürzungsverzeichnis
+
+%\printnomenclature
+\printunsrtglossaries{} % list all entries
+%\newpage
+
+% Abbildungsverzeichnis
+
+\listoffigures
+%\newpage
+
+% Tabellenverzeichnis
+
+\listoftables
+%\newpage
+
+% Seitennummerierung auf arabisch und ab 1 beginnend umstellen
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Kapitel / Inhalte
+
+\input{kapitel/einleitung/einleitung}
+\input{kapitel/kapitel_1/kapitel_1}
+\input{kapitel/kapitel_2/kapitel_2}
+%\input{kapitel/fazit/fazit}
+
+
+% Literaturverzeichnis
+
+\newpage
+%\addcontentsline{toc}{section}{Literatur}
+
+\pagenumbering{Roman} %Zähler wieder römisch ausgeben
+\setcounter{page}{4}  %Zähler manuell hochsetzen
+
+\begin{RaggedRight}
+\printbibliography
+\end{RaggedRight}
+
+% Alternative Darstellung:
+% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
+% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+
+%\printbibheading
+%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
+%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
+%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+
+%\input{kapitel/anhang/erklaerung}
+\end{document}
