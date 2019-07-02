@@ -157,41 +157,39 @@ sortlocale=de]{biblatex}
 
 
 % Titlepage
-
 \begin{titlepage}
   \newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
   \begin{center}
-    \textbf{\myHochschulName}\\
-    %\textbf{\myHochschulStandort}\\
-    %\vspace{1.5cm}
-    %  \includegraphics[width=3cm]{abbildungen/fomLogo.jpg} \\
-    %\vspace{1.5cm}
-    %Berufsbegleitender Studiengang\\
-    \myStudiengang, \mySemesterZahl. Semester\\
-    \vspace{2cm}
-    %\textbf{\myThesisArt}\\
-    %\textbf{zur Erlangung des Grades eines}\\
-    %\textbf{\myAkademischerGrad}\\
-    % Oder für Hausarbeiten:
-    \textbf{Im Rahmen der Lehrveranstaltung}\\
-    \textbf{\myLehrveranstaltung}\\
-    \vspace{2cm}
-    über das Thema\\
+    \textbf{Bachelor-Thesis}\\
+    %\textbf{Master-Thesis}\\
     \Huge{\myTitel}\\
     \vspace{0.2cm}
   \end{center}
   \normalsize
   \vfill
+  %tables must be a bite wider? or is a new line okay?
   \begin{tabbing}
-    Links \= Mitte \= Rechts\kill
-    Betreuer: \> \> \myBetreuer\\
-    \> \> \\
-
-    Autor: \> \> \myAutor\\
-    \> \>  Matrikelnr.: \myMatrikelNr\\
-    \> \> \myAdresse\\
-    \> \> \\
-    Abgabe: \> \> \myAbgabeDatum{}
+    Links \= Mitte1 \= Mitte2  \= Rechts\kill
+    vorgelegt von:  \> \> \> \myAutor\\
+    Matr.-Nr.: \> \> \> \myMatrikelNr\\
+    aus: \myLocation\\
+    angefertigt im Rahmen der Bachelorprüfung \> \> \>\\
+    %angefertigt im Rahmen der Masterprüfung \> \> \>\\
+    für den Studiengang \> \> \>\\
+    \> \> \> \myStudiengang\\
+    \> \> \> am Fachbereich \myFachbereich\\
+    \> \> \> der Hochschule Düsseldorf \\
+    %was für ein Bindestrich wird denn fürs Datum benutzt? Ein Halbgeviertstrich oder schon ein Geviertstrich?
+    Bearbeitungszeitraum: \> \> \> \\
+    \> \> \> 01.01.2020 -- 30.03.2020 \\
+    \> \> \> \\
+    Betreuer: \> \> \> \myBetreuer\\
+    Zweitprüfer: \> \> \> \myZweitpruefer\\
+    %Autor: \> \> \myAutor\\
+    %\> \>  Matrikelnr.: \myMatrikelNr\\
+    %\> \> \myAdresse\\
+    %\> \> \\
+    %Abgabe: \> \> \myAbgabeDatum{}
   \end{tabbing}
 \end{titlepage}
 
