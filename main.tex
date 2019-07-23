@@ -29,9 +29,10 @@
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
 \fontfamily{ptm}\selectfont
 \usepackage{ragged2e}
+% Abkürzungen und Glossar
 \usepackage{glossaries-extra}
-%\usepackage{glossaries-de}
 \setabbreviationstyle{long-short}
+\loadglsentries{gls.tex}
 \usepackage[official]{eurosym}
 
 % Mehrere Fussnoten nacheinander mit Komma separiert
@@ -43,14 +44,6 @@
 \usepackage{nicefrac} % Brüche
 \usepackage{multirow}
 %\usepackage{mdwlist}
-
-\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
-\definecolor{hellgrau}{rgb}{0.0,0.7,0.99}
-% Colors for listings
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-
-% sauber formatierter Quelltext
 
 % Biblatex
 \usepackage[
@@ -119,22 +112,6 @@ sortlocale=de]{biblatex}
 
 % Abkürzungsverzeichnis mit glossaries
 \makenoidxglossaries{}
-%\newabbreviation{}{}{}
-\newabbreviation{EU}{EU}{Europäischen Union}
-\newabbreviation{EFSF}{EFSF}{Europäische Finanzstabilisierungsfazilität}
-\newabbreviation{EFSM}{EFSM}{Europäischer Finanzstabiliserungsmechanismus}
-\newabbreviation{EZB}{EZB}{Europäische Zentralbank}
-\newabbreviation{EFSI}{EFSI}{Europäische Fonds für strategische Investionen}
-\newabbreviation{SWP}{SWP}{Stabilitäts- und Wachstumspakt}
-\newabbreviation{EWU}{EWU}{Europäische Währungsunion}
-\newabbreviation{SSM}{SSM}{Single Supervisory Mechanism}
-\newabbreviation{Euro}{\euro{}}{Euro}
-\newabbreviation{ESM}{ESM}{Europäischer Rettungsschirm}
-\newabbreviation{Eurostat}{Eurostat}{European Statistical Office}
-\newabbreviation{IWF}{IWF}{Internationaler Währungsfonds}
-\newabbreviation{BIP}{BIP}{Bruttoinlandsprodukt}
-\newabbreviation{IMF}{IMF}{International Monetary Fund}
-
 % Start the document here:
 
 \begin{document}
