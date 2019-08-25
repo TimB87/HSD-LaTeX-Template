@@ -1,7 +1,24 @@
 %!TEX root = master.tex
 \newpage
 \section{Einleitung}
-Mit dieser Vorlage soll den Studierenden der \gls{hsd}\footnote{\href{https://www.hs-duesseldorf.de}{Webseite der Hochschule Düsseldorf}}eine Vorlage zur Erstellung einer Thesis mit \gls{latex} an die Hand gegeben werden, die der \gls{po} im Allgemeinen entspricht und die einfach nach den Bedürfnissen des jeweiligen betreuenden Professors angepasst werden kann.
+Mit dieser Vorlage soll den Studierenden der \gls{hsd}footnote{\href{https://www.hs-duesseldorf.de}{Webseite der Hochschule Düsseldorf}} eine Vorlage zur Erstellung einer Thesis mit \gls{latex} an die Hand gegeben werden, die der \gls{po} im Allgemeinen entspricht und die einfach nach den Bedürfnissen des jeweiligen betreuenden Professors angepasst werden kann.
 
+Diese Vorlage nutzt UTF-8 Zeichencodierung, lualatex als TeX-Engine die entsprechende Unterstützung nativ mitbringt, biber als UTF-8 kompatibles bibtex Backend und xindy als UTF-8 kompatibles Glossar und Index-Verzeichnis. Somit dürfte bei der Gestaltung selbst komplexer Eingaben keinerlei Probleme im Weg stehen. Das ist wichtig, damit man keine Probleme mit z.B. Umlauten bekommt.
+\subsection{Vorteile von LaTeX}
+LaTeX ist, anders als Word, eine deskriptive Umgebung. Das ermöglicht einen anderen Arbeitsfluss und produziert ein, meiner Meinung nach, deutlich hübscheres Dokument mit weniger Aufwand (ich schreibe immerhin diese Vorlage für dich).
+Es handelt sich um Freie Software, hierfür empfiehlt sich ein Blick zur \gls{FSF}.
 \subsection{Grundlegender Umgang}
-Diese Vorlage wurde unter einem Linux System erstellt mit Hilfe einer tex-Umgebung\footnote{\href{https://tug.org/texlive/}{Webseite der Software texlive}}. Es ist davon auszugehen, dass die Vorlage auf Windows- sowie Macsystemen ebenfalls funktioniert, hierfür erfolgt aber meinerseits keine Prüfung.
+Diese Vorlage wurde unter einem Linux System mit Hilfe der tex-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Webseite der Software texlive}}erstellt. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Macsystemen funktioniert, hierfür erfolgt aber meinerseits keine Prüfung.
+
+Es ist geraten, sich vorher mit der Arbeitsumgebung vertraut zu machen. Eine Suchmaschine hilft bei der Einrichtung der TeX-Umgebung sowie der Auswahl eines geeigneten Editors. texlive wird meinerseits empfohlen, da es wohl das aktivste Projekt ist das a) bei der Erstellung diesen Templates genutzt wurde, b) auf allen gängien Plattformen funktioniert und c) lualatex, xindy und biber automatisch unterstützt. Den Support der anderen Projekte habe ich mir nicht angeschaut.
+
+Unter Linux findet man texlive in der Regel in dem jeweiligen Paketmanager der Distribution. Sobald die Arbeitsumgebung eingerichtet ist, kann prinzipiell über ein Terminal mit dem Befehl "arara main.tex" (Komponente des texlive Systems) das pdf kompiliert werden.
+Geeignete Editoren, wie zum Beispiel texmaker, findet man ebenfalls im Paketmanager.
+
+Um den Support zu erweitern, würde ich mich über entsprechende pull-requests\footnote{\href{https://help.github.com/en/articles/about-pull-requests}{https://help.github.com/: About pull requests}} freuen.
+
+\subsection{Detaileinstellungen}
+Der Quelltext von main.tex beinhaltet den Link zur jeweiligen Dokumentation der verwendeten Pakete. Oftmals bringen diese eine Vielzahl weiterer Optionen mit sich, die es sich durchaus zu erkunden lohnt.
+Weitere Details findet man im Netz, z.B.  interessante Informationen darüber, was ein gutes Dokument aus macht (bezogen auf das Thema \textbackslash parskip und \textbackslash parindent oder der Einsatz von \textbackslash fancyhdr zusammen mit einer KOMA-Klasse.
+
+\dots

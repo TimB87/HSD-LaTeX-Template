@@ -1,3 +1,80 @@
 \newpage
-\section{Zitieren}
+\section{Seitenaufbau in LaTeX}
+Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit LaTeX für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von LaTeX , sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
+\section{Funktionen von LaTeX}
+\subsection{Textformatierung}
+\subsection{Mathematische Schreibumgebung}
+1)
+
+$ SEW\footnote{Summe der Endwerte} (RF\footnote{Rückflüsse}) = \sum_{t=1}^{n} [ ( E_{t} - A_{t}) \times (1+i)\ ^{N-t}] $
+
+$ SEW(RF) = 5\times1,1^{5}+10\times1,1^{4}+15\times1,1^{3}+10\times1,1^{2}+30\times1,1^{1}+35 = 122,76$
+
+
+$ i_{m} = \sqrt[N]{\dfrac{SEW(RF)}{BW(IA)}} -1$
+
+$ i_{m} = \sqrt[6]{\dfrac{122,76}{50}} -1 = 0,1615 \approx 16,15\%$
+
+2)
+
+$ SEW(RF) = 186,72 $
+
+$ i_{m} = 0,1097 \approx 10,97\%$
+
+\subsection{Fußnoten}
+\subsection{Querverweise}
+\subsection{Quellcode zitieren}
+\subsection{Tabellen}
+\begin{table}[htbp]
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+t & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+lfd. EZÜ & 262.500 & 352.450 & 455.395 & 572.871 & 706.628 & 858.656 \\ \hline
+zstl. ZÜ &  & 89.950 & 192.895 & 310.371 & 444.128 & 596.156 \\ \hline
+Barwerte & -550.000 & 84.065 & 168.482 & 253.355 & 338.823 & 425.051 \\ \hline
+kumulierter Barwert & 719.776 &  &  &  &  &  \\ \hline
+\end{tabular}
+\caption{Eine einfache Tabelle}
+\end{table}
+\subsection{Grafiken}
+Grafiken werden von LaTeX dahin gesetzt, wo sie am besten hinpassen.
+\begin{figure}[htbp]
+  \centering
+     \includegraphics[]{ProdKonsRentemitSteuern.pdf}
+  \caption{Die Besteuerung eines Marktes}
+  \label{fig:Bild1}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+     \includegraphics[]{PMSteuer.pdf}
+  \caption{Steueraufkommen}
+  \label{fig:Bild2}
+\end{figure}
+\subsection{Zitieren}
 Es scheint, als würde jeder Professor seine persönlichen Vorlieben zum verwendeten Zitationsstil haben. Hier sollen also verschiedene Stile ausprobiert werden, so dass man nicht viel Zeit damit verliert.
+
+Dieses Buch wurde mit Hilfe der üblichen Internetadressen (vorwiegend \hyperref{stackoverflow.com}\ ) aber auch dem Buch \glqq Wissenschaftliche Arbeiten schreiben mit LaTeX\grqq{} von Joachim Schlosser\footcite{schlosser_wissenschaftliche_2014} geschrieben.
+\subsection{Glossar}
+\subsection{Index}
+\begin{lstlisting}
+Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.\footnote{das ist ein Test}
+\end{lstlisting}
+Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.\footnote{das ist ein Test}
+\subsection{Verzeichnisse}
+Und hier noch ein Test\footcite{schlosser_wissenschaftliche_2014}
+\subsection{Code}
+Code wird wie folgt eingefügt
+\lstset{language=Ruby}
+%\begin{lstlisting}
+%  \lstset{language=TeX}
+%  \begin{lstlisting}
+%  [CODE]
+%  \end{lstlisting}
+%\end{lstlisting}
+
+\begin{lstlisting}
+#!/usr/bin/env ruby
+
+listofstrings = ARGV
+puts listofstrings.sort.uniq
+\end{lstlisting}

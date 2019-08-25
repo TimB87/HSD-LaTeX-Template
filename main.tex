@@ -1,228 +1,236 @@
 % file: main.tex
-\documentclass[12pt,oneside,titlepage,listof=totoc,bibliography=totoc]{scrartcl}
-\usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
-\usepackage[babel,german=quotes]{csquotes}
-\usepackage[T1]{fontenc}
-\usepackage{fancyhdr}
-\usepackage{fancybox}
-\usepackage[a4paper, left=3cm, right=2.5cm, top=2cm, bottom=2cm]{geometry}
+
+%%% we use arara because it makes life easier
+% arara: lualatex
+% arara: xindy: {modules: [texindy, page-ranges], codepage: utf8, language: german-duden}
+% arara: biber
+% arara: makeglossaries
+% arara: lualatex
+% arara: lualatex
+
+%%% general page related settings
+\documentclass[12pt,%
+  %draft,%
+  overfullrule=true,%
+  oneside,%
+  titlepage,%
+  listof=totoc,%
+  twoside=semi,%
+  bibliography=totoc]{scrartcl}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+%\usepackage[]{scrlayer-scrpage}
+\usepackage[a4paper,%
+  left=3cm,%
+  right=2.5cm,%
+  top=2cm,%
+  bottom=2cm]{geometry}
 \usepackage{setspace} % 1,5 cm Zeilenabstand
 \onehalfspacing{}
-\usepackage{graphicx}
-%\usepackage{colortbl}
-%\usepackage{array}
+%\setlength{\parindent}{0mm} % https://komascript.de/faq_parindent
+%\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
+%\sloppy %Abstände variieren
+
+%%% language settings
+\usepackage{hyphsubst}
+\HyphSubstIfExists{ngerman-x-latest}{%
+\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
+
+%%% font settings
+%\usepackage[utf8]{inputenc} % not needed with luatex
+\usepackage{fontspec} % luatex needs this one
+\setmainfont{Arial}
+\renewcommand\familydefault{\sfdefault} %defaults to helvetica
+%%% if you don't or can't use luatex, use this
+%% helvet is alternative to Arial for tex, or it's actually the original font
+%% with minimal differences
+%\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
+%\usepackage{courier}
+% math related settings
+\usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
+\usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
+\setmathfont{texgyrepagella-math.otf}
+%\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
+%\usepackage{nicefrac} % The pack­age type­sets fractions “nicely”
+\usepackage{marvosym} % Symbols, like perfect Euro
+\usepackage[hang, multiple]{footmisc} % must be placed above hyperref to avoid warnings
+\setlength{\footnotemargin}{1em}
+\usepackage[colorlinks=true,%
+  breaklinks=true,%
+  linkcolor=black,%
+  citecolor=black,%
+  menucolor=black,%
+  urlcolor=black]{hyperref} % adds new commands to include hyperlinks
+
+%%% additional packages
+\usepackage{ragged2e} % brings new commands like \Centering, \RaggedLeft or \RaggedRight
+%\usepackage{footnote} % https://www.ctan.org/pkg/footnote
+%\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
+
+%%% table packages
+\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
+\usepackage{multirow} % https://www.ctan.org/pkg/multirow
+%\usepackage{array} % https://www.ctan.org/pkg/array
+%\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
+\usepackage{microtype}
+
+%%% floats
 \usepackage{float}
-\usepackage{footnote}
 \usepackage{caption}
-\usepackage{enumitem}
-\usepackage{amssymb}
-\usepackage{mathptmx}
-\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
-\renewcommand\familydefault{\sfdefault}
-\usepackage{courier}
-\usepackage{amsmath}
-\usepackage[table,xcdraw]{xcolor}
-\usepackage{marvosym} % Verwendung von Symbolen, z.B. perfektes Eurozeichen
-\usepackage[colorlinks=true,linkcolor=black]{hyperref}
-\definecolor{darkblack}{rgb}{0,0,0}
-\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, menucolor=darkblack, urlcolor=darkblack}
-\fontfamily{ptm}\selectfont
-\usepackage{ragged2e}
-% Abkürzungen und Glossar
-\usepackage{glossaries-extra}
+\usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
+%%% list related
+\usepackage{enumitem} % https://ctan.org/pkg/enumitem
+%\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist
+
+%%% Glossar
+\usepackage[%
+  %sort=word,%
+  xindy%
+  ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
 \setabbreviationstyle{long-short}
 \loadglsentries{gls.tex}
-\usepackage[official]{eurosym}
+% index w/ xindy
+\usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
+\usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
+\makeindex
 
-% Mehrere Fussnoten nacheinander mit Komma separiert
-\usepackage[hang, multiple]{footmisc}
-\setlength{\footnotemargin}{1em}
-
-% Pakete für Tabellen
-\usepackage{epstopdf}
-\usepackage{nicefrac} % Brüche
-\usepackage{multirow}
-%\usepackage{mdwlist}
-
-% Biblatex
-\usepackage[
-backend=biber,
-style=numeric,
-citestyle=authoryear,
-url=true,
-isbn=false,
-notetype=footonly,
-hyperref=true,
-sortlocale=de]{biblatex}
-
-%\usepackage[backend=biber]{biblatex}
-
-%weitere Anpassungen für BibLaTex
+%%% Biblatex
+\usepackage[%
+  backend=biber,%
+  style=numeric,%
+  citestyle=authoryear,%
+  %sortcase=true,%
+  date=iso,%
+  seconds=true,%
+  urldate=iso,%
+  %dashed=false,%
+  %doi=false,%
+  isbn=true,%
+  %mergedate=false,%
+  autocite=footnote,%
+  sortlocale=de]{biblatex}
 \input{skripte/modsBiblatex}
-
-
-%Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
 
-% Pfad fuer Abbildungen
+% where to store your images
 \graphicspath{{./}{./abbildungen/}}
 
-%-----------------------------------
 % Weitere Ebene einfügen
 %\input{skripte/weitereEbene}
 
-%-----------------------------------
-% Zeilenabstand 1,5-zeilig
-%-----------------------------------
-
-%-----------------------------------
-% Absätze durch eine neue Zeile
-%-----------------------------------
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
-
-\sloppy %Abstände variieren
-\pagestyle{headings}
-
-% Meta informationen
-%-----------------------------------
+% Meta information
 \input{skripte/meta}
 
-
-% PDF Meta Daten setzen
-
+% PDF Meta Data
 \hypersetup{%
-    pdfinfo={%
-        Title={\myTitel},
-        Subject={\myStudiengang},
-        Author={\myAutor},
-        Build=1.1
-    }
+  pdfinfo={%
+    Title={\myTitel},
+    Subject={\myStudiengang},
+    Author={\myAutor},
+    Build=1.1
+  }
 }
 
-
-% Kopfbereich / Header definieren
-
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{-\ \thepage\ -}           % Seitenzahl oben, mittg
-%\fancyhead[L]{\leftmark}             % kein Footer vorhanden
-\renewcommand{\headrulewidth}{0.4pt}
-
-% Abkürzungsverzeichnis mit glossaries
-\makenoidxglossaries{}
-% Start the document here:
-
-\begin{document}
-% Fußnoten mit Zeilenabstand 1cm
-\let\footnoteOld\footnote{}
-\renewcommand{\footnote}[1]{%
-        \linespread{1.0}
-        \footnoteOld{#1}
-        \linespread{1.2}
-}
+% define headers and footers
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[C]{-\ \thepage\ -} % centered page numbering
+%\fancyhead[L]{\leftmark}      % no footer
+%\renewcommand{\headrulewidth}{0.4pt}
+\clearpairofpagestyles
+\cfoot[\pagemark]{\pagemark}
+\lehead{\headmark}
+\rohead{\headmark}
+\pagestyle{scrheadings}
+% footnote style
+%\let\footnoteOld\footnote{}
+%\renewcommand{\footnote}[1]{%
+%  \linespread{1.0}%
+%  \footnoteOld{#1}%
+%  \linespread{1.2}%
+%}
 %Fußnoten auf Schriftgröße 10
 \setkomafont{footnote}{\footnotesize{10}}
-%\footnotesize{10}
 
+% Abkürzungsverzeichnis mit glossaries
+%\makenoidxglossaries{} % w/o xindy
+\makeglossaries % w/ xindy
+
+%%% proper source code display
+\usepackage{listings}
+% Colors for listings
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\lstset{% general code settings
+  numbers=left,%
+  numberstyle=\tiny,%
+  numbersep=5pt,%
+  breaklines=true,%
+  showstringspaces=false,%
+  frame=l ,%
+  xleftmargin=5pt,%
+  xrightmargin=5pt,%
+  basicstyle=\ttfamily\scriptsize,%
+  stepnumber=1,%
+  keywordstyle=\color{blue},% keyword style
+  commentstyle=\color{dkgreen},% comment style
+  stringstyle=\color{mauve}% string literal style
+}
+\begin{document}
 \pagenumbering{Roman} % Seitennumerierung auf römisch umstellen
-\renewcommand{\refname}{Literaturverzeichnis}   % "Literatur" in
-%"Literaturverzeichnis" umbenennen
-\newcolumntype{C}{>{\centering\arraybackslash}X}  % Neuer Tabellen-Spalten-Typ:
-%Zentriert und umbrechbar
+% "Literatur" in "Literaturverzeichnis" umbenennen
+\renewcommand{\refname}{Literaturverzeichnis}
 
 % Titlepage
-\begin{titlepage}
-  \newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
-  \begin{center}
-    \textbf{Bachelor-Thesis}\\
-    %\textbf{Master-Thesis}\\
-    \Huge{\myTitel}\\
-    \vspace{0.2cm}
-  \end{center}
-  \normalsize
-  \vfill
-  %tables must be a bite wider? or is a new line okay?
-  \begin{tabbing}
-    Links \= Mitte1 \= Mitte2  \= Rechts\kill
-    vorgelegt von:  \> \> \> \myAutor\\
-    Matr.-Nr.: \> \> \> \myMatrikelNr\\
-    aus: \myLocation\\
-    angefertigt im Rahmen der Bachelorprüfung \> \> \>\\
-    %angefertigt im Rahmen der Masterprüfung \> \> \>\\
-    für den Studiengang \> \> \>\\
-    \> \> \> \myStudiengang\\
-    \> \> \> am Fachbereich \myFachbereich\\
-    \> \> \> der Hochschule Düsseldorf \\
-    %was für ein Bindestrich wird denn fürs Datum benutzt? Ein Halbgeviertstrich oder schon ein Geviertstrich?
-    Bearbeitungszeitraum: \> \> \> \\
-    \> \> \> 01.01.2020 -- 30.03.2020 \\
-    \> \> \> \\
-    Betreuer: \> \> \> \myBetreuer\\
-    Zweitprüfer: \> \> \> \myZweitpruefer\\
-  \end{tabbing}
-\end{titlepage}
-
-%-------Ende Titelseite-------------
-
+\input{kapitel/titelseite/titelseite}
 
 % Sperrvermerk
 
 %\input{kapitel/anhang/sperrvermerk}
 
-
-% Inhaltsverzeichnis
-
+%%% Inhaltsverzeichnis
 \setcounter{page}{2}
 \tableofcontents
 \newpage
 
-
 % Abkürzungsverzeichnis
-
-%\printnomenclature
-\printunsrtglossaries{} % list all entries
+%\printunsrtglossaries{} % list all entries w/o xindy
+\printglossaries{} % list all entries w/ xindy
 %\newpage
 
 % Abbildungsverzeichnis
-
 \listoffigures
 %\newpage
 
 % Tabellenverzeichnis
-
 \listoftables
 %\newpage
 
 % Seitennummerierung auf arabisch und ab 1 beginnend umstellen
-
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
 % Kapitel / Inhalte
-
 \input{kapitel/einleitung/einleitung}
 \input{kapitel/kapitel_1/kapitel_1}
 \input{kapitel/kapitel_2/kapitel_2}
 %\input{kapitel/fazit/fazit}
 
-
 % Literaturverzeichnis
-
 \newpage
-%\addcontentsline{toc}{section}{Literatur}
-
+\addcontentsline{toc}{section}{Literatur}
 \pagenumbering{Roman} %Zähler wieder römisch ausgeben
 \setcounter{page}{4}  %Zähler manuell hochsetzen
-
 \begin{RaggedRight}
 \printbibliography
+\newpage
+\printindex
 \end{RaggedRight}
-
-% Alternative Darstellung:
-% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
-% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
+%%% Alternative Darstellung:
+%%% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
+%%% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
 
 %\printbibheading
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]

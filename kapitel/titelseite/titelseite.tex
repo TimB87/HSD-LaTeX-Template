@@ -1,0 +1,33 @@
+% Neuer Tabellen-Spalten-Typ: Zentriert und umbrechbar
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{titlepage}
+  \newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+  \begin{center}
+  \textbf{Bachelor-Thesis}\\
+  %\textbf{Master-Thesis}\\
+  \Huge{\myTitel}\\
+  \vspace{0.2cm}
+  \end{center}
+  \normalsize
+  \vfill
+  %tables must be a bite wider? or is a new line okay?
+  \begin{tabbing}
+  Links \= Mitte1 \= Mitte2  \= Rechts\kill
+  vorgelegt von:  \> \> \> \myAutor\\
+  Matr.-Nr.: \> \> \> \myMatrikelNr\\
+  aus: \myLocation\\
+  angefertigt im Rahmen der Bachelorprüfung \> \> \>\\
+  %angefertigt im Rahmen der Masterprüfung \> \> \>\\
+  für den Studiengang \> \> \>\\
+  \> \> \> \myStudiengang\\
+  \> \> \> am Fachbereich \myFachbereich\\
+  \> \> \> der Hochschule Düsseldorf \\
+  %was für ein Bindestrich wird denn fürs Datum benutzt? Ein Halbgeviertstrich oder schon ein Geviertstrich?
+  Bearbeitungszeitraum: \> \> \> \\
+  \> \> \> 01.01.2020 -- 30.03.2020 \\
+  \> \> \> \\
+  Betreuer: \> \> \> \myBetreuer\\
+  Zweitprüfer: \> \> \> \myZweitpruefer\\
+  \end{tabbing}
+\end{titlepage}
+
