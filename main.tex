@@ -8,109 +8,14 @@
 % arara: lualatex
 % arara: lualatex
 
-%%% general page related settings
-\documentclass[12pt,%
-  %draft,%
-  overfullrule=true,%
-  oneside,%
-  titlepage,%
-  listof=totoc,%
-  twoside=semi,%
-  bibliography=totoc]{scrartcl}
-\usepackage[automark,headsepline]{scrlayer-scrpage}
-%\usepackage[]{scrlayer-scrpage}
-\usepackage[a4paper,%
-  left=3cm,%
-  right=2.5cm,%
-  top=2cm,%
-  bottom=2cm]{geometry}
-\usepackage{setspace} % 1,5 cm Zeilenabstand
-\onehalfspacing{}
-%\setlength{\parindent}{0mm} % https://komascript.de/faq_parindent
-%\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
-%\sloppy %Abstände variieren
+%%% we source our input files to get a cleaner main.tex
+\input{meta/preambel.tex}
+%input{meta/packages}
+%input{meta/macros}
+%input{meta/hyphenations}
+%input{meta/options}
 
-%%% language settings
-\usepackage{hyphsubst}
-\HyphSubstIfExists{ngerman-x-latest}{%
-\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
-\usepackage[ngerman]{babel}
-\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
-
-%%% font settings
-%\usepackage[utf8]{inputenc} % not needed with luatex
-\usepackage{fontspec} % luatex needs this one
-\setmainfont{Arial}
-\renewcommand\familydefault{\sfdefault} %defaults to helvetica
-%%% if you don't or can't use luatex, use this
-%% helvet is alternative to Arial for tex, or it's actually the original font
-%% with minimal differences
-%\usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
-%\usepackage{courier}
-% math related settings
-\usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
-\usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
-\setmathfont{texgyrepagella-math.otf}
-%\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
-%\usepackage{nicefrac} % The pack­age type­sets fractions “nicely”
-\usepackage{marvosym} % Symbols, like perfect Euro
-\usepackage[hang, multiple]{footmisc} % must be placed above hyperref to avoid warnings
-\setlength{\footnotemargin}{1em}
-\usepackage[colorlinks=true,%
-  breaklinks=true,%
-  linkcolor=black,%
-  citecolor=black,%
-  menucolor=black,%
-  urlcolor=black]{hyperref} % adds new commands to include hyperlinks
-
-%%% additional packages
-\usepackage{ragged2e} % brings new commands like \Centering, \RaggedLeft or \RaggedRight
-%\usepackage{footnote} % https://www.ctan.org/pkg/footnote
-%\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
-
-%%% table packages
-\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
-\usepackage{multirow} % https://www.ctan.org/pkg/multirow
-%\usepackage{array} % https://www.ctan.org/pkg/array
-%\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
-\usepackage{microtype}
-
-%%% floats
-\usepackage{float}
-\usepackage{caption}
-\usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
-%%% list related
-\usepackage{enumitem} % https://ctan.org/pkg/enumitem
-%\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist
-
-%%% Glossar
-\usepackage[%
-  %sort=word,%
-  xindy%
-  ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
-\setabbreviationstyle{long-short}
-\loadglsentries{gls.tex}
-% index w/ xindy
-\usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
-\usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
-\makeindex
-
-%%% Biblatex
-\usepackage[%
-  backend=biber,%
-  style=numeric,%
-  citestyle=authoryear,%
-  %sortcase=true,%
-  date=iso,%
-  seconds=true,%
-  urldate=iso,%
-  %dashed=false,%
-  %doi=false,%
-  isbn=true,%
-  %mergedate=false,%
-  autocite=footnote,%
-  sortlocale=de]{biblatex}
-\input{skripte/modsBiblatex}
+% bib resources
 \addbibresource{literatur/literatur.bib}
 
 % where to store your images
@@ -120,7 +25,7 @@
 %\input{skripte/weitereEbene}
 
 % Meta information
-\input{skripte/meta}
+\input{meta/authorinfo.tex}
 
 % PDF Meta Data
 \hypersetup{%
@@ -132,102 +37,52 @@
   }
 }
 
-% define headers and footers
-%\usepackage{fancyhdr}
-%\pagestyle{fancy}
-%\fancyhf{}
-%\fancyhead[C]{-\ \thepage\ -} % centered page numbering
-%\fancyhead[L]{\leftmark}      % no footer
-%\renewcommand{\headrulewidth}{0.4pt}
-\clearpairofpagestyles
-\cfoot[\pagemark]{\pagemark}
-\lehead{\headmark}
-\rohead{\headmark}
-\pagestyle{scrheadings}
-% footnote style
-%\let\footnoteOld\footnote{}
-%\renewcommand{\footnote}[1]{%
-%  \linespread{1.0}%
-%  \footnoteOld{#1}%
-%  \linespread{1.2}%
-%}
-%Fußnoten auf Schriftgröße 10
-\setkomafont{footnote}{\footnotesize{10}}
-
-% Abkürzungsverzeichnis mit glossaries
-%\makenoidxglossaries{} % w/o xindy
-\makeglossaries % w/ xindy
-
-%%% proper source code display
-\usepackage{listings}
-% Colors for listings
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\lstset{% general code settings
-  numbers=left,%
-  numberstyle=\tiny,%
-  numbersep=5pt,%
-  breaklines=true,%
-  showstringspaces=false,%
-  frame=l ,%
-  xleftmargin=5pt,%
-  xrightmargin=5pt,%
-  basicstyle=\ttfamily\scriptsize,%
-  stepnumber=1,%
-  keywordstyle=\color{blue},% keyword style
-  commentstyle=\color{dkgreen},% comment style
-  stringstyle=\color{mauve}% string literal style
-}
 \begin{document}
-\pagenumbering{Roman} % Seitennumerierung auf römisch umstellen
-% "Literatur" in "Literaturverzeichnis" umbenennen
-\renewcommand{\refname}{Literaturverzeichnis}
 
-% Titlepage
-\input{kapitel/titelseite/titelseite}
+\pagenumbering{Roman} % Roman page numbering style
+\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
 
-% Sperrvermerk
+\input{kapitel/titelseite/titelseite} % Titlepage
 
-%\input{kapitel/anhang/sperrvermerk}
+%\input{kapitel/anhang/sperrvermerk} % lock flag
 
-%%% Inhaltsverzeichnis
+%%% table of content
 \setcounter{page}{2}
 \tableofcontents
 \newpage
 
-% Abkürzungsverzeichnis
+%%% Glossaries
 %\printunsrtglossaries{} % list all entries w/o xindy
 \printglossaries{} % list all entries w/ xindy
-%\newpage
+\newpage
 
-% Abbildungsverzeichnis
+% table of figures
 \listoffigures
-%\newpage
+\newpage
 
-% Tabellenverzeichnis
+% table of tables
 \listoftables
-%\newpage
+\newpage
 
-% Seitennummerierung auf arabisch und ab 1 beginnend umstellen
-\pagenumbering{arabic}
-\setcounter{page}{1}
+\pagenumbering{arabic} % Arabic page numbering style
+\setcounter{page}{1} % reset page counter
 
-% Kapitel / Inhalte
+% this is where you write your text
 \input{kapitel/einleitung/einleitung}
 \input{kapitel/kapitel_1/kapitel_1}
 \input{kapitel/kapitel_2/kapitel_2}
 %\input{kapitel/fazit/fazit}
 
-% Literaturverzeichnis
-\newpage
+\newpage % bibliography
 \addcontentsline{toc}{section}{Literatur}
-\pagenumbering{Roman} %Zähler wieder römisch ausgeben
-\setcounter{page}{4}  %Zähler manuell hochsetzen
-\begin{RaggedRight}
+\pagenumbering{Roman} % Change back to Roman page numbering style
+\setcounter{page}{4}  % Change the number accordingly
+%\begin{RaggedRight} % print text ragged right
 \printbibliography
 \newpage
+\addcontentsline{toc}{section}{Index}
 \printindex
-\end{RaggedRight}
+%\end{RaggedRight}
 %%% Alternative Darstellung:
 %%% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
 %%% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
