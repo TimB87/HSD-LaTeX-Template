@@ -90,8 +90,28 @@
 \usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
 \makeindex
 %%% List of Abbreviations
-\usepackage[refpage,refeq]{nomencl}
+\usepackage[refpage]{nomencl}
 \makenomenclature
+\makeatletter
+\def\thenomenclature{%
+  \@ifundefined{chapter}%
+  {
+    \section{\nomname}
+    \if@intoc\addcontentsline{toc}{section}{\nomname}\fi%
+  }%
+  {
+    \chapter{\nomname}
+    \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
+  }%
+
+  \nompreamble
+  \list{}{%
+    \labelwidth\nom@tempdim
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \itemsep\nomitemsep
+    \let\makelabel\nomlabel}}
+\makeatother
 
 %%% Biblatex
 \usepackage[%
