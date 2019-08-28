@@ -1,10 +1,12 @@
 % file: main.tex
 
 %%% we use arara because it makes life easier
+%%% arara should work on all platforms
 % arara: lualatex
 % arara: xindy: {modules: [texindy, page-ranges], codepage: utf8, language: german-duden}
 % arara: biber
 % arara: makeglossaries
+% arara: nomencl
 % arara: lualatex
 % arara: lualatex
 
@@ -30,11 +32,11 @@
 % PDF Meta Data
 \hypersetup{%
   pdfinfo={%
-    Title={\myTitel},
-    Subject={\myStudiengang},
-    Author={\myAutor},
-    Build=1.1
-  }
+    Title={\myTitel},%
+    Subject={\myStudiengang},%
+    Author={\myAutor},%
+    Build=1.1%
+  }%
 }
 
 \begin{document}
@@ -51,10 +53,8 @@
 \tableofcontents
 \newpage
 
-%%% Glossaries
-%\printunsrtglossaries{} % list all entries w/o xindy
-\printglossaries{} % list all entries w/ xindy
-\newpage
+%%% list of abbreviations
+\printnomenclature
 
 % table of figures
 \listoffigures
@@ -76,12 +76,21 @@
 \newpage % bibliography
 \addcontentsline{toc}{section}{Literatur}
 \pagenumbering{Roman} % Change back to Roman page numbering style
-\setcounter{page}{4}  % Change the number accordingly
+\setcounter{page}{6}  % Change the number accordingly
+
+%%% print index
+\addcontentsline{toc}{section}{Index}
+\printindex
+\newpage
+
+%%% Glossaries
+%\printunsrtglossaries{} % list all entries w/o xindy
+\printglossaries{} % list all entries w/ xindy
+\newpage
+
 %\begin{RaggedRight} % print text ragged right
 \printbibliography
 \newpage
-\addcontentsline{toc}{section}{Index}
-\printindex
 %\end{RaggedRight}
 %%% Alternative Darstellung:
 %%% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.

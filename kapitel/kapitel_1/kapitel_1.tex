@@ -2,12 +2,15 @@
 \newpage
 
 \section{Seitenaufbau in LaTeX}
-Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit LaTeX für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von LaTeX , sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
+Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit \LaTeX{} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \LaTeX{}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
+
+
+Dieses Dokument nutzt die Dokumentenklasse scrreprt\footcite[S. 51]{kohmKOMA2019} aus dem Paket KOMA-Script. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[vgl. ][S. 9]{oetikerIntroductionLATEX2e2018}.
 
 \section{Funktionen von LaTeX}
 
 \subsection{Textformatierung}
-Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \LaTeX{} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \LaTeX{} umschreibt\footcite{oetiker_introduction_2018}, und das alles auf 153 Seiten, kostenlos.
+Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \LaTeX{} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \LaTeX{} umschreibt\footcite{oetikerIntroductionLATEX2e2018}, und das alles auf 153 Seiten, kostenlos.
 
 \subsection{Mathematische Schreibumgebung}
 Wenn man Code zwischen zwei Dollar Zeichen \$ \dots\ \$ schreibt, schreibt man in dem mathematischen Modus. Alles darin wird interpretiert und durch entsprechende Symbole ersetzt. Das Ergebnis spricht für sich.
@@ -58,7 +61,8 @@ Grundsätzlich unterstützt \LaTeX{} aber noch eine weitere Methode, mathematisc
   \varphi = \frac{1 + \sqrt{5}}{2} = 1.618 \ldots
 \]
 \end{lstlisting}
-Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S.276]{kottwitz_latex_2015}. Inline math eignet sich, um Formeln im Text einzufügen, Displayed math präsentiert die Formel in einer eigenen Zeile.
+Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S.276]{kottwitzLaTeXCookbook902015}. Inline math eignet sich, um Formeln im Text einzufügen, Displayed math präsentiert die Formel in einer eigenen Zeile.
+%Eine sehr gute Übersicht findet man kostenfrei von Michael Doobs\footcite[S. 33ff]{michaeldoobGentleIntroductionTEX}.
 
 \subsection{Fußnoten}
 Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
@@ -68,6 +72,16 @@ Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und au
 
 \subsection{Querverweise}
 
+\subsection{Code}
+Code wird wie folgt eingefügt
+\begin{lstlisting}
+#!/usr/bin/env ruby
+
+listofstrings = ARGV
+puts listofstrings.sort.uniq
+
+\end{lstlisting}
+Sollte man diese Funktion nicht gebrauchen, kann man die letzten Zeilen in der Präambel deaktivieren, damit die Pakete nicht zwingend geladen werden müssen.
 \subsection{Quellcode zitieren}
 
 \subsection{Tabellen}
@@ -138,23 +152,19 @@ Abbildung Zwei zeigt eine Grafik, die zu groß für diese Seite wäre. LaTeX mel
 \subsection{Zitieren}
 Es scheint, als würde jeder Professor seine persönlichen Vorlieben zum verwendeten Zitationsstil haben. Hier sollen also verschiedene Stile ausprobiert werden, so dass man nicht viel Zeit damit verliert.
 
-Dieses Buch wurde mit Hilfe der üblichen Internetadressen (vorwiegend \hyperref{stackoverflow.com}\ ) aber auch dem Buch \glqq Wissenschaftliche Arbeiten schreiben mit LaTeX\grqq{} von Joachim Schlosser\footcite{schlosser_wissenschaftliche_2014} geschrieben.
-\subsection{Glossar}
-\subsection{Index}
-Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.\footnote{das ist ein Test}
-\begin{lstlisting}
-Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.\footnote{das ist ein Test}
-\end{lstlisting}
+Dieses Buch wurde mit Hilfe der üblichen Internetadressen (vorwiegend \href{https://tex.stackexchange.com/}{TeX - LaTeX Stack Exchange} ) aber auch dem Buch \glqq Wissenschaftliche Arbeiten schreiben mit LaTeX\grqq{} von Joachim Schlosser\footcite{schlosserWissenschaftlicheArbeitenSchreiben2014} geschrieben.
 \subsection{Verzeichnisse}
+\LaTeX{} macht es verhältnismäßig einfach, Verzeichnisse zu führen. Anbei sind folgende hier im Code verwendete erklärt.
+\subsection{Abkürzungsverzeichnis}
+Here is some text, where we use APC.\nomenclature{APC}{antigeen-presenterende cel}
+\subsubsection{Glossar}
+Ein Glossar soll dem Leser Fachbegriffe näher bringen. In einem gesonderten Verzeichnis im Anhang werden die definierten Begriffe dann aufgelistet.
 
-\dots
-
-\subsection{Code}
-Code wird wie folgt eingefügt
+Der Code ist meta/gls.tex definiert.
+\subsubsection{Index}
+Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 \begin{lstlisting}
-#!/usr/bin/env ruby
-
-listofstrings = ARGV
-puts listofstrings.sort.uniq
+Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 \end{lstlisting}
-Sollte man diese Funktion nicht gebrauchen, kann man die letzten Zeilen in der Präambel deaktivieren, damit die Pakete nicht zwingend geladen werden müssen.
+
+Mit einem Index kann man Schlagworte und Themengruppen zusammenfassen und dem Leser helfen, diese im Dokument zu finden.
