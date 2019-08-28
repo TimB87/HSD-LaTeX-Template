@@ -1,1 +1,15 @@
 \newpage
+\section{Spaß mit LaTeX}
+Expand $(a+b)^n$:
+\newcount\mycntr
+
+  \begin{center}
+    \mycntr=0
+    \loop\advance\mycntr by 1
+    \ifnum\mycntr<20
+      $(a\hskip\mycntr pt +\hskip\mycntr pt b)^n$\\
+    \repeat
+  \end{center}
+
+If~~$\displaystyle\lim_{x\rightarrow8}\frac{1}{x{-}8}=\infty$
+~~then~~$\displaystyle\lim_{x\rightarrow5}\frac{1}{x{-}5}=\rotatebox{90}{5}$
