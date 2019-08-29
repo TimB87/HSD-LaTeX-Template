@@ -1,10 +1,11 @@
-% Neuer Tabellen-Spalten-Typ: Zentriert und umbrechbar
+% !TEX root = ../main.tex
+% a new table style, centered and wrapable
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{titlepage}
   \newgeometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
   \begin{center}
   \textbf{Bachelor-Thesis}\\
-  %\textbf{Master-Thesis}\\
+  %\textbf{Master-Thesis}\\ % or if you are on your master thesis..
   \Huge{\myTitel}\\
   \vspace{0.2cm}
   \end{center}
@@ -16,7 +17,7 @@
   vorgelegt von:  \> \> \> \myAutor\\
   Matr.-Nr.: \> \> \> \myMatrikelNr\\
   aus: \myLocation\\
-  angefertigt im Rahmen der Bachelorprüfung \> \> \>\\
+  angefertigt im Rahmen der Bachelorprüfung \> \> \>\\ % same as above
   %angefertigt im Rahmen der Masterprüfung \> \> \>\\
   für den Studiengang \> \> \>\\
   \> \> \> \myStudiengang\\

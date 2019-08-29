@@ -1,4 +1,4 @@
-% file: main.tex
+% !TEX root = main.tex
 
 %%% we use arara because it makes life easier
 %%% arara should work on all platforms
@@ -7,8 +7,8 @@
 % arara: biber
 % arara: makeglossaries
 % arara: nomencl
-% arara: lualatex
-% arara: lualatex
+% arara: lualatex: { shell: true, synctex: true }
+% arara: lualatex: { options: [ '--synctex=1', '--shell-escape' ]}
 
 %%% we source our input files to get a cleaner main.tex
 \input{meta/preambel.tex}
@@ -50,12 +50,13 @@
 
 %%% table of content
 \setcounter{page}{2}
+\begin{sloppypar} % prevents overfull \hbox in ToC
 \tableofcontents
 \newpage
 
 %%% list of abbreviations
 \renewcommand{\nomname}{Abkürzungsverzeichnis}
-\printnomenclature
+\printnomenclature*
 \newpage
 
 % table of figures
@@ -64,6 +65,7 @@
 
 % table of tables
 \listoftables
+\end{sloppypar} % doesn't touch the rest of our precious document
 \newpage
 
 \pagenumbering{arabic} % Arabic page numbering style
