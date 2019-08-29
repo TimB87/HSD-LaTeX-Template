@@ -91,18 +91,18 @@
 \usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
 \makeindex
 %%% List of Abbreviations
-\usepackage[refpage,notintoc]{nomencl}
+\usepackage[refpage,intoc]{nomencl}
 \makenomenclature
 \makeatletter
 \def\thenomenclature{%
   \@ifundefined{chapter}%
   {
-    \section{\nomname}
-    %\if@intoc\addcontentsline{toc}{section}{\nomname}\fi%
+    \section*{\nomname} % do not give it a section number
+    \if@intoc\addcontentsline{toc}{section}{\nomname}\fi%
   }%
   {
-    \chapter{\nomname}
-    %\if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
+    \chapter*{\nomname} % do not give it a chapter number
+    \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
   }%
 
   \nompreamble
