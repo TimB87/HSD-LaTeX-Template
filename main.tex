@@ -2,29 +2,28 @@
 
 %%% we use arara because it makes life easier
 %%% arara should work on all platforms
-% arara: lualatex
+% arara: lualatex: { draft: true, shell: true}
 % arara: xindy: {modules: [texindy, page-ranges], codepage: utf8, language: german-duden}
-% arara: biber
-% arara: makeglossaries
-% arara: nomencl
+% !arara: --> if changed('idx')
+% arara: biber if missing('bbl') || found('log', 'Citation')
+% arara: --> || found ('log', 'Please \\(re\\)run Biber')
+% arara: makeglossaries if missing('gls') || changed('glo')
 % arara: lualatex: { shell: true, synctex: true }
-% arara: lualatex: { options: [ '--synctex=1', '--shell-escape' ]}
+% arara: --> if found('log', 'No file ') || found('log', 'undefined references') || found('log', 'Rerun required') || found('log', 'Rerun to get cross-references')
+% arara: lualatex: { shell: true, synctex: true }
 
 %%% we source our input files to get a cleaner main.tex
-\input{meta/preambel.tex}
-%input{meta/packages}
-%input{meta/macros}
-%input{meta/hyphenations}
-%input{meta/options}
+\input{meta/preambel.tex} % to fragment
+%input{meta/packages} % or not to fragment
+%input{meta/macros} % that
+%input{meta/hyphenations} % is the
+%input{meta/options} % question
 
 % bib resources
 \addbibresource{literatur/literatur.bib}
 
 % where to store your images
 \graphicspath{{./}{./abbildungen/}}
-
-% Weitere Ebene einfügen
-%\input{skripte/weitereEbene}
 
 % Meta information
 \input{meta/authorinfo.tex}
@@ -42,21 +41,27 @@
 \begin{document}
 
 \pagenumbering{Roman} % Roman page numbering style
-\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
 
-\input{kapitel/titelseite/titelseite} % Titlepage
+\input{kapitel/titelseite/titelseite} % titlepage
 
 %\input{kapitel/anhang/sperrvermerk} % lock flag
 
+\setcounter{page}{2} % manually set to page 2
 %%% table of content
-\setcounter{page}{2}
-\begin{sloppypar} % prevents overfull \hbox in ToC
+\setcounter{tocdepth}{3} % define toc depth
 \tableofcontents
 \newpage
 
 %%% list of abbreviations
-\renewcommand{\nomname}{Abkürzungsverzeichnis}
-\printnomenclature
+% we need something to renewe the header.. it says toc but its acro
+%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+%\section*{Abkürzungsverzeichnis}
+%\input{meta/acro.tex}
+%\newpage
+
+%%% Glossaries
+%\printunsrtglossaries{} % list all entries w/o xindy
+\printglossaries{} % list all entries w/ xindy
 \newpage
 
 % table of figures
@@ -65,7 +70,6 @@
 
 % table of tables
 \listoftables
-\end{sloppypar} % doesn't touch the rest of our precious document
 \newpage
 
 \pagenumbering{arabic} % Arabic page numbering style
@@ -78,7 +82,6 @@
 %\input{kapitel/fazit/fazit}
 
 \newpage % bibliography
-\addcontentsline{toc}{section}{Literatur}
 \pagenumbering{Roman} % Change back to Roman page numbering style
 \setcounter{page}{6}  % Change the number accordingly
 
@@ -87,15 +90,12 @@
 \printindex
 \newpage
 
-%%% Glossaries
-%\printunsrtglossaries{} % list all entries w/o xindy
-\printglossaries{} % list all entries w/ xindy
-\newpage
-
-%\begin{RaggedRight} % print text ragged right
+\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
 \printbibliography
 \newpage
-%\end{RaggedRight}
+
+%%% Original Author: Andy Grunwald
+%%% https://github.com/andygrunwald/FOM-LaTeX-Template/blob/master/thesis_main.tex
 %%% Alternative Darstellung:
 %%% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
 %%% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:

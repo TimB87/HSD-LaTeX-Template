@@ -1,6 +1,9 @@
-\usepackage{xpatch} 
+% Original Author: Andy Grunwald
+% https://github.com/andygrunwald/FOM-LaTeX-Template/blob/master/skripte/modsBiblatex2018.tex
 
-\setlength\bibhang{1cm} 
+\usepackage{xpatch}
+
+\setlength\bibhang{1cm}
 
 %%% Weitere Optionen 
 %\boolitem[false]{citexref} %Wenn incollection, inbook, inproceedings genutzt wird nicht den zugehörigen parent auch in Literaturverzeichnis aufnehmen
@@ -59,7 +62,7 @@
 \DeclareDelimAlias{finalnamedelim}{multinamedelim} 
 
 \DeclareNameAlias{default}{family-given} 
-\DeclareNameAlias{sortname}{default}  %Nach Namen sortieren
+\DeclareNameAlias{sortname}{default}  %Nach Namen sortiereson
 
 
 \DeclareFieldFormat{editortype}{\mkbibparens{#1}}
@@ -136,31 +139,31 @@
      \usebibmacro{cite:labeldate+extradate}} 
     {\usebibmacro{cite:shorthand}}} 
 
-    \renewcommand*{\jourvoldelim}{\addcomma\addspace}% Trennung zwischen journalname und Volume. Sonst Space; Laut Leitfaden richtig
-    \hypersetup{hidelinks} %sonst sind Fußnoten grün. Dadurch werden Links allerdings nicht mehr farbig dargestellt
+    %\renewcommand*{\jourvoldelim}{\addcomma\addspace}% Trennung zwischen journalname und Volume. Sonst Space; Laut Leitfaden richtig
+    %\hypersetup{hidelinks} %sonst sind Fußnoten grün. Dadurch werden Links allerdings nicht mehr farbig dargestellt
 
-\renewbibmacro*{journal+issuetitle}{%
-  \usebibmacro{journal}%
-  \setunit*{\jourvoldelim}%
-  \iffieldundef{series}
-    {}
-    {\setunit*{\jourserdelim}%
-     \printfield{series}%
-     \setunit{\servoldelim}}%
-  \iffieldundef{volume}
-    {}
-    {\printfield{volume}}
-  \iffieldundef{labelyear}
-  {}
-  {
-  (\thefield{year}) %Ansonsten wird wenn kein Volume angegeben ist ein Komma vorangestellt
-  }
-  \setunit*{\addcomma\addspace Nr\adddot\addcolon\addspace}
-  \printfield{number}
-  \iffieldundef{eid}
-  {}
-  {\printfield{eid}}
-}
+%\renewbibmacro*{journal+issuetitle}{%
+%  \usebibmacro{journal}%
+%  %\setunit*{\jourvoldelim}%
+%  \iffieldundef{series}
+%    {}
+%    {\setunit*{\jourserdelim}%
+%     \printfield{series}%
+%     \setunit{\servoldelim}}%
+%  \iffieldundef{volume}
+%    {}
+%    {\printfield{volume}}
+%  \iffieldundef{labelyear}
+%  {}
+%  {
+%  (\thefield{year}) %Ansonsten wird wenn kein Volume angegeben ist ein Komma vorangestellt
+%  }
+%  \setunit*{\addcomma\addspace Nr\adddot\addcolon\addspace}
+%  \printfield{number}
+%  \iffieldundef{eid}
+%  {}
+%  {\printfield{eid}}
+%}
 
 \renewbibmacro*{postnote}{% 
   \setunit{\postnotedelim}% 

@@ -41,6 +41,8 @@
 %% with minimal differences
 %\usepackage[scaled=0.9]{helvet} % use together with courier package to avoid pixelated fonts
 %\usepackage{courier}
+\usepackage{microtype} % https://www.ctan.org/pkg/microtype
+\setkomafont{footnote}{\footnotesize{10}}
 
 % math related settings
 \usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
@@ -49,86 +51,64 @@
 %\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
 %\usepackage{nicefrac} % The pack­age type­sets fractions “nicely”
 \usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
+
 \usepackage[hang, multiple]{footmisc} % must be placed above hyperref to avoid warnings
 \setlength{\footnotemargin}{1em}
+
+%%% references
+%\usepackage{varioref}
 \usepackage[colorlinks=true,%
   breaklinks=true,%
   linkcolor=black,%
   citecolor=blue,%
   menucolor=black,%
   urlcolor=black]{hyperref} % adds new commands to include hyperlinks
+%\usepackage{cleveref}
 
 %%% additional packages
 \usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
 %\usepackage{footnote} % https://www.ctan.org/pkg/footnote
 %\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
+\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch
 
 %%% table packages
 \usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
 \usepackage{multirow} % https://www.ctan.org/pkg/multirow
 %\usepackage{array} % https://www.ctan.org/pkg/array
 %\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
-\usepackage{microtype} % https://www.ctan.org/pkg/microtype
+%\usepackage{microtype} % https://www.ctan.org/pkg/microtype
 
 %%% floats
 \usepackage{float} % https://www.ctan.org/pkg/float
 \usepackage{caption} % https://www.ctan.org/pkg/caption
 \usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
+\usepackage{caption} % hypcap is true by default so [hypcap=true] is optional in \usepackage[hypcap=true]{caption}
 
 %%% list related
 \usepackage{enumitem} % https://ctan.org/pkg/enumitem
 %\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist
 
-%%% Glossary
-\usepackage[%
-  %sort=word,%
-  xindy%
-  ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
-\setabbreviationstyle{long-short}
-\loadglsentries{meta/gls.tex} % definitions go there
-% index w/ xindy
-\usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
-\usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
-\makeindex
-%%% List of Abbreviations
-\usepackage[refpage,intoc]{nomencl}
-\makenomenclature
-\makeatletter
-\def\thenomenclature{%
-  \@ifundefined{chapter}%
-  {
-    \section*{\nomname} % do not give it a section number
-    \if@intoc\addcontentsline{toc}{section}{\nomname}\fi%
-  }%
-  {
-    \chapter*{\nomname} % do not give it a chapter number
-    \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi%
-  }%
-
-  \nompreamble
-  \list{}{%
-    \labelwidth\nom@tempdim
-    \leftmargin\labelwidth
-    \advance\leftmargin\labelsep
-    \itemsep\nomitemsep
-    \let\makelabel\nomlabel}}
-\makeatother
-
 %%% Biblatex
 \usepackage[%
   backend=biber,%
   style=numeric,%
-  citestyle=authoryear,%
-  %sortcase=true,%
-  date=iso,%
-  seconds=true,%
-  urldate=iso,%
-  %dashed=false,%
-  %doi=false,%
-  isbn=true,%
-  %mergedate=false,%
-  autocite=footnote,%
-  sortlocale=de]{biblatex}
+  citestyle=authortitle,%
+  date=iso,% access date in iso format
+  seconds=true,% required by date=iso
+  url=true,% prints url, if available
+  urldate=iso,% access date in iso format
+  isbn=true,% print isbn
+  doi=false,% omit doi
+  autocite=footnote,% automatically use \footcite
+  maxcitenames=2, % shorten authors if more than 2
+  maxbibnames=999,%
+  giveninits=false,% prints a full name if set to false
+  %eprint=true,%
+  backref=false,% prints backrefs in \printbibliography
+  bibencoding=utf8,% tries to encode with UTF-8
+  bibwarn=true,% can be disabled, else shows warnings via buildlog
+  sortlocale=de% can be deleted if you don't write in german
+  ]{biblatex} % https://www.ctan.org/pkg/biblatex
 \input{skripte/modsBiblatex}
 
 % don't use fancyhdr to change headers/footers
@@ -149,37 +129,58 @@
 %}
 %Fußnoten auf Schriftgröße 10
 
-% use "scrheadings"
+% use "scrheadings" instead with a KOMA class
 \clearpairofpagestyles
 \cfoot[\pagemark]{\pagemark}
 \lehead{\headmark}
 \rohead{\headmark}
 \pagestyle{scrheadings}
 
-\setkomafont{footnote}{\footnotesize{10}}
 
-% Abkürzungsverzeichnis mit glossaries
+%%% glossary/xindy/acronym
+\usepackage[%
+  xindy,% index w/ xindy
+  acronym,%
+  toc,%
+  %style=tree%
+  ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
+%%% glossary settings
+\GlsSetXdyLanguage{german}
+\GlsSetXdyCodePage{duden-utf8}
+\loadglsentries{meta/gls.tex} % glossary definitions go there
+
 %\makenoidxglossaries{} % w/o xindy
 \makeglossaries % w/ xindy
+%%% index settings
+\usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
+\usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
+\makeindex
+
+%%% acronyms
+\loadglsentries{meta/acro.tex} % acronym definitions go there
+\setabbreviationstyle{long-short}
 
 %%% proper source code display
 % disable those lines if you don't display any code
 \usepackage{listings} % https://www.ctan.org/pkg/listings
 % Colors for listings
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{green}{rgb}{0,0.6,0}
 \lstset{% general code settings
+  language=TeX,%
+  basicstyle=\footnotesize,%
   numbers=left,%
   numberstyle=\tiny,%
   numbersep=5pt,%
+  frame=single,%
   breaklines=true,%
-  showstringspaces=false,%
-  frame=l ,%
+  title=\lstname,%
   xleftmargin=5pt,%
   xrightmargin=5pt,%
   basicstyle=\ttfamily\scriptsize,%
   stepnumber=1,%
+  captionpos=b,%
   keywordstyle=\color{blue},% keyword style
-  commentstyle=\color{dkgreen},% comment style
+  commentstyle=\color{green},% comment style
   stringstyle=\color{mauve}% string literal style
 }

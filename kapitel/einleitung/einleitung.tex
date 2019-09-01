@@ -2,28 +2,45 @@
 \newpage
 
 \section{Einleitung}
-Mit dieser Vorlage soll den Studierenden der \gls{hsd}footnote{\href{https://www.hs-duesseldorf.de}{Webseite der Hochschule Düsseldorf}} eine Vorlage zur Erstellung einer Thesis mit \gls{latex} an die Hand gegeben werden, die der \gls{po} im Allgemeinen entspricht und die einfach nach den Bedürfnissen des jeweiligen betreuenden Professors angepasst werden kann.
+\label{sec:einl}
+Mit dieser Vorlage soll den Studierenden der \gls{hsd}\footnote{\href{https://www.hs-duesseldorf.de}{Webseite der Hochschule Düsseldorf}} eine Vorlage zur Erstellung einer Thesis mit \gls{latex} an die Hand gegeben werden, die der \gls{po} im Allgemeinen entspricht und die einfach nach den Bedürfnissen des jeweiligen betreuenden Professors angepasst werden kann. Bei \gls{latex} handelt es sich um eine \glqq professionelle Typeset-Entwicklungsumgebung\grqq, wenn man so möchte. Da \gls{latex} schon
+relativ alt ist (zum Zeitpunkt der Erstellung dieser Vorlage etwa 36 Jahre, um genau zu sein) muss man einige Feinheiten beachten. Die Motivation zur Erstellung dieser Vorlage war also, selbst Sicherheit mit dem Umgang von \gls{latex} zu erhalten, um später auf dieses Werkzeug selbst zurückgreifen zu können. Und ganz im Sinne der Philosophie dieser Software soll diese Vorlage später auch dir, frei (wie in Freiheit, nicht wie kostenfrei) zur Verfügung stehen.
 
-Diese Vorlage nutzt UTF-8 Zeichencodierung, lualatex als TeX-Engine die entsprechende Unterstützung nativ mitbringt, biber als UTF-8 kompatibles bibtex Backend und xindy als UTF-8 kompatibles Glossar und Index-Verzeichnis. Somit dürfte bei der Gestaltung selbst komplexer Eingaben keinerlei Probleme im Weg stehen. Das ist wichtig, damit man keine Probleme mit z.B. Umlauten bekommt.
+Eine dieser Feinheiten ist die Unterstützung von erweiterten Zeichencodierungen, genaugenommen \gls{utf8}-Unterstützung.
+Jede Komponente diesen Dokumentes ist daraus aufgelegt, vollkommen \gls{utf8} zu unterstützen. Das ist wichtig, damit wir keine Schwierigkeiten bekommen, \glqq besondere Zeichen\grqq, so wie zum Beispiel Umlaute, darzustellen.
 
+Folgende Komponenten sind im Einsatz:
+\begin{description}
+  \item[arara] Verwaltet, wie die weiteren Programme aufgerufen werden, damit am Ende ein fehlerfreies Dokument erscheint
+  \item[lualatex] Ist eine moderne alternative zu dem klassischem \glqq pdftex\grqq , welches z.B. keine native \gls{utf8}-unterstützung hat.
+  \item[xindy] Erstellt Abkürzungsverzeichnis, Glossar und index
+  \item[biber] Ist in der Lage, bibtex Dateien in \gls{utf8} zu handeln
+\end{description}
+
+Als Nutzer sollte man damit kaum in Kontakt kommen. Solltest du aber diese Vorlage mitverbessern wollen, freue ich mich über deinen \gls{pull}
 \subsection{Vorteile von LaTeX}
-LaTeX ist, anders als Word, eine deskriptive Umgebung. Das ermöglicht einen anderen Arbeitsfluss und produziert ein, meiner Meinung nach, deutlich hübscheres Dokument mit weniger Aufwand (ich schreibe immerhin diese Vorlage für dich). Datta argumentiert, dass \LaTeX{}, auf Grund seiner Eigenschaft sich nicht mit dem Design aufhalten zu müssen, besser für wissenschaftliche Texte eignet, da es weniger Zeit bedarf, große und komplexe Arbeiten zu schreiben\fullfootcite[Vgl. ][Seite
+\label{sec:vort-von}
+LaTeX ist, anders als Word, eine deskriptive Umgebung. Das ermöglicht einen anderen Arbeitsfluss und produziert ein, meiner Meinung nach, deutlich hübscheres Dokument mit weniger Aufwand (ich schreibe immerhin diese Vorlage für dich). Datta argumentiert, dass \gls{latex}, auf Grund seiner Eigenschaft sich nicht mit dem Design aufhalten zu müssen, besser für wissenschaftliche Texte eignet, da es weniger Zeit bedarf, große und komplexe Arbeiten zu schreiben\footcite[vgl. ][Seite
 1f.]{dilipLatex24Hours2017}.
-Es handelt sich um Freie Software, hierfür empfiehlt sich ein Blick zur \gls{FSF}.
+Es handelt sich um Freie Software, hierfür empfiehlt sich ein Blick zur \gls{fsf}.
 
 % Beispiel: \fullfootcite[Vgl. ][Seite 5]{Tanenbaum.2003}
 \subsection{Grundlegender Umgang}
-Diese Vorlage wurde unter einem Linux System mit Hilfe der tex-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Webseite der Software texlive}}erstellt. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Macsystemen funktioniert, hierfür erfolgt aber meinerseits keine Prüfung. Da aber laut Grätzer ein weiter Arbeiten sogar auf dem iPad möglich ist\footcite[Vgl. ][S. 179ff.]{gratzerPracticalLatex2014}, erwarte ich wenige Schwierigkeiten für euch.
+\label{sec:grundl}
+Diese Vorlage wurde unter einem Linux System mit Hilfe der tex-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Webseite der Software texlive}} \glspl{kompilieren}. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Macsystemen funktioniert, hierfür erfolgt aber meinerseits keine Prüfung. Da aber laut Grätzer ein weiter Arbeiten sogar auf dem iPad möglich ist\footcite[vgl. ][S. 179ff.]{gratzerPracticalLatex2014}, erwarte ich wenige Schwierigkeiten für euch.
 
 Es ist geraten, sich vorher mit der Arbeitsumgebung vertraut zu machen. Eine Suchmaschine hilft bei der Einrichtung der TeX-Umgebung sowie der Auswahl eines geeigneten Editors. texlive wird meinerseits empfohlen, da es wohl das aktivste Projekt ist das a) bei der Erstellung diesen Templates genutzt wurde, b) auf allen gängien Plattformen funktioniert und c) lualatex, xindy und biber automatisch unterstützt. Den Support der anderen Projekte habe ich mir nicht angeschaut.
 
 Unter Linux findet man texlive in der Regel in dem jeweiligen Paketmanager der Distribution. Sobald die Arbeitsumgebung eingerichtet ist, kann prinzipiell über ein Terminal mit dem Befehl \glqq arara main.tex\grqq\ (Komponente des texlive Systems) das pdf kompiliert werden.
 Geeignete Editoren, wie zum Beispiel texmaker, findet man ebenfalls im Paketmanager.
 
-Um den Support zu erweitern, würde ich mich über entsprechende pull-requests\footnote{\href{https://help.github.com/en/articles/about-pull-requests}{https://help.github.com/: About pull requests}} freuen.
+Um den Support zu erweitern, würde ich mich über entsprechende \gls{pull}\footnote{\href{https://help.github.com/en/articles/about-pull-requests}{https://help.github.com/: About pull requests}} freuen.
 
 \subsection{Detaileinstellungen}
+\label{detail-grundl}
 Der Quelltext von main.tex beinhaltet den Link zur jeweiligen Dokumentation der verwendeten Pakete. Oftmals bringen diese eine Vielzahl weiterer Optionen mit sich, die es sich durchaus zu erkunden lohnt.
 Weitere Details findet man im Netz, z.B.  interessante Informationen darüber, was ein gutes Dokument aus macht (bezogen auf das Thema \textbackslash parskip und \textbackslash parindent oder der Einsatz von \textbackslash fancyhdr zusammen mit einer KOMA-Klasse.
-
+\subsection{Haftungsausschluss}
+\label{sec:haftausschl}
+Diese Vorlage ist nach besten gewissen Geschrieben worden, aber eine Garantie auf Erfolg kann ich leider nicht abgeben.
 \dots
