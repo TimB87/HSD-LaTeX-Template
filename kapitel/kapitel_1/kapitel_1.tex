@@ -5,8 +5,7 @@
 \label{sec:seit-aufbau}
 Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
 
-
-Dieses Dokument nutzt die Dokumentenklasse scrreprt\footcite[S. 51]{kohmKOMA2019} aus dem Paket KOMA-Script. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[vgl. ][S. 9]{oetikerIntroductionLATEX2e2018}.
+Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\footcite[S. 51]{kohmKOMA2019}\grqq aus dem Paket KOMA-Script. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetikerIntroductionLATEX2e2018}.
 
 \section{Funktionen von LaTeX}
 \label{sec:funkt-von}
@@ -79,51 +78,8 @@ Code:
 \]
 \end{lstlisting}
 
-Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[vgl. ][S.276]{kottwitzLaTeXCookbook902015}. \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile.
-\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel \footcite[vgl. ][S. 35ff]{gratzerMoreMathLATEX2016}
-
-\subsection{Fußnoten}
-\label{sec:footn}
-Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
-\begin{lstlisting}
-Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
-\end{lstlisting}
-Hiermit sollte man sparsam umgehen.
-
-\subsection{Querverweise}
-\label{sec:refs}
-Leider scheinen Querverweise auf Grafiken gerade nicht zu funktionieren, ein Verweis auf Kapitel~\ref{sec:graphics} funktioniert aber. Ich werde mich der Sache zu einem anderen Zeitpunkt noch mal widmen.
-
-Mal schauen ob ein Querverweis zu Code~\ref{bspcode} funktionieren. Tabelle~\ref{tab:textformat} funktioniert auch.
-
-\subsection{Code}
-\label{sec:code}
-Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sicht \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float \grqq\ ein Label verpassen, dass wir dann referenzieren können.
-
-\lstset{language=Ruby}
-\begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
-#!/usr/bin/env ruby
-
-listofstrings = ARGV
-puts listofstrings.sort.uniq
-\end{lstlisting}
-
-Der Code hierfür:
-\begin{lstlisting}
-\lstset{language=Ruby}
-\textbackslash begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
-#!/usr/bin/env ruby
-
-listofstrings = ARGV
-puts listofstrings.sort.uniq
-\textbackslash end{lstlisting}
-\end{lstlisting}
-Es ist möglich, die dargestellte Sprache anzupassen, das zeigt \textbackslash\{language=Ruby\}. Für das Beispiel musste ich aber die begin/end-Umgebung aufbrechen, da ansonsten der Compiler durcheinander kommt.
-
-Sollte man diese Funktion gar nicht gebrauchen, kann man die letzten Zeilen in der Präambel dafür kommentieren, damit die Pakete nicht zwingend geladen werden müssen. Das sollte die Performance steigern und mögliche Kompatibilitätsschwierigkeiten, sofern vorhanden, zuvorkommen.
-
-\subsection{Quellcode zitieren}
-\label{sec:cite-code}
+Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S. 276]{kottwitzLaTeXCookbook902015}. \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile.
+\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel \footcite[Vgl. ][S. 35ff]{gratzerMoreMathLATEX2016}
 
 \subsection{Tabellen}
 \label{sec:tables}
@@ -205,15 +161,71 @@ Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist
 \end{lstlisting}
 %Mit einfacher Optionen bringen wir \ac{latex} dazu, ~\ref{fig:Bild2} auf die passende Größe zu schrumpfen, ganz ohne weitere Eingriffe.
 
+\subsection{Grafiken mit TikZ}
+\label{sec:tikzgraph}
+\LaTeX{} bietet eine eigene \emph{Zeichenumgebung} an: \glqq TikZ\grqq! Selbst habe ich es noch nicht verwendet, allerdings passt die Art sehr gut in das Gesamtdokument. Darüber hinaus folgt die Syntax einer relativ einfachen Logik, was also durchaus bei kleineren Grafiken Zeit sparen kann.
+
+\begin{tikzpicture}
+  [level 1/.style={sibling distance=35mm,
+    level distance=20mm},
+    level 2/.style={sibling distance=15mm,
+    level distance=10mm}]
+  \node {Planzen}
+    child {node {Blumen}
+    child {node {Rosen}}
+    child {node {Nelken}}
+    child {node {\ldots}}
+  }
+    child {node {Bäume}
+    child {node {Tanne}}
+    child {node {Eiche}}
+  };
+\end{tikzpicture}
+
+Folgendes Beispiel stammt von Christine Römer\footcite{dtk17.1:roemer:tikz} und wurde in \glqq Die \TeX{}nische Komödie\grqq veröffentlicht. Die Zeitschrift wird von \glspl{dante} herausgegebenen.
+\subsection{Fußnoten}
+\label{sec:footn}
+Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
+\begin{lstlisting}
+Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
+\end{lstlisting}
+Hiermit sollte man sparsam umgehen.
+
+\subsection{Code}
+\label{sec:code}
+Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sicht \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float \grqq\ ein Label verpassen, dass wir dann referenzieren können.
+
+\lstset{language=Ruby}
+\begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
+#!/usr/bin/env ruby
+
+listofstrings = ARGV
+puts listofstrings.sort.uniq
+\end{lstlisting}
+
+Der Code hierfür:
+\begin{lstlisting}
+\lstset{language=Ruby}
+\textbackslash begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
+#!/usr/bin/env ruby
+
+listofstrings = ARGV
+puts listofstrings.sort.uniq
+\textbackslash end{lstlisting}
+\end{lstlisting}
+Es ist möglich, die dargestellte Sprache anzupassen, das zeigt \textbackslash\{language=Ruby\}. Für das Beispiel musste ich aber die begin/end-Umgebung aufbrechen, da ansonsten der Compiler durcheinander kommt.
+
+Sollte man diese Funktion gar nicht gebrauchen, kann man die letzten Zeilen in der Präambel dafür kommentieren, damit die Pakete nicht zwingend geladen werden müssen. Das sollte die Performance steigern und mögliche Kompatibilitätsschwierigkeiten, sofern vorhanden, zuvorkommen.
+
 \subsection{Zitieren}
-Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu sein. Um noch etwas mehr Flexibilität zu erhalten nutze ich hier die Arbeit aus folgender git repo \href{https://github.com/andygrunwald/FOM-LaTeX-Template}{FOM-LaTeX-Template von Andy Grunwald}.
+Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu sein. Muss es aber gar nicht sein. Denn hier kommt Bib\TeX{}.
 
 Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwiegend \href{https://tex.stackexchange.com/}{TeX - LaTeX Stack Exchange}), aber auch einem Blick ins Handbuch von biblatex \footcite{lehman_biblatex_2017}, vorzugsweise in der englischen Originalfassung \footcite{kime_biblatex_2019}, da das Paket ständig überarbeitet wird und somit neue Optionen dazukommen, oder bekannte Optionen ersetzt werden, geschrieben.
 
 Es sei zu erwähnen, das biber\footcite[][]{philip_kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 
 Relevanter Code:
-\lstinputlisting[firstline=91,lastline=113]{meta/preambel.tex}
+\lstinputlisting[firstline=96,lastline=116]{meta/preambel.tex}
 
 In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
 
@@ -243,20 +255,28 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
 \label{tab:bib-style}
 \end{table}
 
+Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_peter_kundenbindung_2005}.
+
+\subsection{Querverweise}
+\label{sec:refs}
+Leider scheinen Querverweise auf Grafiken gerade nicht zu funktionieren, ein Verweis auf Kapitel~\ref{sec:graphics} funktioniert aber. Ich werde mich der Sache zu einem anderen Zeitpunkt noch mal widmen.
+
+Mal schauen ob ein Querverweis zu Code~\ref{bspcode} funktionieren. Tabelle~\ref{tab:textformat} funktioniert auch.
+
 \subsection{Verzeichnisse}
 \label{sec:catalogs}
 \gls{latex} macht es verhältnismäßig einfach, Verzeichnisse zu führen, das ist aber auch einer der Gründe, warum wir den \gls{latex}-Compiler mehrfach laufen lassen müssen (vgl. Listing~\ref{lst:arara-rules}). \gls{latex} erstellt bei den ersten Durchläufen Hilfsdateien, die dann ferner von anderen Tools aufgegriffen und verarbeitet werden. Bei dem nächsten Compileraufruf weiß \gls{latex} dann genau, wo es welche Verweise setzen muss. Dies geschieht nicht immer Fehlerfrei, deswegen ist ein prüfender Blick vor der Abgabe dennoch zu empfehlen.
 
-\lstinputlisting[firstline=3,lastline=13,float=htpb,caption=arara regeln,label=lst:arara-rules]{main.tex}
+\lstinputlisting[firstline=3,lastline=14,float=htpb,caption=arara regeln,label=lst:arara-rules]{main.tex}
 Anbei sind folgende hier im Code verwendete erklärt.
 
 \subsubsection{Inhaltsverzeichnis}
 \label{sec:toc}
-Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingefügt\footcite[vgl. ][S. 7ff]{ochsnerTextverarbeitungssystemLaTeXPraktische2015}.
+Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingefügt\footcite[Vgl. ][S. 7ff]{ochsnerTextverarbeitungssystemLaTeXPraktische2015}.
 
 \lstinputlisting[firstline=51,lastline=53,float=htpb,caption=Unser Inhaltsverzeichnis,label=lst:ourtoc]{main.tex}
 
-Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen \footcite[vgl. ][S. 207ff.]{schlosserWissenschaftlicheArbeitenSchreiben2014}
+Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen \footcite[Vgl. ][S. 207ff.]{schlosserWissenschaftlicheArbeitenSchreiben2014}
 
 \subsubsection{Abbildungsverzeichnis}
 \label{sec:lof}
@@ -264,15 +284,17 @@ Abbildungen werden über \textbackslash listoffigures aufgelistet. Damit eine Ab
 
 \subsubsection{Abkürzungsverzeichnis}
 \label{sec:acros}
-Das Abkürzungsverzeichnis wird über das Paket glossaries (siehe Kapitel~\ref{sec:glossaries}) erstellt. Die Definition geschieht in der Präambel~\ref{lst:our-acros}) geführt. Die Definition geschieht über meta/acro.tex.
+Das Abkürzungsverzeichnis wird über das Paket glossaries erstellt. Die Definition der Abkürzungen geschieht über meta/acro.tex.
 
-\lstinputlisting[linerange={140-140,159-161},float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preambel.tex}
+Der Code für glossaries wird einmalig für mehrere Zwecke verwendet, hier allerdings einmalig eingeblendet.
+
+\lstinputlisting[linerange={150-152},float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preambel.tex}
 
 \subsubsection{Glossar}
 \label{sec:glossaries}
 Ein Glossar soll dem Leser Fachbegriffe näher bringen. In einem gesonderten Verzeichnis im Anhang werden die definierten Begriffe dann aufgelistet.
 
-\lstinputlisting[linerange={140-140,147-153},float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preambel.tex}
+\lstinputlisting[linerange={154-159},float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preambel.tex}
 
 Die Glossareinträge sind in meta/gls.tex definiert.
 
@@ -286,4 +308,4 @@ Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 
 Mit einem Index kann man Schlagworte und Themengruppen zusammenfassen und dem Leser helfen, diese im Dokument zu finden.
 
-\lstinputlisting[linerange={140-140,154-157},float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}
+\lstinputlisting[linerange={161-164},float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}

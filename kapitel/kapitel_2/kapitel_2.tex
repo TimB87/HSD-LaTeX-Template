@@ -1,6 +1,9 @@
 % !TEX root = ../main.tex
 \newpage
 \section{Spaß mit LaTeX}
+\subsection{Mathe}
+\label{sec:}
+
 Expand $(a+b)^n$:
 \newcount\mycntr
 
@@ -14,3 +17,42 @@ Expand $(a+b)^n$:
 
 If~~$\displaystyle\lim_{x\rightarrow8}\frac{1}{x{-}8}=\infty$
 ~~then~~$\displaystyle\lim_{x\rightarrow5}\frac{1}{x{-}5}=\rotatebox{90}{5}$
+\subsection{TikZ}
+\label{sec:tikz}
+\resizebox{\textwidth}{!}{%
+\tikz{
+    \draw(-10,-10)rectangle+(20,20);
+    \foreach\x/\y in{
+        -1/ 1,  0/ 1,  1/ 1,
+        -1/ 0,  0/ 0,  1/ 0,
+        -1/-1,  0/-1,  1/-1,
+          -.5/ .5, .5/ .5,
+          -.5/-.5, .5/-.5
+    }{
+        \begin{scope}
+            \tikzset{shift={(\x*6.6,\y*6.6)},xscale=(-1)^(\x+\y)}
+            \pgflowlevelsynccm
+            \foreach\j in{1,...,15}{
+                \draw[line width=6mm,
+                    dash pattern={on13.408ptoff13.408pt},
+                    dash phase=\j*13.408pt]
+                    circle(3);
+                \draw[line width=6mm,white,
+                    dash pattern={on13.408ptoff13.408pt},
+                    dash phase=(\j+1)*13.408pt]
+                    circle(3);
+                \foreach\i in{1,...,20}{
+                    \tikzset{rotate=\i*18+\j*9}
+                    \fill[yellow!80!black]
+                        (3,0)ellipse[x radius=3mm,y radius=1.5mm];
+                    \tikzset{rotate=9}
+                    \fill[blue]
+                        (3,0)ellipse[x radius=3mm,y radius=1.5mm];
+                }
+                \tikzset{scale=.81818}
+                \pgflowlevelsynccm
+            }
+        \end{scope}
+    }
+}
+}

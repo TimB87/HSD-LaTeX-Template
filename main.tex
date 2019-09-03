@@ -1,4 +1,5 @@
 % !TEX root = main.tex
+% !TeX program = txs:///arara
 
 %%% we use arara because it makes life easier
 %%% arara should work on all platforms
@@ -44,7 +45,7 @@
 
 \input{kapitel/titelseite/titelseite} % titlepage
 
-%\input{kapitel/anhang/sperrvermerk} % lock flag
+\input{kapitel/anhang/sperrvermerk} % lock flag
 
 \setcounter{page}{2} % manually set to page 2
 %%% table of content
@@ -53,23 +54,26 @@
 \newpage
 
 %%% list of abbreviations
-% we need something to renewe the header.. it says toc but its acro
-%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
-%\section*{Abkürzungsverzeichnis}
-%\input{meta/acro.tex}
-%\newpage
 
-%%% Glossaries
-%\printunsrtglossaries{} % list all entries w/o xindy
-\printglossaries{} % list all entries w/ xindy
+\printglossary[type=\acronymtype]
 \newpage
 
 % table of figures
-\listoffigures
+%\listoffigures
+{%
+  \let\oldnumberline\numberline%
+  \renewcommand{\numberline}{\figurename~\oldnumberline}% adds 'Figure' before the number
+  \listoffigures%
+}
 \newpage
 
 % table of tables
-\listoftables
+%\listoftables
+{%
+    \let\oldnumberline\numberline%
+    \renewcommand{\numberline}{\tablename~\oldnumberline}% same as above for tables
+    \listoftables%
+}
 \newpage
 
 \pagenumbering{arabic} % Arabic page numbering style
@@ -79,11 +83,15 @@
 \input{kapitel/einleitung/einleitung}
 \input{kapitel/kapitel_1/kapitel_1}
 \input{kapitel/kapitel_2/kapitel_2}
-%\input{kapitel/fazit/fazit}
+\input{kapitel/fazit/fazit}
 
 \newpage % bibliography
 \pagenumbering{Roman} % Change back to Roman page numbering style
 \setcounter{page}{6}  % Change the number accordingly
+
+%%% Glossaries
+\printglossary[type=main]
+\newpage
 
 %%% print index
 \addcontentsline{toc}{section}{Index}
@@ -93,6 +101,8 @@
 \renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
 \printbibliography
 \newpage
+
+\input{kapitel/anhang/erklaerung} % sworn declaration
 
 %%% Original Author: Andy Grunwald
 %%% https://github.com/andygrunwald/FOM-LaTeX-Template/blob/master/thesis_main.tex

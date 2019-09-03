@@ -1,12 +1,13 @@
-% !TEX root = ../main.tex
+% !TEX root = ../../main.tex
 %%% general page related settings
 \documentclass[12pt,%
   %draft,%
-  overfullrule=true,%
+  %overfullrule=true,%
   oneside,%
   titlepage,%
   listof=totoc,%
-  twoside=semi,%
+  %twoside=semi,%
+  %tikz,%
   bibliography=totoc]{scrartcl} % https://www.ctan.org/pkg/scrartcl
 
 \usepackage[automark,headsepline]{scrlayer-scrpage} % https://www.ctan.org/pkg/scrlayer-scrpage
@@ -57,7 +58,8 @@
 
 %%% references
 %\usepackage{varioref}
-\usepackage[colorlinks=true,%
+\usepackage[unicode,%
+  colorlinks=true,%
   breaklinks=true,%
   linkcolor=black,%
   citecolor=blue,%
@@ -76,13 +78,16 @@
 \usepackage{multirow} % https://www.ctan.org/pkg/multirow
 %\usepackage{array} % https://www.ctan.org/pkg/array
 %\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
-%\usepackage{microtype} % https://www.ctan.org/pkg/microtype
 
 %%% floats
-\usepackage{float} % https://www.ctan.org/pkg/float
+\usepackage{float} % https://www.ctan.org/pkg/\usepackage{chngcntr}float
 \usepackage{caption} % https://www.ctan.org/pkg/caption
-\usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
 \usepackage{caption} % hypcap is true by default so [hypcap=true] is optional in \usepackage[hypcap=true]{caption}
+
+%%% graphics
+\usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
+\usepackage{tikz}
+\usetikzlibrary{trees}
 
 %%% list related
 \usepackage{enumitem} % https://ctan.org/pkg/enumitem
@@ -91,12 +96,12 @@
 %%% Biblatex
 \usepackage[%
   backend=biber,%
-  style=numeric,%
-  citestyle=authortitle,%
+  style=apa,%
   date=iso,% access date in iso format
   seconds=true,% required by date=iso
   url=true,% prints url, if available
   urldate=iso,% access date in iso format
+  dateera=astronomical,% 'date=iso' requires 'dateera=astronomical'
   isbn=true,% print isbn
   doi=false,% omit doi
   autocite=footnote,% automatically use \footcite
@@ -109,10 +114,9 @@
   bibwarn=true,% can be disabled, else shows warnings via buildlog
   sortlocale=de% can be deleted if you don't write in german
   ]{biblatex} % https://www.ctan.org/pkg/biblatex
-\input{skripte/modsBiblatex}
 
-% don't use fancyhdr to change headers/footers
-
+%%% don't use fancyhdr to change headers/footers
+%%% this is left as a warning
 % define headers and footers
 %\usepackage{fancyhdr}
 %\pagestyle{fancy}
@@ -127,38 +131,37 @@
 %  \footnoteOld{#1}%
 %  \linespread{1.2}%
 %}
-%Fußnoten auf Schriftgröße 10
 
-% use "scrheadings" instead with a KOMA class
+%%% use "scrheadings" instead with a KOMA class
 \clearpairofpagestyles
-\cfoot[\pagemark]{\pagemark}
-\lehead{\headmark}
+\rehead{\headmark}
 \rohead{\headmark}
 \pagestyle{scrheadings}
-
+\cfoot[\pagemark]{\pagemark}
+\KOMAoptions{headsepline=.5pt}
 
 %%% glossary/xindy/acronym
 \usepackage[%
   xindy,% index w/ xindy
-  acronym,%
+  acronym,% acronyms w/ xindy
   toc,%
   %style=tree%
   ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
+%%% abbreviations
+\loadglsentries{meta/acro.tex} % acronym definitions go there
+\setabbreviationstyle{long-short}
+
 %%% glossary settings
 \GlsSetXdyLanguage{german}
 \GlsSetXdyCodePage{duden-utf8}
 \loadglsentries{meta/gls.tex} % glossary definitions go there
-
-%\makenoidxglossaries{} % w/o xindy
 \makeglossaries % w/ xindy
+%\makenoidxglossaries{} % w/o xindy
+
 %%% index settings
 \usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
 \usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
 \makeindex
-
-%%% acronyms
-\loadglsentries{meta/acro.tex} % acronym definitions go there
-\setabbreviationstyle{long-short}
 
 %%% proper source code display
 % disable those lines if you don't display any code
