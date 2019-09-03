@@ -76,6 +76,16 @@
 }
 \newpage
 
+\makeatletter
+\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0.6cm}{7em}{#1}{#2}}
+\makeatother
+\renewcommand{\lstlistingname}{}
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+\renewcommand*{\thelstlisting}{Quellcode~\arabic{lstlisting}}
+\clearpage % notwendig sonst stimmt seitenzahl nicht
+\lstlistoflistings
+\newpage
+
 \pagenumbering{arabic} % Arabic page numbering style
 \setcounter{page}{1} % reset page counter
 
@@ -87,7 +97,7 @@
 
 \newpage % bibliography
 \pagenumbering{Roman} % Change back to Roman page numbering style
-\setcounter{page}{6}  % Change the number accordingly
+\setcounter{page}{8}  % Change the number accordingly
 
 %%% Glossaries
 \printglossary[type=main]
