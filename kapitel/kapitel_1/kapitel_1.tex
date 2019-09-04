@@ -1,17 +1,18 @@
 % !TEX root = ../../main.tex
 \newpage
 
-\section{Seitenaufbau in LaTeX}
+\section{Seitenaufbau in LaTeX}%{{{
 \label{sec:seit-aufbau}
 Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
 
-Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\footcite[S. 51]{kohmKOMA2019}\grqq aus dem Paket KOMA-Script. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetikerIntroductionLATEX2e2018}.
+Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\footcite[S. 51]{kohmKOMA2019}\grqq\ aus dem Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetikerIntroductionLATEX2e2018}.
+%}}}
 
-\section{Funktionen von LaTeX}
+\section{Funktionen von LaTeX}%{{{
 \label{sec:funkt-von}
-\subsection{Textformatierung}
+\subsection{Textformatierung}%{{{
 \label{sec:textformat}
-Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \gls{latex} umschreibt\footcite{oetikerIntroductionLATEX2e2018}, und das alles auf 153 Seiten, kostenlos.
+Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \gls{latex} umschreibt, und das alles auf 153 Seiten, kostenlos.\footcite{oetikerIntroductionLATEX2e2018}
 
 \begin{table}[htbp]
   \resizebox{\textwidth}{!}{% gently resize our table to fit the page
@@ -32,8 +33,8 @@ Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenf
 \end{table}
 
 Einige grundlegende Befehle findet man aber bereits in Tabelle~\ref{tab:textformat}.
-
-\subsection{Mathematische Schreibumgebung}
+%}}}
+\subsection{Mathematische Schreibumgebung}%{{{
 \label{sec:math-umg}
 Wenn man Code zwischen zwei Dollar Zeichen \$ \dots\ \$ schreibt, schreibt man in dem mathematischen Modus. Alles darin wird interpretiert und durch entsprechende Symbole ersetzt. Das Ergebnis spricht für sich.
 
@@ -80,8 +81,8 @@ Code:
 
 Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S. 276]{kottwitzLaTeXCookbook902015}. \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile.
 \gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel \footcite[Vgl. ][S. 35ff]{gratzerMoreMathLATEX2016}
-
-\subsection{Tabellen}
+%}}}
+\subsection{Tabellen}%{{{
 \label{sec:tables}
 Tabellen lassen sich natürlich auch in \gls{latex} schreiben, allerdings gestaltet sich das auf den ersten Blick etwas umständlich. Als Beispiel dafür, die recht simple, Tabelle~\ref{tab:tab1}.
 \begin{table}[htbp]
@@ -114,13 +115,14 @@ kumulierter Barwert & 719.776 &  &  &  &  &  \\ \hline
 \end{lstlisting}
 
 Je nach gewünschtem Stil kann eine Tabelle noch sehr stark verändert werden. Dies schaut man besten ebenfalls in geeigneter Literatur nach, da es hier den Rahmen sprengen würde.
+
 Ein genereller Tipp aber zum Thema Tabellen: nutzt ein externes Tool. Viele Editoren bringen Tools mit, um Tabellen einfacher zu erstellen. Ich finde folgende Webseite sehr gut \href{https://tablesgenerator.com}{https://tablesgenerator.com}.
-
-\subsection{Grafiken}
+%}}}
+\subsection{Grafiken}%{{{
 \label{sec:graphics}
-Grafiken werden von LaTeX dahin gesetzt, wo sie am besten hinpassen. Anhand von zwei beispielhaften Grafiken demonstrieren wir also, wie der freie Wille entscheidet. Da dieser sich im Laufe der Erstellung der Thesis immer wieder ändert, empfiehlt es sich, sich während des Schreibens des eigentlichen Textes sich nicht weiter mit der Platzierung von \glqq Floats \grqq\ aufzuhalten.
+Grafiken werden von \LaTeX{}\ dahin gesetzt, wo sie am besten hinpassen. Anhand von zwei beispielhaften Grafiken demonstrieren wir also, wie der freie Wille entscheidet. Da dieser sich im Laufe der Erstellung der Thesis immer wieder ändert, empfiehlt es sich, sich während des Schreibens des eigentlichen Textes sich nicht weiter mit der Platzierung von \glqq Floats\grqq\ aufzuhalten.
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
   \centering
      \includegraphics[]{ProdKonsRentemitSteuern.pdf}
      \caption{Die Besteuerung eines Marktes}
@@ -128,18 +130,20 @@ Grafiken werden von LaTeX dahin gesetzt, wo sie am besten hinpassen. Anhand von 
 \end{figure}
 
 Der Code für Beispielbild 1%~/ref{fig:bild}.
-An dieser Stelle würde ich gerne mit \textbackslash ref das Bild referenzieren, leider funktioniert das aktuell noch nicht!
+..an dieser Stelle würde ich gerne mit \textbackslash ref das Bild referenzieren, leider funktioniert das aktuell noch nicht!
+
+Das erste Bild, \glqq Die Besteuerung eines Marktes\grqq, wurde mit dem Parameter \glqq h!\grqq\ aufgerufen. Für \LaTeX{}\ heißt dass, das Bild an Ort und stelle abzulegen.%~\ref{} i need to include all other listings in floats
 
 \begin{lstlisting}
-\begin{figure}[htbp]
-  \centering
-     \includegraphics[]{ProdKonsRentemitSteuern.pdf}
-  \caption{Die Besteuerung eines Marktes}
-  \label{fig:bild}
-\end{figure}
+  \begin{figure}[h!]
+    \centering
+       \includegraphics[]{ProdKonsRentemitSteuern.pdf}
+    \caption{Die Besteuerung eines Marktes}
+    \label{fig:bild}
+  \end{figure}
 \end{lstlisting}
 
-Eine zweite Grafik, für \gls{latex} zum rumschieben.
+Eine zweite Grafik zum rumschieben, dieses mal hat \LaTeX{}\ mehr Freiheiten, durch \glqq htbp\grqq.
 
 \begin{figure}[htbp]
   \centering
@@ -148,22 +152,22 @@ Eine zweite Grafik, für \gls{latex} zum rumschieben.
   \label{fig:bild2}
 \end{figure}
 
-Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens zwangsläufig, immerhin soll \gls{latex} rund um meine beiden Beispielbilder etwas Text zu verarbeiten haben, damit der Leser/Anwender es später selbst etwas einfacher hat, sich das Konzept vor Augen zu führen.
+Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens zwangsläufig, immerhin soll \gls{latex} rund um meine beiden Beispielbilder etwas Text zu verarbeiten haben, damit der Leser/Anwender es später selbst etwas einfacher hat, sich das Konzept vor Augen zu führen. Kommentiert einfach etwas Text aus, ändert die Größe der Grafiken oder die angegebenen Parameter und ihr solltet ein Bild davon bekommen, was \LaTeX{}\ sich bei der Sache denkt.
 
 Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist ein ernstes Thema auf welches man an dieser Stelle aufmerksam machen kann, da sie sehr wichtig für das Ökosystem unseres Planeten sind.
-\begin{lstlisting}
-\begin{figure}[htbp]
-  \centering
-     \includegraphics[width=1\linewidth]{PMSteuer.pdf}
-  \caption{Steueraufkommen}
-  \label{fig:bild2}
-\end{figure}
-\end{lstlisting}
-%Mit einfacher Optionen bringen wir \ac{latex} dazu, ~\ref{fig:Bild2} auf die passende Größe zu schrumpfen, ganz ohne weitere Eingriffe.
 
-\subsection{Grafiken mit TikZ}
+\begin{lstlisting}
+  \begin{figure}[htbp]
+    \centering
+       \includegraphics[width=1\linewidth]{PMSteuer.pdf}
+    \caption{Steueraufkommen}
+    \label{fig:bild2}
+  \end{figure}
+\end{lstlisting}
+%}}}
+\subsection{Grafiken mit TikZ}%{{{
 \label{sec:tikzgraph}
-\LaTeX{} bietet eine eigene \emph{Zeichenumgebung} an: \glqq TikZ\grqq! Selbst habe ich es noch nicht verwendet, allerdings passt die Art sehr gut in das Gesamtdokument. Darüber hinaus folgt die Syntax einer relativ einfachen Logik, was also durchaus bei kleineren Grafiken Zeit sparen kann.
+\LaTeX{} bietet eine eigene \emph{Vektorzeichenumgebung} an: \glqq TikZ\grqq! Selbst habe ich es noch nicht verwendet, allerdings passt die Art sehr gut in das Gesamtdokument. Darüber hinaus folgt die Syntax einer relativ einfachen Logik, was also durchaus bei kleineren Grafiken Zeit sparen kann.
 
 \begin{tikzpicture}
   [level 1/.style={sibling distance=35mm,
@@ -183,17 +187,18 @@ Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist
 \end{tikzpicture}
 
 Folgendes Beispiel stammt von Christine Römer\footcite{dtk17.1:roemer:tikz} und wurde in \glqq Die \TeX{}nische Komödie\grqq veröffentlicht. Die Zeitschrift wird von \glspl{dante} herausgegebenen.
-\subsection{Fußnoten}
+%}}}
+\subsection{Fußnoten}%{{{
 \label{sec:footn}
 Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
 \begin{lstlisting}
 Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
 \end{lstlisting}
 Hiermit sollte man sparsam umgehen.
-
-\subsection{Code}
+%}}}
+\subsection{Code}%{{{
 \label{sec:code}
-Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sicht \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float \grqq\ ein Label verpassen, dass wir dann referenzieren können.
+Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sicht \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float\grqq\ ein Label verpassen, dass wir dann referenzieren können.
 
 \lstset{language=Ruby}
 \begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
@@ -216,8 +221,8 @@ puts listofstrings.sort.uniq
 Es ist möglich, die dargestellte Sprache anzupassen, das zeigt \textbackslash\{language=Ruby\}. Für das Beispiel musste ich aber die begin/end-Umgebung aufbrechen, da ansonsten der Compiler durcheinander kommt.
 
 Sollte man diese Funktion gar nicht gebrauchen, kann man die letzten Zeilen in der Präambel dafür kommentieren, damit die Pakete nicht zwingend geladen werden müssen. Das sollte die Performance steigern und mögliche Kompatibilitätsschwierigkeiten, sofern vorhanden, zuvorkommen.
-
-\subsection{Zitieren}
+%}}}
+\subsection{Zitieren}%{{{
 Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu sein. Muss es aber gar nicht sein. Denn hier kommt Bib\TeX{}.
 
 Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwiegend \href{https://tex.stackexchange.com/}{TeX - LaTeX Stack Exchange}), aber auch einem Blick ins Handbuch von biblatex \footcite{lehman_biblatex_2017}, vorzugsweise in der englischen Originalfassung \footcite{kime_biblatex_2019}, da das Paket ständig überarbeitet wird und somit neue Optionen dazukommen, oder bekannte Optionen ersetzt werden, geschrieben.
@@ -225,7 +230,7 @@ Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwieg
 Es sei zu erwähnen, das biber\footcite[][]{philip_kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 
 Relevanter Code:
-\lstinputlisting[firstline=96,lastline=116]{meta/preambel.tex}
+\lstinputlisting[firstline=144,lastline=163]{meta/preambel.tex}
 
 In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
 
@@ -256,49 +261,49 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
 \end{table}
 
 Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_peter_kundenbindung_2005}.
-
-\subsection{Querverweise}
+%}}}
+\subsection{Querverweise}%{{{
 \label{sec:refs}
 Leider scheinen Querverweise auf Grafiken gerade nicht zu funktionieren, ein Verweis auf Kapitel~\ref{sec:graphics} funktioniert aber. Ich werde mich der Sache zu einem anderen Zeitpunkt noch mal widmen.
 
 Mal schauen ob ein Querverweis zu Code~\ref{bspcode} funktionieren. Tabelle~\ref{tab:textformat} funktioniert auch.
-
-\subsection{Verzeichnisse}
+%}}}
+\subsection{Verzeichnisse}%{{{
 \label{sec:catalogs}
-\gls{latex} macht es verhältnismäßig einfach, Verzeichnisse zu führen, das ist aber auch einer der Gründe, warum wir den \gls{latex}-Compiler mehrfach laufen lassen müssen (vgl. Listing~\ref{lst:arara-rules}). \gls{latex} erstellt bei den ersten Durchläufen Hilfsdateien, die dann ferner von anderen Tools aufgegriffen und verarbeitet werden. Bei dem nächsten Compileraufruf weiß \gls{latex} dann genau, wo es welche Verweise setzen muss. Dies geschieht nicht immer Fehlerfrei, deswegen ist ein prüfender Blick vor der Abgabe dennoch zu empfehlen.
+\gls{latex} macht es verhältnismäßig einfach, Verzeichnisse zu führen, das ist aber auch einer der Gründe, warum wir den \gls{latex}-\gls{compiler} mehrfach laufen lassen müssen (vgl. Listing~\ref{lst:arara-rules}). \gls{latex} erstellt bei den ersten Durchläufen Hilfsdateien, die dann ferner von anderen Tools aufgegriffen und verarbeitet werden. Bei dem nächsten Compileraufruf weiß \gls{latex} dann genau, wo es welche Verweise setzen muss. Dies geschieht nicht immer Fehlerfrei, deswegen ist ein prüfender Blick vor der Abgabe dennoch zu empfehlen.
 
 \lstinputlisting[firstline=3,lastline=14,float=htpb,caption=arara regeln,label=lst:arara-rules]{main.tex}
 Anbei sind folgende hier im Code verwendete erklärt.
-
-\subsubsection{Inhaltsverzeichnis}
+%}}}
+\subsubsection{Inhaltsverzeichnis}%{{{
 \label{sec:toc}
 Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingefügt\footcite[Vgl. ][S. 7ff]{ochsnerTextverarbeitungssystemLaTeXPraktische2015}.
 
 \lstinputlisting[firstline=51,lastline=53,float=htpb,caption=Unser Inhaltsverzeichnis,label=lst:ourtoc]{main.tex}
 
-Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen \footcite[Vgl. ][S. 207ff.]{schlosserWissenschaftlicheArbeitenSchreiben2014}
-
-\subsubsection{Abbildungsverzeichnis}
+Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen.\footcite[Vgl. ][S. 207ff.]{schlosserWissenschaftlicheArbeitenSchreiben2014}
+%}}}
+\subsubsection{Abbildungsverzeichnis}%{{{
 \label{sec:lof}
 Abbildungen werden über \textbackslash listoffigures aufgelistet. Damit eine Abbildung im Verzeichnis aufgenommen werden, muss die \textbackslash begin\{figure\}\ldots end\{figure\}-Umgebung genutzt werden. Durch die darin genutzte Option \textbackslash caption\{ \ldots \} hat das Kind auch direkt einen Namen.
-
-\subsubsection{Abkürzungsverzeichnis}
+%}}}
+\subsubsection{Abkürzungsverzeichnis}%{{{
 \label{sec:acros}
 Das Abkürzungsverzeichnis wird über das Paket glossaries erstellt. Die Definition der Abkürzungen geschieht über meta/acro.tex.
 
 Der Code für glossaries wird einmalig für mehrere Zwecke verwendet, hier allerdings einmalig eingeblendet.
 
-\lstinputlisting[firstline=144,lastline=154,float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preambel.tex}
-
-\subsubsection{Glossar}
+\lstinputlisting[firstline=167,lastline=176,float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preambel.tex}
+%}}}
+\subsubsection{Glossar}%{{{
 \label{sec:glossaries}
 Ein Glossar soll dem Leser Fachbegriffe näher bringen. In einem gesonderten Verzeichnis im Anhang werden die definierten Begriffe dann aufgelistet.
 
-\lstinputlisting[firstline=155,lastline=160,float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preambel.tex}
+\lstinputlisting[firstline=178,lastline=183,float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preambel.tex}
 
 Die Glossareinträge sind in meta/gls.tex definiert.
-
-\subsubsection{Index}
+%}}}
+\subsubsection{Index}%{{{
 \label{sec:xindy}
 Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 
@@ -308,4 +313,6 @@ Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 
 Mit einem Index kann man Schlagworte und Themengruppen zusammenfassen und dem Leser helfen, diese im Dokument zu finden.
 
-\lstinputlisting[firstline=162,lastline=165,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}
+\lstinputlisting[firstline=185,lastline=188,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}
+%}}}
+%}}}

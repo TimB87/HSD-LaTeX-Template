@@ -47,14 +47,13 @@
 
 \input{kapitel/anhang/sperrvermerk} % lock flag
 
-\setcounter{page}{2} % manually set to page 2
+\setcounter{page}{2} % manually set page counter to page 2
 %%% table of content
 \setcounter{tocdepth}{3} % define toc depth
 \tableofcontents
 \newpage
 
 %%% list of abbreviations
-
 \printglossary[type=\acronymtype]
 \newpage
 
@@ -77,12 +76,12 @@
 \newpage
 
 \makeatletter
-\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0.6cm}{7em}{#1}{#2}}
+\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0.6cm}{7em}{#1}{#2}} % fix spacing
 \makeatother
 \renewcommand{\lstlistingname}{}
-\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
-\renewcommand*{\thelstlisting}{Quellcode~\arabic{lstlisting}}
-\clearpage % notwendig sonst stimmt seitenzahl nicht
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis} % rename default table of listings name
+\renewcommand*{\thelstlisting}{Quellcode~\arabic{lstlisting}} % add "Quellcode" before..
+\clearpage % force latex to place anything not yet placed before proceeding
 \lstlistoflistings
 \newpage
 
@@ -96,8 +95,8 @@
 \input{kapitel/fazit/fazit}
 
 \newpage % bibliography
-\pagenumbering{Roman} % Change back to Roman page numbering style
-\setcounter{page}{8}  % Change the number accordingly
+\pagenumbering{Roman} % change back to Roman page numbering style
+\setcounter{page}{8}  % change the number accordingly
 
 %%% Glossaries
 \printglossary[type=main]
@@ -112,18 +111,12 @@
 \printbibliography
 \newpage
 
-\input{kapitel/anhang/erklaerung} % sworn declaration
-
-%%% Original Author: Andy Grunwald
-%%% https://github.com/andygrunwald/FOM-LaTeX-Template/blob/master/thesis_main.tex
-%%% Alternative Darstellung:
-%%% Literaturverzeichnis nach Typ (@book, @arcticle ...) sortiert.
-%%% Dazu die Zeile (\printbibliography) auskommentieren und folgenden code verwenden:
-
+%%% you can also split your bibliography by type like this
 %\printbibheading
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
 
-%\input{kapitel/anhang/erklaerung}
+\input{kapitel/anhang/erklaerung} % sworn declaration
+
 \end{document}

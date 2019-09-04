@@ -1,13 +1,12 @@
 % !TEX root = ../../main.tex
 %%% general page related settings
+%#{{{
 \documentclass[12pt,%
   %draft,%
-  %overfullrule=true,%
+  %overfullrule=true,% helps debugging overfull hbox warnings
   oneside,%
   titlepage,%
   listof=totoc,%
-  %twoside=semi,%
-  %tikz,%
   bibliography=totoc]{scrartcl} % https://www.ctan.org/pkg/scrartcl
 
 \usepackage[automark,headsepline]{scrlayer-scrpage} % https://www.ctan.org/pkg/scrlayer-scrpage
@@ -17,104 +16,6 @@
   right=2.5cm,%
   top=2cm,%
   bottom=2cm]{geometry}
-
-\usepackage{setspace} % 1,5 cm Zeilenabstand
-\onehalfspacing{}
-
-%\setlength{\parindent}{0mm} % https://komascript.de/faq_parindent
-%\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
-%\sloppy %Abstände variieren
-
-%%% language settings
-\usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
-\HyphSubstIfExists{ngerman-x-latest}{%
-\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
-\usepackage[ngerman]{babel} % https://www.ctan.org/pkg/babel
-\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
-
-%%% font settings
-%\usepackage[utf8]{inputenc} % not needed with luatex
-\usepackage{fontspec} % luatex needs this one
-\setmainfont{Arial} % we even get to use Arial, woohoo..
-\renewcommand\familydefault{\sfdefault} %defaults to helvetica
-%%% if you don't or can't use luatex, use this
-%% helvet is alternative to Arial for tex, or it's actually the original font
-%% with minimal differences
-%\usepackage[scaled=0.9]{helvet} % use together with courier package to avoid pixelated fonts
-%\usepackage{courier}
-\usepackage{microtype} % https://www.ctan.org/pkg/microtype
-\setkomafont{footnote}{\footnotesize{10}}
-
-% math related settings
-\usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
-\usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
-\setmathfont{texgyrepagella-math.otf}
-%\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
-%\usepackage{nicefrac} % The pack­age type­sets fractions “nicely”
-\usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
-
-\usepackage[hang, multiple]{footmisc} % must be placed above hyperref to avoid warnings
-\setlength{\footnotemargin}{1em}
-
-%%% references
-%\usepackage{varioref}
-\usepackage[unicode,%
-  colorlinks=true,%
-  breaklinks=true,%
-  linkcolor=black,%
-  citecolor=blue,%
-  menucolor=black,%
-  urlcolor=black]{hyperref} % adds new commands to include hyperlinks
-%\usepackage{cleveref}
-
-%%% additional packages
-\usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
-%\usepackage{footnote} % https://www.ctan.org/pkg/footnote
-%\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
-\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch
-\usepackage{scrhack}
-
-%%% table packages
-\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
-\usepackage{multirow} % https://www.ctan.org/pkg/multirow
-%\usepackage{array} % https://www.ctan.org/pkg/array
-%\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
-
-%%% floats
-\usepackage{float} % https://www.ctan.org/pkg/float
-\usepackage{caption} % https://www.ctan.org/pkg/caption
-\usepackage{caption} % hypcap is true by default so [hypcap=true] is optional in \usepackage[hypcap=true]{caption}
-
-%%% graphics
-\usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
-\usepackage{tikz}
-\usetikzlibrary{trees}
-
-%%% list related
-\usepackage{enumitem} % https://ctan.org/pkg/enumitem
-%\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist
-
-%%% Biblatex
-\usepackage[%
-  backend=biber,%
-  style=apa,%
-  date=iso,% access date in iso format
-  seconds=true,% required by date=iso
-  url=true,% prints url, if available
-  urldate=iso,% access date in iso format
-  dateera=astronomical,% 'date=iso' requires 'dateera=astronomical'
-  isbn=true,% print isbn
-  doi=false,% omit doi
-  autocite=footnote,% automatically use \footcite
-  maxcitenames=2, % shorten authors if more than 2
-  maxbibnames=999,%
-  giveninits=false,% prints a full name if set to false
-  %eprint=true,%
-  backref=false,% prints backrefs in \printbibliography
-  bibencoding=utf8,% tries to encode with UTF-8
-  bibwarn=true,% can be disabled, else shows warnings via buildlog
-  sortlocale=de% can be deleted if you don't write in german
-  ]{biblatex} % https://www.ctan.org/pkg/biblatex
 
 %%% don't use fancyhdr to change headers/footers
 %%% this is left as a warning
@@ -135,13 +36,135 @@
 
 %%% use "scrheadings" instead with a KOMA class
 \clearpairofpagestyles
-\rehead{\headmark}
-\rohead{\headmark}
+\rehead{\headmark} % always print header on the right corner of the header
+\rohead{\headmark} % --------------------------"--------------------------
 \pagestyle{scrheadings}
-\cfoot[\pagemark]{\pagemark}
+\cfoot[\pagemark]{\pagemark} % always print the page number centered in the footer
 \KOMAoptions{headsepline=.5pt}
 
+\usepackage{setspace} % 1,5 cm Zeilenabstand
+\onehalfspacing{}
+
+%%% don't modify parindent! see attached linked for an explanation why
+%\setlength{\parindent}{0mm} % https://komascript.de/faq_parindent
+%\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
+%\sloppy
+
+%%%end general page related settings
+%#}}}
+
+%%% language settings
+%{{{
+\usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
+\HyphSubstIfExists{ngerman-x-latest}{%
+\HyphSubstLet{ngerman}{ngerman-x-latest}}{}
+\usepackage[ngerman]{babel} % https://www.ctan.org/pkg/babel
+\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
+%}}}
+
+%%% font settings
+%{{{
+%\usepackage[utf8]{inputenc} % not needed with luatex
+\usepackage{fontspec} % luatex needs this one
+\setmainfont{Arial} % we even get to use Arial, woohoo..
+\setkomafont{footnote}{\footnotesize{10}} % footnote font size is 10pt
+%\renewcommand\familydefault{\sfdefault} %defaults to helvetica
+%%% if you don't or can't use luatex, use this
+%% helvet is an available alternative to Arial, it's actually the original font
+%% with minimal differences you probably don't need to worry about
+%\usepackage[scaled=0.9]{helvet} % use together with courier package to avoid pixelated fonts
+%\usepackage{courier}
+\usepackage{microtype} % https://www.ctan.org/pkg/microtype
+%}}}
+
+% math related settings
+% {{{
+\usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
+\usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
+\setmathfont{texgyrepagella-math.otf}
+%\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
+%\usepackage{nicefrac} % The pack­age type­sets fractions “nicely”
+\usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
+%}}}
+
+%%% references
+% {{{
+% footmisc must be placed above hyperref to avoid warnings
+\usepackage[hang, multiple]{footmisc} % https://www.ctan.org/pkg/footmisc
+\setlength{\footnotemargin}{1em}
+%\usepackage{varioref} % https://www.ctan.org/pkg/varioref
+\usepackage[unicode,%
+  colorlinks=true,%
+  breaklinks=true,%
+  linkcolor=black,%
+  citecolor=blue,%
+  menucolor=black,%
+  urlcolor=black]{hyperref} % adds new commands to include hyperlinks
+%\usepackage{cleveref} % https://www.ctan.org/pkg/cleveref
+%}}}
+
+%%% additional packages
+%{{{
+%\usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
+%\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
+\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch
+\usepackage{hologo} % https://www.ctan.org/pkg/hologo
+%}}}
+
+%%% table packages
+%{{{
+\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
+\usepackage{multirow} % https://www.ctan.org/pkg/multirow
+%\usepackage{array} % https://www.ctan.org/pkg/array
+%\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
+%}}}
+
+%%% floats
+%{{{
+\usepackage{float} % https://www.ctan.org/pkg/float
+\usepackage{caption} % https://www.ctan.org/pkg/caption
+% hypcap is true by default so [hypcap=true] is optional in \usepackage[hypcap=true]{caption}
+%}}}
+
+%%% graphics
+%{{{
+\usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
+\usepackage{tikz} % https://www.ctan.org/pkg/pgf
+\usetikzlibrary{trees}
+%}}}
+
+%%% list related
+%{{{
+\usepackage{enumitem} % https://ctan.org/pkg/enumitem
+%\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist
+%}}}
+
+%%% Biblatex
+%{{{
+\usepackage[%
+  backend=biber,%
+  style=apa,%
+  date=iso,% access date in iso format
+  seconds=true,% required by date=iso
+  url=true,% prints url, if available
+  urldate=iso,% access date in iso format
+  dateera=astronomical,% 'date=iso' requires 'dateera=astronomical'
+  isbn=true,% print isbn
+  doi=false,% omit doi
+  autocite=footnote,% automatically use \footcite
+  maxcitenames=2, % shorten authors if more than 2
+  maxbibnames=999,%
+  giveninits=false,% prints a full name if set to false
+  %eprint=true,%
+  backref=false,% prints backrefs in \printbibliography
+  bibencoding=utf8,% tries to encode with UTF-8
+  bibwarn=true,% can be disabled, else shows warnings via buildlog
+  sortlocale=de% can be deleted if you don't write in german
+  ]{biblatex} % https://www.ctan.org/pkg/biblatex
+%}}}
+
 %%% glossary/xindy/acronym
+%{{{
 \usepackage[%
   xindy,% index w/ xindy
   acronym,% acronyms w/ xindy
@@ -163,8 +186,10 @@
 \usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
 \usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
 \makeindex
+%}}}
 
 %%% proper source code display
+%{{{
 % disable those lines if you don't display any code
 \usepackage{listings} % https://www.ctan.org/pkg/listings
 % Colors for listings
@@ -188,3 +213,5 @@
   commentstyle=\color{green},% comment style
   stringstyle=\color{mauve}% string literal style
 }
+\usepackage{scrhack} % needed for listings and komascript
+%}}}
