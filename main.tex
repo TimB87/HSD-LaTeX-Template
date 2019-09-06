@@ -89,7 +89,7 @@
 % this is where you write your text
 \input{content/01-introduction/introduction}
 \input{content/02-chapter1/chapter1}
-\input{content/03-chapter2/chapter2}
+%\input{content/03-chapter2/chapter2}
 \input{content/99-conclusion/conclusion}
 
 \clearpage % force latex to place anything not yet placed before proceeding
@@ -119,20 +119,26 @@
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
 %\printbibliography[keyword=misc,heading=subbibliography,title={Verschiedenes}]
 
-\input{content/attachments/sworndecleration} % sworn declaration
-\newpage
-
 %%% appendix
-\phantomsection
 \pagenumbering{Roman} % change back to Roman page numbering style
 \setcounter{page}{11}  % change the number accordingly
-\addcontentsline{toc}{section}{Anhang}
-\appendix
-\renewcommand\appendixtocname{Anhang}
-\renewcommand\appendixpagename{Anhang}
 
-%%% this effectively works around the sectioning issue of a multi page pdf
+%%\appendix
+\let\oldappendices\appendices
+
+%\renewcommand\appendixtocname{Anhang}
+%\renewcommand\appendixpagename{Anhang}
+
+\appendix
 \includepdf[scale=.7,pages=1, offset=0 -3cm,pagecommand=\section{Prüfungsordnung Wirtschaft}]{content/attachments/po_wiwi.pdf}
-  \includepdf[scale=.7,pages=2-, offset=0 -3cm,pagecommand={}]{content/attachments/po_wiwi.pdf}
+%%% this effectively works around the sectioning issue of a multi page pdf
+\includepdf[scale=.7,pages=2-7, offset=0 -3cm]{content/attachments/po_wiwi.pdf}
+
+%\includepdf[scale=.7,pages=2-7, offset=0 -3cm]{content/attachments/}
+\include{content/attachments/anhang_a}
+
+%%% last page
+\input{content/attachments/sworndecleration} % sworn declaration
+\newpage
 
 \end{document}
