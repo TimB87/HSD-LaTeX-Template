@@ -1,6 +1,7 @@
 % !TEX root = ../../main.tex
 %%% general page related settings %{{{
 \documentclass[12pt,%
+  appendixprefix=true,%
   %draft,%
   overfullrule=true,% helps debugging overfull hbox warnings
   bibliography=totoc,%
@@ -82,6 +83,8 @@
 \usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
 %}}}
 
+\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
+
 %%% references % {{{
 % footmisc must be placed above hyperref to avoid warnings
 \usepackage[hang, multiple]{footmisc} % https://www.ctan.org/pkg/footmisc
@@ -100,10 +103,11 @@
 %%% additional packages %{{{
 %\usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
 %\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
+\usepackage[titletoc,page]{appendix} % https://www.ctan.org/pkg/appendix
+\usepackage{pdfpages} % https://www.ctan.org/pkg/pdfpages
 \usepackage{hologo} % https://www.ctan.org/pkg/hologo %}}}
 
 %%% table packages %{{{
-\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
 \usepackage{multirow} % https://www.ctan.org/pkg/multirow
 %\usepackage{array} % https://www.ctan.org/pkg/array
 %\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl %}}}
