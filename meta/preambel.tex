@@ -1,13 +1,12 @@
 % !TEX root = ../../main.tex
-%%% general page related settings
-%#{{{
+%%% general page related settings %{{{
 \documentclass[12pt,%
   %draft,%
-  %overfullrule=true,% helps debugging overfull hbox warnings
-  oneside,%
-  titlepage,%
+  overfullrule=true,% helps debugging overfull hbox warnings
+  bibliography=totoc,%
   listof=totoc,%
-  bibliography=totoc]{scrartcl} % https://www.ctan.org/pkg/scrartcl
+  oneside,%
+  titlepage]{scrartcl} % https://www.ctan.org/pkg/scrartcl
 
 \usepackage[automark,headsepline]{scrlayer-scrpage} % https://www.ctan.org/pkg/scrlayer-scrpage
 
@@ -50,11 +49,9 @@
 %\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
 %\sloppy
 
-%%%end general page related settings
-%#}}}
+%%% end general page related settings %}}}
 
-%%% language settings
-%{{{
+%%% language settings %{{{
 \usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
@@ -62,8 +59,7 @@
 \usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
 %}}}
 
-%%% font settings
-%{{{
+%%% font settings %{{{
 %\usepackage[utf8]{inputenc} % not needed with luatex
 \usepackage{fontspec} % luatex needs this one
 \setmainfont{Arial} % we even get to use Arial, woohoo..
@@ -77,99 +73,81 @@
 \usepackage{microtype} % https://www.ctan.org/pkg/microtype
 %}}}
 
-% math related settings
-% {{{
+%%% math related settings % {{{
 \usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
 \usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
-\setmathfont{texgyrepagella-math.otf}
+\setmathfont{texgyrepagella-math.otf} % the font we use for math
 %\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
-%\usepackage{nicefrac} % The pack­age type­sets fractions “nicely”
+%\usepackage{nicefrac} % https://www.ctan.org/pkg/nicefrac
 \usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
 %}}}
 
-%%% references
-% {{{
+%%% references % {{{
 % footmisc must be placed above hyperref to avoid warnings
 \usepackage[hang, multiple]{footmisc} % https://www.ctan.org/pkg/footmisc
 \setlength{\footnotemargin}{1em}
 %\usepackage{varioref} % https://www.ctan.org/pkg/varioref
-\usepackage[unicode,%
-  colorlinks=true,%
-  breaklinks=true,%
-  linkcolor=black,%
+\usepackage[breaklinks=true,%
   citecolor=blue,%
+  colorlinks=true,%
+  linkcolor=black,%
   menucolor=black,%
-  urlcolor=black]{hyperref} % adds new commands to include hyperlinks
+  unicode,%
+  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref
 %\usepackage{cleveref} % https://www.ctan.org/pkg/cleveref
 %}}}
 
-%%% additional packages
-%{{{
+%%% additional packages %{{{
 %\usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
 %\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
-\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch
-\usepackage{hologo} % https://www.ctan.org/pkg/hologo
-%}}}
+\usepackage{hologo} % https://www.ctan.org/pkg/hologo %}}}
 
-%%% table packages
-%{{{
+%%% table packages %{{{
 \usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
 \usepackage{multirow} % https://www.ctan.org/pkg/multirow
 %\usepackage{array} % https://www.ctan.org/pkg/array
-%\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl
-%}}}
+%\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl %}}}
 
-%%% floats
-%{{{
+%%% floats %{{{
 \usepackage{float} % https://www.ctan.org/pkg/float
-\usepackage{caption} % https://www.ctan.org/pkg/caption
-% hypcap is true by default so [hypcap=true] is optional in \usepackage[hypcap=true]{caption}
-%}}}
+\usepackage{caption} % https://www.ctan.org/pkg/caption %}}}
 
-%%% graphics
-%{{{
+%%% graphics %{{{
 \usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
 \usepackage{tikz} % https://www.ctan.org/pkg/pgf
-\usetikzlibrary{trees}
-%}}}
+\usetikzlibrary{trees} %}}}
 
-%%% list related
-%{{{
+%%% list related%{{{
 \usepackage{enumitem} % https://ctan.org/pkg/enumitem
-%\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist
-%}}}
+%\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist %}}}
 
-%%% Biblatex
-%{{{
-\usepackage[%
-  backend=biber,%
+%%% biblatex%{{{
+\usepackage[autocite=footnote,% automatically use \footcite
   style=apa,%
-  date=iso,% access date in iso format
-  seconds=true,% required by date=iso
-  url=true,% prints url, if available
-  urldate=iso,% access date in iso format
-  dateera=astronomical,% 'date=iso' requires 'dateera=astronomical'
-  isbn=true,% print isbn
-  doi=false,% omit doi
-  autocite=footnote,% automatically use \footcite
-  maxcitenames=2, % shorten authors if more than 2
-  maxbibnames=999,%
-  giveninits=false,% prints a full name if set to false
-  %eprint=true,%
+  backend=biber,%
   backref=false,% prints backrefs in \printbibliography
   bibencoding=utf8,% tries to encode with UTF-8
   bibwarn=true,% can be disabled, else shows warnings via buildlog
-  sortlocale=de% can be deleted if you don't write in german
-  ]{biblatex} % https://www.ctan.org/pkg/biblatex
-%}}}
+  date=iso,% access date in iso format
+  dateera=astronomical,% 'date=iso' requires 'dateera=astronomical'
+  doi=false,% omit doi
+  %eprint=true,%
+  giveninits=false,% prints a full name if set to false
+  isbn=true,% print isbn
+  maxbibnames=999,%
+  maxcitenames=2,% shorten authors if more than 2
+  seconds=true,% required by date=iso
+  sortlocale=de% can be disabled if you don't write in german
+  url=true,% prints url, if available
+  urldate=iso,% access date in iso format
+  ]{biblatex} % https://www.ctan.org/pkg/biblatex %}}}
 
-%%% glossary/xindy/acronym
-%{{{
+%%% glossary/xindy/acronym%{{{
 \usepackage[%
-  xindy,% index w/ xindy
   acronym,% acronyms w/ xindy
-  toc,%
   %style=tree%
+  toc,% adds glossaries to toc
+  xindy,% index w/ xindy
   ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
 %%% abbreviations
 \loadglsentries{meta/acro.tex} % acronym definitions go there
@@ -185,33 +163,32 @@
 %%% index settings
 \usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
 \usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
-\makeindex
-%}}}
+\makeindex %}}}
 
-%%% proper source code display
-%{{{
+%%% proper source code display%{{{
 % disable those lines if you don't display any code
 \usepackage{listings} % https://www.ctan.org/pkg/listings
 % Colors for listings
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 \definecolor{green}{rgb}{0,0.6,0}
 \lstset{% general code settings
-  language=TeX,%
   basicstyle=\footnotesize,%
-  numbers=left,%
-  numberstyle=\tiny,%
-  numbersep=5pt,%
-  frame=single,%
   breaklines=true,%
+  captionpos=b,%
+  commentstyle=\color{green},% comment style
+  frame=single,%
+  keywordstyle=\color{blue},% keyword style
+  language=TeX,%
+  numbers=left,%
+  numbersep=5pt,%
+  numberstyle=\tiny,%
+  stepnumber=1,%
+  stringstyle=\color{mauve}% string literal style
   title=\lstname,%
   xleftmargin=5pt,%
   xrightmargin=5pt,%
-  basicstyle=\ttfamily\scriptsize,%
-  stepnumber=1,%
-  captionpos=b,%
-  keywordstyle=\color{blue},% keyword style
-  commentstyle=\color{green},% comment style
-  stringstyle=\color{mauve}% string literal style
-}
+}%}}}
+
+%%% these packages have to be the last ones%{{{
 \usepackage{scrhack} % needed for listings and komascript
-%}}}
+\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch }}}
