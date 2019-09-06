@@ -5,14 +5,14 @@
 \label{sec:seit-aufbau}
 Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
 
-Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\footcite[S. 51]{kohmKOMA2019}\grqq\ aus dem Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetikerIntroductionLATEX2e2018}.
+Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\footcite[S. 51]{kohm_koma_2019}\grqq\ aus dem Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetiker_not_2018}.
 %}}}
 
 \section{Funktionen von LaTeX}%{{{
 \label{sec:funkt-von}
 \subsection{Textformatierung}%{{{
 \label{sec:textformat}
-Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \gls{latex} umschreibt, und das alles auf 153 Seiten, kostenlos.\footcite{oetikerIntroductionLATEX2e2018}
+Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \gls{latex} umschreibt, und das alles auf 153 Seiten, kostenlos.\footcite{oetiker_not_2018}
 
 \begin{table}[htbp]
   \resizebox{\textwidth}{!}{% gently resize our table to fit the page
@@ -79,8 +79,8 @@ Code:
 \]
 \end{lstlisting}
 
-Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S. 276]{kottwitzLaTeXCookbook902015}. \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile.
-\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel \footcite[Vgl. ][S. 35ff]{gratzerMoreMathLATEX2016}
+Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S. 276]{kottwitz_latex_2015}. \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile.
+\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel \footcite[Vgl. ][S. 35ff]{gratzer_more_2016}
 %}}}
 \subsection{Tabellen}%{{{
 \label{sec:tables}
@@ -227,7 +227,7 @@ Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu s
 
 Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwiegend \href{https://tex.stackexchange.com/}{TeX - LaTeX Stack Exchange}), aber auch einem Blick ins Handbuch von biblatex \footcite{lehman_biblatex_2017}, vorzugsweise in der englischen Originalfassung \footcite{kime_biblatex_2019}, da das Paket ständig überarbeitet wird und somit neue Optionen dazukommen, oder bekannte Optionen ersetzt werden, geschrieben.
 
-Es sei zu erwähnen, das biber\footcite[][]{philip_kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
+Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 
 Relevanter Code:
 \lstinputlisting[firstline=144,lastline=163]{meta/preambel.tex}
@@ -260,7 +260,7 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
 \label{tab:bib-style}
 \end{table}
 
-Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_peter_kundenbindung_2005}.
+Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_kundenbindung_2005}.
 %}}}
 \subsection{Querverweise}%{{{
 \label{sec:refs}
@@ -277,11 +277,11 @@ Anbei sind folgende hier im Code verwendete erklärt.
 %}}}
 \subsubsection{Inhaltsverzeichnis}%{{{
 \label{sec:toc}
-Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingefügt\footcite[Vgl. ][S. 7ff]{ochsnerTextverarbeitungssystemLaTeXPraktische2015}.
+Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingefügt\footcite[Vgl. ][S. 7ff]{ochsner_textverarbeitungssystem_2015}.
 
 \lstinputlisting[firstline=51,lastline=53,float=htpb,caption=Unser Inhaltsverzeichnis,label=lst:ourtoc]{main.tex}
 
-Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen.\footcite[Vgl. ][S. 207ff.]{schlosserWissenschaftlicheArbeitenSchreiben2014}
+Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen.\footcite[Vgl. ][S. 207ff.]{schlosser_wissenschaftliche_2014}
 %}}}
 \subsubsection{Abbildungsverzeichnis}%{{{
 \label{sec:lof}
