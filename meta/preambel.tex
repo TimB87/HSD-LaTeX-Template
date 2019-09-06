@@ -196,4 +196,7 @@
 %%% these packages have to be the last ones%{{{
 \usepackage{scrhack} % needed for listings and komascript
 \usepackage{xpatch} % https://www.ctan.org/pkg/xpatch }}}
-\usepackage{appendix}
+%\usepackage{appendix}
+\usepackage{tocbasic}
+\usepackage{scripts/appendixtoc}
+\setuptoc{appendix}{totoc}% dank tocbasic geht das jetzt so einfach
