@@ -29,9 +29,9 @@ Außerdem handelt es sich um Freie Software, hierfür empfiehlt sich ein Blick z
 %}}}
 \subsection{Grundlegender Umgang}
 \label{sec:grundl}
-Diese Vorlage wurde unter einem Linux System mit Hilfe der \gls{tex}-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Webseite der Software texlive}} \glspl{kompilieren}. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Macsystemen funktioniert, hierfür erfolgt aber meinerseits keine Prüfung. Da aber laut Grätzer ein weiter Arbeiten sogar auf dem iPad möglich ist\footcite[Vgl. ][S. 179ff.]{gratzer_practical_2014}, erwarte ich wenige Schwierigkeiten für euch.
+Diese Vorlage wurde unter einem Linux System mit Hilfe der \gls{tex}-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Webseite der Software texlive}} \glspl{kompilieren}. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Macsystemen funktioniert, hierfür erfolgt aber meinerseits keine Prüfung. Da aber laut Grätzer ein weiter Arbeiten sogar auf dem iPad möglich ist\footcite[Vgl. ][S. 179ff]{gratzer_practical_2014}, erwarte ich wenige Schwierigkeiten für euch.
 
-Es ist geraten, sich vorher mit der Arbeitsumgebung vertraut zu machen. Eine Suchmaschine hilft bei der Einrichtung der TeX-Umgebung sowie der Auswahl eines geeigneten Editors. texlive wird meinerseits empfohlen, da es wohl das aktivste Projekt ist das a) bei der Erstellung diesen Templates genutzt wurde, b) auf allen gängien Plattformen funktioniert und c) \hologo{LuaLaTeX}, xindy und \hologo{biber}\ automatisch unterstützt. Den Support der anderen Projekte habe ich mir nicht angeschaut.
+Es ist geraten, sich vorher mit der Arbeitsumgebung vertraut zu machen. Eine Suchmaschine hilft bei der Einrichtung der TeX-Umgebung sowie der Auswahl eines geeigneten Editors. texlive wird meinerseits empfohlen, da es wohl das aktivste Projekt ist das a) bei der Erstellung diesen Templates genutzt wurde, b) auf allen gängien Plattformen funktioniert und c) \protect\hologo{LuaLaTeX}, xindy und \protect\hologo{biber}\ automatisch unterstützt. Den Support der anderen Projekte habe ich mir nicht angeschaut.
 
 Unter Linux findet man texlive in der Regel in dem jeweiligen Paketmanager der Distribution. Sobald die Arbeitsumgebung eingerichtet ist, kann prinzipiell über ein Terminal mit dem Befehl \glqq arara main.tex\grqq\ das pdf kompiliert werden.
 Geeignete Editoren, wie zum Beispiel texmaker, findet man ebenfalls im Paketmanager. Wichtig ist, dass die Dateien mit \gls{utf8}-Unterstützung geladen werden.
@@ -61,15 +61,22 @@ main.tex ist mehr ein reines Grundgerüst, das sich den Inhalt weiterer \TeX{}-D
     child [missing] {}
     child [missing] {}
     child [missing] {}
-    child { node {abbildungen}
+    child { node {content}
+      child [missing] {}
+      child [optional] { node {Hier speichert ihr den Inhalt eurer Arbeit ab}}
+      child [missing] {}
+      child { node {01-introduction}
+        child [optional] { node {Dieses Kapitel}}}}
+    child [missing] {}
+    child [missing] {}
+    child [missing] {}
+    child [missing] {}
+    child [missing] {}
+    child { node {graphics}
       child [optional] { node {Hier speichert ihr eure Abbildungen}}}
     child [missing] {}
     child [missing] {}
-    child { node {kapitel}
-      child [optional] { node {Hier speichert ihr den Inhalt eurer Arbeit ab}}}
-    child [missing] {}
-    child [missing] {}
-    child { node {literatur}
+    child { node {literature}
       child [optional] { node {Hier wird die bib-Datei gespeichert}}}
     child [missing] {}
     child [missing] {}

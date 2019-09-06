@@ -21,10 +21,10 @@
 %input{meta/options} % question
 
 % bib resources
-\addbibresource{literatur/literatur.bib}
+\addbibresource{literature/literature.bib}
 
 % where to store your images
-\graphicspath{{./}{./abbildungen/}}
+\graphicspath{{./}{./graphics/}}
 
 % Meta information
 \input{meta/authorinfo.tex}
@@ -43,9 +43,9 @@
 
 \pagenumbering{Roman} % Roman page numbering style
 
-\input{kapitel/titelseite/titelseite} % titlepage
+\input{content/titlepage/titlepage} % titlepage
 
-\input{kapitel/anhang/sperrvermerk} % lock flag
+\input{content/attachments/lockflag} % lock flag
 
 \setcounter{page}{2} % manually set page counter to page 2
 %%% table of content
@@ -57,8 +57,7 @@
 \printglossary[type=\acronymtype]
 \newpage
 
-% table of figures
-%\listoffigures
+%%% table of figures
 {%
   \let\oldnumberline\numberline%
   \renewcommand{\numberline}{\figurename~\oldnumberline}% adds 'Figure' before the number
@@ -66,8 +65,7 @@
 }
 \newpage
 
-% table of tables
-%\listoftables
+%%% table of tables
 {%
     \let\oldnumberline\numberline%
     \renewcommand{\numberline}{\tablename~\oldnumberline}% same as above for tables
@@ -75,13 +73,13 @@
 }
 \newpage
 
+%%% list of listings
 \makeatletter
-\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0.6cm}{7em}{#1}{#2}} % fix spacing
+\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0.6cm}{7em}{#1}{#2}} % fix spacing between lstlisting and number
 \makeatother
 \renewcommand{\lstlistingname}{}
 \renewcommand{\lstlistlistingname}{Quellcodeverzeichnis} % rename default table of listings name
-\renewcommand*{\thelstlisting}{Quellcode~\arabic{lstlisting}} % add "Quellcode" before..
-\clearpage % force latex to place anything not yet placed before proceeding
+\renewcommand*{\thelstlisting}{Quellcode~\arabic{lstlisting}} % same as tables and figures
 \lstlistoflistings
 \newpage
 
@@ -89,25 +87,29 @@
 \setcounter{page}{1} % reset page counter
 
 % this is where you write your text
-\input{kapitel/einleitung/einleitung}
-\input{kapitel/kapitel_1/kapitel_1}
-\input{kapitel/kapitel_2/kapitel_2}
-\input{kapitel/fazit/fazit}
+\input{content/01-introduction/introduction}
+\input{content/02-chapter1/chapter1}
+\input{content/03-chapter2/chapter2}
+\input{content/99-conclusion/conclusion}
 
+\clearpage % force latex to place anything not yet placed before proceeding
 \newpage % bibliography
 \pagenumbering{Roman} % change back to Roman page numbering style
 \setcounter{page}{8}  % change the number accordingly
 
 %%% Glossaries
+\phantomsection
 \printglossary[type=main]
 \newpage
 
 %%% print index
+\phantomsection
 \addcontentsline{toc}{section}{Index}
 \printindex
 \newpage
 
 \renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
+\phantomsection
 \printbibliography
 \newpage
 
@@ -115,8 +117,8 @@
 %\printbibheading
 %\printbibliography[type=article,heading=subbibliography,title={Artikel}]
 %\printbibliography[type=book,heading=subbibliography,title={Bücher}]
-%\printbibliography[type=online,heading=subbibliography,title={Webseiten}]
+%\printbibliography[keyword=misc,heading=subbibliography,title={Verschiedenes}]
 
-\input{kapitel/anhang/erklaerung} % sworn declaration
+\input{content/attachments/sworndecleration} % sworn declaration
 
 \end{document}
