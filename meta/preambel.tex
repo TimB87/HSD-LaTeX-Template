@@ -6,7 +6,7 @@
   bibliography=totoc,%
   listof=totoc,%
   oneside,%
-  titlepage]{scrartcl} % https://www.ctan.org/pkg/scrartcl
+  ]{scrartcl} % https://www.ctan.org/pkg/scrartcl
 
 \usepackage[automark,headsepline]{scrlayer-scrpage} % https://www.ctan.org/pkg/scrlayer-scrpage
 
@@ -36,10 +36,10 @@
 %%% use "scrheadings" instead with a KOMA class
 \clearpairofpagestyles
 \rehead{\headmark} % always print header on the right corner of the header
-\rohead{\headmark} % --------------------------"--------------------------
-\pagestyle{scrheadings}
+\rohead{\headmark} % for even and odd pages
 \cfoot[\pagemark]{\pagemark} % always print the page number centered in the footer
 \KOMAoptions{headsepline=.5pt}
+\pagestyle{scrheadings}
 
 \usepackage{setspace} % 1,5 cm Zeilenabstand
 \onehalfspacing{}
@@ -50,7 +50,6 @@
 %\sloppy
 
 %%% end general page related settings %}}}
-
 %%% language settings %{{{
 \usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
 \HyphSubstIfExists{ngerman-x-latest}{%
@@ -58,7 +57,6 @@
 \usepackage[ngerman]{babel} % https://www.ctan.org/pkg/babel
 \usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
 %}}}
-
 %%% font settings %{{{
 %\usepackage[utf8]{inputenc} % not needed with luatex
 \usepackage{fontspec} % luatex needs this one
@@ -72,8 +70,8 @@
 %\usepackage{courier}
 \usepackage{microtype} % https://www.ctan.org/pkg/microtype
 %}}}
-
 %%% math related settings % {{{
+\usepackage{siunitx}
 \usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
 \usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
 \setmathfont{texgyrepagella-math.otf} % the font we use for math
@@ -81,14 +79,11 @@
 %\usepackage{nicefrac} % https://www.ctan.org/pkg/nicefrac
 \usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
 %}}}
-
-\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
-
-
 %%% references % {{{
 % footmisc must be placed above hyperref to avoid warnings
 \usepackage[hang, multiple]{footmisc} % https://www.ctan.org/pkg/footmisc
 \setlength{\footnotemargin}{1em}
+\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
 %\usepackage{varioref} % https://www.ctan.org/pkg/varioref
 \usepackage[breaklinks=true,%
   citecolor=blue,%
@@ -99,46 +94,40 @@
   urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref
 %\usepackage{cleveref} % https://www.ctan.org/pkg/cleveref
 %}}}
-
 %%% additional packages %{{{
 %\usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
 %\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
 %\usepackage[titletoc,page]{appendix} % https://www.ctan.org/pkg/appendix
 \usepackage{pdfpages} % https://www.ctan.org/pkg/pdfpages
 \usepackage{hologo} % https://www.ctan.org/pkg/hologo %}}}
-
 %%% table packages %{{{
 \usepackage{multirow} % https://www.ctan.org/pkg/multirow
 %\usepackage{array} % https://www.ctan.org/pkg/array
 %\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl %}}}
-
 %%% floats %{{{
 \usepackage{float} % https://www.ctan.org/pkg/float
 \usepackage{caption} % https://www.ctan.org/pkg/caption %}}}
-
 %%% graphics %{{{
 \usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
 \usepackage{tikz} % https://www.ctan.org/pkg/pgf
 \usetikzlibrary{trees} %}}}
-
 %%% list related%{{{
 \usepackage{enumitem} % https://ctan.org/pkg/enumitem
 %\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist %}}}
-
 %%% biblatex%{{{
 \usepackage[autocite=footnote,% automatically use \footcite
   style=apa,%
+  apabackref=false,% prints backrefs in \printbibliography
   backend=biber,%
-  backref=false,% prints backrefs in \printbibliography
   bibencoding=utf8,% tries to encode with UTF-8
   bibwarn=true,% can be disabled, else shows warnings via buildlog
   date=iso,% access date in iso format
-  dateera=astronomical,% 'date=iso' requires 'dateera=astronomical'
+  dateera=astronomical,% date=iso requires dateera=astronomical
   doi=false,% omit doi
   %eprint=true,%
   giveninits=false,% prints a full name if set to false
-  isbn=true,% print isbn
-  maxbibnames=999,%
+  isbn=true,%
+  maxbibnames=7,% print 7 names in the bibliography
   maxcitenames=2,% shorten authors if more than 2
   seconds=true,% required by date=iso
   sortlocale=de% can be disabled if you don't write in german
@@ -146,6 +135,8 @@
   urldate=iso,% access date in iso format
   ]{biblatex} % https://www.ctan.org/pkg/biblatex %}}}
 
+%%% i want to cite all the ctan packages that are in use in that document
+\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_nodate,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_packages_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019}
 %%% glossary/xindy/acronym%{{{
 \usepackage[%
   acronym,% acronyms w/ xindy
@@ -186,17 +177,38 @@
   numbers=left,%
   numbersep=5pt,%
   numberstyle=\tiny,%
-  stepnumber=1,%
+  stepnumber=5,%
   stringstyle=\color{mauve}% string literal style
   title=\lstname,%
   xleftmargin=5pt,%
   xrightmargin=5pt,%
-}%}}}
+}
+
+% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Encoding_issue
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+%}}}
 
 %%% these packages have to be the last ones%{{{
 \usepackage{scrhack} % needed for listings and komascript
 \usepackage{xpatch} % https://www.ctan.org/pkg/xpatch }}}
-%\usepackage{appendix}
-\usepackage{tocbasic}
-\usepackage{scripts/appendixtoc}
-\setuptoc{appendix}{totoc}% dank tocbasic geht das jetzt so einfach
+% https://komascript.de/comment/3447#comment-3447
+%\usepackage{tocbasic} % has to be infront of scripts/appendixtoc
+%%% this script also interfers with listoftables and listoffigures...
+%%% not sure how to proceed with the appendix
+%\usepackage{scripts/appendixtoc}
+%\setuptoc{appendix}{totoc}% dank tocbasic geht das jetzt so einfach

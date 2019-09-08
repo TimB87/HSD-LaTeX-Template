@@ -93,33 +93,35 @@
 \input{content/99-conclusion/conclusion}
 
 \clearpage % force latex to place anything not yet placed before proceeding
-\newpage % bibliography
 \pagenumbering{Roman} % change back to Roman page numbering style
 \setcounter{page}{8}  % change the number accordingly
 
 %%% Glossaries
-\phantomsection
-\printglossary[type=main]
 \newpage
+\phantomsection % fixes wrong page numbering
+\printglossary[type=main]
 
 %%% print index
-\phantomsection
+\newpage
+\phantomsection % fixes wrong page numbering
 \addcontentsline{toc}{section}{Index}
 \printindex
-\newpage
 
-\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
-\phantomsection
-\printbibliography
+%%% print bibliography
 \newpage
+\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
+\phantomsection % fixes wrong page numbering
+
+%\printbibliography % print the bibliography as a whole
 
 %%% you can also split your bibliography by type like this
-%\printbibheading
-%\printbibliography[type=article,heading=subbibliography,title={Artikel}]
-%\printbibliography[type=book,heading=subbibliography,title={Bücher}]
-%\printbibliography[keyword=misc,heading=subbibliography,title={Verschiedenes}]
+\printbibliography[keyword=main] % print all cites used throughout our work
+\printbibliography[keyword=ctan,heading=subbibliography,title={CTAN Pakete}] % additionally, cite all packages used
 
 %%% appendix
+\newpage
+\phantomsection % fixes wrong page numbering
+\addcontentsline{toc}{section}{Appendix}
 \appendix
 
 %%% Attachment A

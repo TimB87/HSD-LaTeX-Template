@@ -1,15 +1,44 @@
 % !TEX root = ../../main.tex
 \newpage
 
-\section{Seitenaufbau in LaTeX}%{{{
+\section{Umgang mit \protect\LaTeX{}}%{{{
+\label{sec:umgang}
+\subsection{Seitenaufbau}%{{{
 \label{sec:seit-aufbau}
-Der Seitenaufbau wird vollständing in der Präambel definiert, von der Seitengröße über die Abstände der Seitenränder bishin zu den Zitationsstilen sowie dem Inhaltsverzeichnis. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
+Der Seitenaufbau wird vollständing in der Präambel (siehe meta/preambel.tex) definiert. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
 
-Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\grqq\footcite[S. 51]{kohm_koma_2019}\ aus dem bekannten Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein. Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetiker_not_2018}.
-%}}}
+Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetiker_not_2018}. Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\grqq\footcite[S. 51]{kohm_koma_2019}\ aus dem bekannten Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein.
+Die Klasse wird mit einigen Parametern geladen, wie zum Beispiel \glqq 12pt\grqq, welches die Schriftgröße auf 12 festlegt. Erwähnenswert ist die Funktion \glqq overfullrule\grqq, denn Sie kann zum Schluss dabei helfen, sogenanntente overfull hbox errors zu finden. Diese werden zwar im log protokolliert, das finden gestaltet sich allerdings manchmal schwierig. Mit der Option werden an die entsprechende Stellen dann schwarze Kästchen gedruckt, was die Suche extrem vereinfacht. Typerschweise zeigt die Warnung auf, dass
+in der entsprechenden Zeile zu viel dargestellt wird und den Seitenrand überschrieben wird. Dies ist oft damit verbunden, das \LaTeX{}\ nicht wusste, wie es das Wort richtig trennen soll. Diese Wörter lassen sich dann selbst definieren, so dass \LaTeX{}\ die Silbentrennung beim nächsten Durchlauf korrekt durchführen kann.
+Zusätzlich ist die Option \glqq draft\grqq bei größeren Dokumenten Hilfreich, denn es verarbeitet nicht alle Informationen und spart dadurch Zeit beim kompilieren. Diese Vorlage wird z.B. aus diesen Gründen im ersten Durchlauf ebenfalls nur als draft Variante kompiliert, da wir praktisch nur die Output-Dateien brauchen, die weiter als Input für \hologo{biber}, makeglossaries und xindy dienen.
 
-\section{Funktionen von LaTeX}%{{{
-\label{sec:funkt-von}
+Das Paket geometry setzt das Seitenlayout auf die gewünschten Einheiten.
+
+Wichtig zum problemfreien Einsatz der KOMA-Klasse ist, dass ihr das Paket \glqq fancyhdr\grqq\ meidet, da es dafür eigene Befehle und Werkzeuge gibt. Ich verweise hier auf den Quellcode~\ref{lst:our-heafoo}.
+
+\lstinputlisting[firstline=19,lastline=42,float=htpb,caption=Der relavente Code für Header und Footer,label=lst:our-heafoo]{meta/preambel.tex}
+
+Im Text stehen euch dann weitere Befehle zur Verfügung. In main.tex wird z.B. einige Male die Seitennummeriung umgestellt. Mit dem Befehlt \textbackslash pagenumberingstil lassen sich die in der Tabelle~\ref{tab:pgnumb} gezeigten Stile einstellen.
+
+\begin{table}[htpb]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    arabic & (arabische Zahlen \\ \hline
+    roman & kleine, römische Zahlen \\ \hline
+    Roman & große, römische Zahlen \\ \hline
+    alph & kleine Buchstaben \\ \hline
+    Alph & große Buchstaben \\ \hline
+  \end{tabular}
+  \caption{Die verschiedenen Stile der Seitennummerierung}
+  \label{tab:pgnumb}
+\end{table}
+
+Sollten mal Angaben von Abständen oder ähnlichem erfordert sein, so versteht \LaTeX{}\ die Einheiten \emph{mm}, \emph{cm}, \emph{in} (Inch), \emph{pt} (Point = $\frac{1}{72} in$), \emph{em} (Proportional zur Zeichenbreite), und \emph{ex} (Proportional zur Zeichenhöhe).\footcite[Vgl. ][S. 5]{riedel_latex_2011}.
+
+Weitere Informationen über den Umgang mit \hologo{KOMAScript} erhaltet ihr in dem ausgezeichnetem Handbuch des Pakets, welches wenigstens für gezielte Fragen zwingend konsultiert werden sollte. Außerdem gibt es noch die Möglichkeit auf der \href{https://komascript.de/}{Webseite des Paketes} auf ein Forum sowie ein FAQ zurückzugreifen.
+
+Diese Vorlage nutzt die Vorgaben des \gls{fb} Wirtschaft, welcher durchaus von anderen \glspl{fb} abweichen kann. Die entsprechenden Änderungen sollten allerdings relativ einfach umzusetzen sein. Gerne addiere ich an spätere Stelle hier entsprechende Vorlagen neben dieser.%}}}
 \subsection{Textformatierung}%{{{
 \label{sec:textformat}
 Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \gls{latex} umschreibt, und das alles auf 153 Seiten, kostenlos.\footcite{oetiker_not_2018}
@@ -34,6 +63,30 @@ Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenf
 
 Einige grundlegende Befehle findet man aber bereits in Tabelle~\ref{tab:textformat}.
 %}}}
+\subsection{Allgemeiner Umgang mit Zahlen}%{{{
+\label{sec:allgzahl}
+Mit der Schreibumgebung \textbackslash num des Paketes siunitx ist es möglich, Zahlen gut leserlich im Text darzustellen, wenn es noch nicht um die Darstellung von reiner Mathematik geht. Beispielsweise in einem Satz: Zum Zeitpunkt der Erstellung hat der Bau des neuen Berliner Flughafens BER \num[group-separator={.}]{4645889099}\EUR\ gekostet.
+\begin{lstlisting}[float=htpb,caption=Darstellung von Zahlen in \protect\LaTeX{},label=lst:zahlen]
+Zum Zeitpunkt der Erstellung hat der Bau des neuen Berliner Flughafens BER \num[group-separator={.}]{4645889099}\EUR\ gekostet.
+\end{lstlisting}
+
+Das Paket kann durchaus noch vieles mehr, so wie zum Beispiel die korrekte Darstellung von Maßeinheiten:
+\si{\kilo\gram\metre\per\square\second} \\
+\si{\gram\per\cubic\centi\metre}
+\\
+\si{\square\volt\cubic\lumen\per\farad} \\
+\si{\metre\squared\per\gray\cubic\lux}
+
+\begin{lstlisting}[float=htpb,caption=Darstellungen von Einheiten mit siunitx,label=lst:einheiten]
+\si{\kilo\gram\metre\per\square\second} \\
+\si{\gram\per\cubic\centi\metre}
+\\
+\si{\square\volt\cubic\lumen\per\farad} \\
+\si{\metre\squared\per\gray\cubic\lux}
+\end{lstlisting}
+
+Ein Blick ins Handbuch wird daher definitiv empfohlen.
+%}}}
 \subsection{Mathematische Schreibumgebung}%{{{
 \label{sec:math-umg}
 Wenn man Code zwischen zwei Dollar Zeichen \$ \dots\ \$ schreibt, schreibt man in dem mathematischen Modus. Alles darin wird interpretiert und durch entsprechende Symbole ersetzt. Das Ergebnis spricht für sich.
@@ -51,7 +104,7 @@ $ SEW(RF) = 186,72 $
 $ i_{m} = 0,1097 \approx 10,97\%$
 
 Der Code hierfür sieht wie folgt aus:
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Darstellungen von mathematischen Formeln,label=lst:inlinemath]
 $ SEW\footnote{Summe der Endwerte} (RF\footnote{Rückflüsse}) = \sum_{t=1}^{n} [ ( E_{t} - A_{t}) \times (1+i)\ ^{N-t}] $
 
 $ SEW(RF) = 5\times1,1^{5}+10\times1,1^{4}+15\times1,1^{3}+10\times1,1^{2}+30\times1,1^{1}+35 = 122,76$
@@ -73,14 +126,15 @@ Grundsätzlich unterstützt \gls{latex} aber noch eine weitere Methode, mathemat
 
 Code:
 
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Darstellungen von Mathe mit der \glqq displayed math\grqq-Methode,label=lst:displayermath]
 \[
   \varphi = \frac{1 + \sqrt{5}}{2} = 1.618 \ldots
 \]
 \end{lstlisting}
 
-Man unterscheidet beide Methoden in 1) \emph{Inline math} und 2) \emph{Displayed math}\footcite[Vgl. ][S. 276]{kottwitz_latex_2015}. \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile.
-\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel \footcite[Vgl. ][S. 35ff]{gratzer_more_2016}
+Man unterscheidet beide Methoden in 1) \emph{Inline math} (~\ref{lst:inlinemath}) und 2) \emph{Displayed math}(~ref{lst:displayedmath}).\footcite[Vgl. ][S. 276]{kottwitz_latex_2015} \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile. Bei letzterem ist auch die Nummerierung der Zeilen möglich.
+
+\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel Grätzers \glqq More Math into \LaTeX{}\grqq\footcite[][]{gratzer_more_2016}.
 %}}}
 \subsection{Tabellen}%{{{
 \label{sec:tables}
@@ -101,7 +155,7 @@ kumulierter Barwert & 719.776 &  &  &  &  &  \\ \hline
 \end{table}
 
 Der dazugehörige Code:
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Darstellungen einer Tabelle in \protect\LaTeX{},label=lst:bsptabelle]
 \begin{table}[htbp]
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
@@ -136,7 +190,7 @@ Der Code für Beispielbild 1%~/ref{fig:bild}.
 
 Das erste Bild, \glqq Die Besteuerung eines Marktes\grqq, wurde mit dem Parameter \glqq h!\grqq\ aufgerufen. Für \LaTeX{}\ heißt dass, das Bild an Ort und stelle abzulegen.%~\ref{} i need to include all other listings in floats
 
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Einbindung einer Grafik so nah wie möglich am Text,label=lst:float_h]
   \begin{figure}[h!]
     \centering
        \includegraphics[]{ProdKonsRentemitSteuern.pdf}
@@ -158,7 +212,7 @@ Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens zw
 
 Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist ein ernstes Thema auf welches man an dieser Stelle aufmerksam machen kann, da sie sehr wichtig für das Ökosystem unseres Planeten sind.
 
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Automatische Einbindung einer Grafik,label=lst:float_htbp]
   \begin{figure}[htbp]
     \centering
        \includegraphics[width=1\linewidth]{PMSteuer.pdf}
@@ -188,12 +242,12 @@ Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist
   };
 \end{tikzpicture}
 
-Folgendes Beispiel stammt von Christine Römer\footcite{dtk17.1:roemer:tikz} und wurde in \glqq Die \TeX{}nische Komödie\grqq veröffentlicht. Die Zeitschrift wird von \glspl{dante} herausgegebenen.
+Folgendes Beispiel stammt von Christine Römer\footcite{dtk17.1:roemer:tikz} und wurde in \glqq Die \TeX{}nische Komödie\grqq\ veröffentlicht. Die Zeitschrift wird von \glspl{dante} herausgegebenen.
 %}}}
 \subsection{Fußnoten}%{{{
 \label{sec:footn}
 Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Das setzen von Fußnoten mit \protect\LaTeX{},label=lst:footnotes]
 Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
 \end{lstlisting}
 Hiermit sollte man sparsam umgehen.
@@ -211,7 +265,7 @@ puts listofstrings.sort.uniq
 \end{lstlisting}
 
 Der Code hierfür:
-\begin{lstlisting}
+\begin{lstlisting}[float=htpb,caption=Darstellung eines beliebigen Codes in der Sprache ruby,label=lst:ruby]
 \lstset{language=Ruby}
 \textbackslash begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
 #!/usr/bin/env ruby
@@ -231,10 +285,13 @@ Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwieg
 
 Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 
+\begin{lstlisting}[float=htpb,caption=Das setzen von Zitations \protect\LaTeX{},label=lst:cites]
+Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
+\end{lstlisting}
 Relevanter Code:
-\lstinputlisting[firstline=128,lastline=147,float=htpb,caption=Relevanter Code für biblatex,label=lst:our-bib]{meta/preambel.tex}
+\lstinputlisting[firstline=129,lastline=149,float=htpb,caption=Relevanter Code für biblatex,label=lst:our-bib]{meta/preambel.tex}
 
-In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
+In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfügbaren Stile gestalten. Wir benötigen den \gls{apa}-Stil.
 
 \begin{table}[htbp]
 \centering
@@ -242,27 +299,39 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht gestalten.
 \begin{tabular}{l|l|l|}
 \hline
 \multicolumn{1}{|l|}{\textbf{Option}} & \textbf{Wert} & \textbf{\begin{tabular}[c]{@{}l@{}}nennenswerter \\ Effekt\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{autocite} & footnote & Setzt eine Fußnote \\ \hline
+ & cite & setzt den Verweis direkt im Text \\ \hline
+ & parencite & setzt den Verweis im Text in Klammern \\ \hline
 \multicolumn{1}{|l|}{style} & numeric & \begin{tabular}[c]{@{}l@{}}Literatur wird numerisch im Verzeichnis\\ aufgeführt\end{tabular} \\ \hline
- & numeric-comp & \begin{tabular}[c]{@{}l@{}}Wie oben, aber mehrerer aufeinanderfolgende\\ Werke werden zusammengefasst\end{tabular} \\ \cline{2-3} 
+ & numeric-comp & \begin{tabular}[c]{@{}l@{}}Wie oben, aber mehrerer aufeinanderfolgende\\ Werke werden zusammengefasst\end{tabular} \\ \cline{2-3}
  & alphabetic & \begin{tabular}[c]{@{}l@{}}Erstellt ein Kürzel des Autors und hängt eine\\ fortlaufende Ziffer dran (numeric Verhalten)\end{tabular} \\ \cline{2-3} 
- & authoryear & Sortiert nach Autor und Jahr \\ \cline{2-3} 
- & authoryear-comp & siehe oben \\ \cline{2-3} 
- & authoryear-ibid & setzt ein ebenda, bzw. ebd. \\ \cline{2-3} 
- & authoryear-icomp & vereint -comp und -ibid \\ \cline{2-3} 
- & authortitle & Sortiert nach Autor und Jahr \\ \cline{2-3} 
- & authortitle-comp & siehe oben \\ \cline{2-3} 
- & authortitle-ibid &  \\ \cline{2-3} 
- & authortitle-icomp &  \\ \cline{2-3} 
- & authortite-terse & \begin{tabular}[c]{@{}l@{}}Lässt den Titel aus, wenn der Author nur ein\\ Werk in unserem Literaturverzeichnis hat\end{tabular} \\ \cline{2-3} 
- & authortitle-tcomp & Vereint -comp und -terse \\ \cline{2-3} 
- & authortitle-ticomp & -comp, -ibid, -terse \\ \cline{2-3} 
+ & authoryear & Sortiert nach Autor und Jahr \\ \cline{2-3}
+ & authoryear-comp & siehe oben \\ \cline{2-3}
+ & authoryear-ibid & setzt ein ebenda, bzw. ebd. \\ \cline{2-3}
+ & authoryear-icomp & vereint -comp und -ibid \\ \cline{2-3}
+ & authortitle & Sortiert nach Autor und Jahr \\ \cline{2-3}
+ & authortitle-comp & siehe oben \\ \cline{2-3}
+ & authortitle-ibid &  \\ \cline{2-3}
+ & authortitle-icomp &  \\ \cline{2-3}
+ & authortite-terse & \begin{tabular}[c]{@{}l@{}}Lässt den Titel aus, wenn der Author nur ein\\ Werk in unserem Literaturverzeichnis hat\end{tabular} \\ \cline{2-3}
+ & authortitle-tcomp & Vereint -comp und -terse \\ \cline{2-3}
+ & authortitle-ticomp & -comp, -ibid, -terse \\ \cline{2-3}
+ & apa & ziemliche vollständiger \gls{apa} Stil der 6ten Edition \\ \cline{2-3}
 \end{tabular}%
 }
 \caption{Einige Optionen zu verwendbaren Zitationsstilen}
 \label{tab:bib-style}
 \end{table}
 
-Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_kundenbindung_2005}.
+Die Idee hinter biblatex ist, dass man die Werke einmalig in einer Datenbank erfasst und von dort aus mit einem zugewiesenem \glqq citekey\grqq\ referenziert. Die Erstellung und Verwaltung einer Datenbank ist z.B. über \href{https://www.zotero.org/}{Zotero}\ (Quelloffen), \href{https://www.jabref.org/}{JabRef}\ (Quelloffen) und \href{https://www.citavi.com/}{Citavi}\ (Closed Source) möglich. Da es sich aber, wie bei \LaTeX{}\ üblich um eine einfache Textdatei handelt, kann man die Datenbank auch selbst
+schreiben. Das ist vor allem bei kürzeren Werken eine alternative, wo man nur mit wenigen Quellen arbeiten muss.
+Mir hat bei der Verwendung zotero gut geholfen. Auch hier empfiehlt sich ein einarbeiten in das Program, da es doch sehr viele Möglichkeiten zur Verwaltung der genutzten Literatur bietet.
+
+Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_kundenbindung_2005}, damit wir den genutzten Stil austesten können.
+
+Es ist ebenfalls möglich, ein Zitat im Text in Klammern zu setzen, so wie es z.B. in der Informatik üblicher ist. Dafür ein weiteres Beispielzitat: Lamport\parencite[Siehe ]{lamport_latex_1994} hat das von Don Knuth\parencite[Siehe ]{knuth_tex_1979} erstellte \TeX{} überarbeitet und \LaTeX{}\ programmiert. \LaTeX{}\ macht den Umgang mit \TeX{}\ deutlich einfacher! Vielen Dank an dieser Stelle an Don E. Knuth und L. Lamport, Richard Stallman, Markus Kohm, sowie allen CTAN-Maintainern und Contributern und vielen mehr! Dank euch ist meine Arbeit hier möglich!
+
+Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe ][S. 6 -- 18]{dibona_open_1999}.
 %}}}
 \subsection{Querverweise}%{{{
 \label{sec:refs}
@@ -315,6 +384,5 @@ Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 
 Mit einem Index kann man Schlagworte und Themengruppen zusammenfassen und dem Leser helfen, diese im Dokument zu finden.
 
-\lstinputlisting[firstline=163,lastline=167,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}
-%}}}
+\lstinputlisting[firstline=163,lastline=167,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}%}}}
 %}}}
