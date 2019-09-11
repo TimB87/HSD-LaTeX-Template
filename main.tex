@@ -38,7 +38,16 @@
     Build=1.1%
   }%
 }
+
+%%% this fixes overfull hbox errors in our toc
 \makeatletter\renewcommand\@pnumwidth{2em}\makeatother
+
+%\usepackage{tocloft}
+% Page references below from
+% http://mirrors.ctan.org/macros/latex/contrib/tocloft/tocloft.pdf
+%\setlength{\cftfignumwidth}{0.7in} % from p. 9
+%\renewcommand{\cftfigpresnum}{\figurename{} } % from p. 9
+%\renewcommand{\cftfigaftersnum}{: } % from p. 9
 
 \begin{document}
 
@@ -59,19 +68,21 @@
 \newpage
 
 %%% table of figures
-{%
-  \let\oldnumberline\numberline%
-  \renewcommand{\numberline}{\figurename~\oldnumberline}% adds 'Figure' before the number
-  \listoffigures%
-}
+%{%
+%  \let\oldnumberline\numberline%
+%  \renewcommand{\numberline}{\figurename~\oldnumberline}% adds 'Figure' before the number
+%  \listoffigures%
+%}
+\listoffigures
 \newpage
 
 %%% table of tables
-{%
-    \let\oldnumberline\numberline%
-    \renewcommand{\numberline}{\tablename~\oldnumberline}% same as above for tables
-    \listoftables%
-}
+%{%
+%    \let\oldnumberline\numberline%
+%    \renewcommand{\numberline}{\tablename~\oldnumberline}% same as above for tables
+%    \listoftables%
+%}
+\listoftables
 \newpage
 
 %%% list of listings

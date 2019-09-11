@@ -2,9 +2,11 @@
 %%% general page related settings %{{{
 \documentclass[12pt,%
   %draft,%
-  overfullrule=true,% helps debugging overfull hbox warnings
+  %overfullrule=true,% helps debugging overfull hbox warnings
   bibliography=totoc,%
   listof=totoc,%
+  listof=entryprefix,%
+  toc=sectionentrywithdots,%
   oneside,%
   ]{scrartcl} % https://www.ctan.org/pkg/scrartcl
 
@@ -48,6 +50,11 @@
 %\setlength{\parindent}{0mm} % https://komascript.de/faq_parindent
 %\setlength{\parskip}{0.8em plus 0.5em minus 0.3em}
 %\sloppy
+
+% toc additions
+\BeforeStartingTOC[lof]{\def\autodot{:}}
+\BeforeStartingTOC[lot]{\def\autodot{:}}
+\BeforeStartingTOC[lol]{\def\autodot{:}}
 
 %%% end general page related settings %}}}
 %%% language settings %{{{
