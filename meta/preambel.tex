@@ -51,11 +51,16 @@
 
 %%% end general page related settings %}}}
 %%% language settings %{{{
+%\usepackage[ngerman]{babel} % https://www.ctan.org/pkg/babel
+\usepackage{polyglossia} % https://www.ctan.org/pkg/polyglossia
+\setmainlanguage[spelling=new,babelshorthands=true]{german}
+\newcommand\glqq{"`} % babel did provide these commands
+\newcommand\grqq{"'} % before we used polyglossia
+%\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
 \usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
-\usepackage[ngerman]{babel} % https://www.ctan.org/pkg/babel
-\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
+\usepackage[german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
 %}}}
 %%% font settings %{{{
 %\usepackage[utf8]{inputenc} % not needed with luatex
@@ -80,26 +85,20 @@
 \usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
 %}}}
 %%% references % {{{
-% footmisc must be placed above hyperref to avoid warnings
-\usepackage[hang, multiple]{footmisc} % https://www.ctan.org/pkg/footmisc
-\setlength{\footnotemargin}{1em}
-\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
 %\usepackage{varioref} % https://www.ctan.org/pkg/varioref
-\usepackage[breaklinks=true,%
-  citecolor=blue,%
-  colorlinks=true,%
-  linkcolor=black,%
-  menucolor=black,%
-  unicode,%
-  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref
 %\usepackage{cleveref} % https://www.ctan.org/pkg/cleveref
 %}}}
 %%% additional packages %{{{
+\usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
 %\usepackage{ragged2e} % https://www.ctan.org/pkg/ragged2e
 %\usepackage{fancybox} % https://www.ctan.org/pkg/fancybox
 %\usepackage[titletoc,page]{appendix} % https://www.ctan.org/pkg/appendix
 \usepackage{pdfpages} % https://www.ctan.org/pkg/pdfpages
-\usepackage{hologo} % https://www.ctan.org/pkg/hologo %}}}
+\usepackage{hologo} % https://www.ctan.org/pkg/hologo
+% footmisc must be placed above hyperref to avoid warnings
+\usepackage[hang, multiple]{footmisc} % https://www.ctan.org/pkg/footmisc
+\setlength{\footnotemargin}{1em}
+%\usepackage{titletoc} %}}}
 %%% table packages %{{{
 \usepackage{multirow} % https://www.ctan.org/pkg/multirow
 %\usepackage{array} % https://www.ctan.org/pkg/array
@@ -127,16 +126,17 @@
   %eprint=true,%
   giveninits=false,% prints a full name if set to false
   isbn=true,%
+  %issn=false,%
   maxbibnames=7,% print 7 names in the bibliography
   maxcitenames=2,% shorten authors if more than 2
   seconds=true,% required by date=iso
   sortlocale=de% can be disabled if you don't write in german
   url=true,% prints url, if available
   urldate=iso,% access date in iso format
-  ]{biblatex} % https://www.ctan.org/pkg/biblatex %}}}
-
-%%% i want to cite all the ctan packages that are in use in that document
-\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_nodate,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_packages_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019}
+  ]{biblatex} % https://www.ctan.org/pkg/biblatex 
+  \DeclareLanguageMapping{ngerman}{ngerman-apa}%}}}
+%%% i want to cite all the ctan packages that are in use in that document%{{{
+\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_nodate,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_packages_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019,charette_polyglossia_2019}%}}}
 %%% glossary/xindy/acronym%{{{
 \usepackage[%
   acronym,% acronyms w/ xindy
@@ -206,9 +206,10 @@
 %%% these packages have to be the last ones%{{{
 \usepackage{scrhack} % needed for listings and komascript
 \usepackage{xpatch} % https://www.ctan.org/pkg/xpatch }}}
-% https://komascript.de/comment/3447#comment-3447
-%\usepackage{tocbasic} % has to be infront of scripts/appendixtoc
-%%% this script also interfers with listoftables and listoffigures...
-%%% not sure how to proceed with the appendix
-%\usepackage{scripts/appendixtoc}
-%\setuptoc{appendix}{totoc}% dank tocbasic geht das jetzt so einfach
+\usepackage[breaklinks=true,%
+  citecolor=blue,%
+  colorlinks=true,%
+  linkcolor=black,%
+  menucolor=black,%
+  unicode,%
+  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref
