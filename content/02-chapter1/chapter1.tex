@@ -8,15 +8,15 @@
 Der Seitenaufbau wird vollständing in der Präambel (siehe meta/preambel.tex) definiert. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
 
 Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetiker_not_2018}. Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\grqq\footcite[S. 51]{kohm_koma_2019}\ aus dem bekannten Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein.
-Die Klasse wird mit einigen Parametern geladen, wie zum Beispiel \glqq 12pt\grqq, welches die Schriftgröße auf 12 festlegt. Erwähnenswert ist die Funktion \glqq overfullrule\grqq, denn Sie kann zum Schluss dabei helfen, sogenanntente overfull hbox errors zu finden. Diese werden zwar im log protokolliert, das finden gestaltet sich allerdings manchmal schwierig. Mit der Option werden an die entsprechende Stellen dann schwarze Kästchen gedruckt, was die Suche extrem vereinfacht. Typerschweise zeigt die Warnung auf, dass
-in der entsprechenden Zeile zu viel dargestellt wird und den Seitenrand überschrieben wird. Dies ist oft damit verbunden, das \LaTeX{}\ nicht wusste, wie es das Wort richtig trennen soll. Diese Wörter lassen sich dann selbst definieren, so dass \LaTeX{}\ die Silbentrennung beim nächsten Durchlauf korrekt durchführen kann.
-Zusätzlich ist die Option \glqq draft\grqq bei größeren Dokumenten Hilfreich, denn es verarbeitet nicht alle Informationen und spart dadurch Zeit beim kompilieren. Diese Vorlage wird z.B. aus diesen Gründen im ersten Durchlauf ebenfalls nur als draft Variante kompiliert, da wir praktisch nur die Output-Dateien brauchen, die weiter als Input für \hologo{biber}, makeglossaries und xindy dienen.
+Die Klasse wird mit einigen Parametern geladen, wie zum Beispiel \glqq 12pt\grqq, welches die Schriftgröße auf 12 festlegt. Erwähnenswert ist die Funktion \glqq overfullrule\grqq, denn Sie kann zum Schluss dabei helfen, sogenannte overfull hbox errors zu finden. Diese werden zwar im log protokolliert, das finden gestaltet sich allerdings manchmal schwierig. Mit der Option werden an die entsprechende Stellen dann schwarze Kästchen gedruckt, was die Suche extrem vereinfacht. Typerschweise zeigt die Warnung auf, dass
+in der entsprechenden Zeile zu viel dargestellt wird und der Seitenrand überschrieben wird. Dies ist oft damit verbunden, das \LaTeX{}\ nicht wusste, wie es das Wort richtig trennen soll. Diese Wörter lassen sich dann selbst definieren, so dass \LaTeX{}\ die Silbentrennung beim nächsten Durchlauf korrekt durchführen kann.
+Zusätzlich ist die Option \glqq draft\grqq\ bei größeren Dokumenten hilfreich, denn es verarbeitet nicht alle Informationen und spart dadurch Zeit beim kompilieren. Diese Vorlage wird z.B. aus diesen Gründen im ersten Durchlauf ebenfalls nur als \glqq draft\grqq-Variante kompiliert, da wir praktisch nur die Output-Dateien brauchen, die weiter als Input für \hologo{biber}, makeglossaries und xindy dienen.
 
 Das Paket geometry setzt das Seitenlayout auf die gewünschten Einheiten.
 
-Wichtig zum problemfreien Einsatz der KOMA-Klasse ist, dass ihr das Paket \glqq fancyhdr\grqq\ meidet, da es dafür eigene Befehle und Werkzeuge gibt. Ich verweise hier auf den Quellcode~\ref{lst:our-heafoo}.
+Wichtig zum problemfreien Einsatz der KOMA-Klasse ist, dass ihr das Paket \glqq fancyhdr\grqq\ meidet, da es dafür eigene Befehle und Werkzeuge gibt. Ich verweise hier auf den ~\ref{lst:our-heafoo}.
 
-\lstinputlisting[firstline=19,lastline=42,float=htpb,caption=Der relavente Code für Header und Footer,label=lst:our-heafoo]{meta/preambel.tex}
+\lstinputlisting[firstline=19,lastline=42,float=htpb,caption=Der relevante Code für Header und Footer,label=lst:our-heafoo]{meta/preambel.tex}
 
 Im Text stehen euch dann weitere Befehle zur Verfügung. In main.tex wird z.B. einige Male die Seitennummeriung umgestellt. Mit dem Befehlt \textbackslash pagenumberingstil lassen sich die in der Tabelle~\ref{tab:pgnumb} gezeigten Stile einstellen.
 
@@ -34,14 +34,14 @@ Im Text stehen euch dann weitere Befehle zur Verfügung. In main.tex wird z.B. e
   \label{tab:pgnumb}
 \end{table}
 
-Sollten mal Angaben von Abständen oder ähnlichem erfordert sein, so versteht \LaTeX{}\ die Einheiten \emph{mm}, \emph{cm}, \emph{in} (Inch), \emph{pt} (Point = $\frac{1}{72} in$), \emph{em} (Proportional zur Zeichenbreite), und \emph{ex} (Proportional zur Zeichenhöhe).\footcite[Vgl. ][S. 5]{riedel_latex_2011}.
+Sollten mal Angaben von Abständen oder ähnlichem erfordert sein, so versteht \LaTeX{}\ die Einheiten \emph{mm}, \emph{cm}, \emph{in} (Inch), \emph{pt} (Point = $\frac{1}{72} in$), \emph{em} (Proportional zur Zeichenbreite), und \emph{ex} (Proportional zur Zeichenhöhe)\footcite[Vgl. ][S. 5]{riedel_latex_2011}.
 
 Weitere Informationen über den Umgang mit \hologo{KOMAScript} erhaltet ihr in dem ausgezeichnetem Handbuch des Pakets, welches wenigstens für gezielte Fragen zwingend konsultiert werden sollte. Außerdem gibt es noch die Möglichkeit auf der \href{https://komascript.de/}{Webseite des Paketes} auf ein Forum sowie ein FAQ zurückzugreifen.
 
-Diese Vorlage nutzt die Vorgaben des \gls{fb} Wirtschaft, welcher durchaus von anderen \glspl{fb} abweichen kann. Die entsprechenden Änderungen sollten allerdings relativ einfach umzusetzen sein. Gerne addiere ich an spätere Stelle hier entsprechende Vorlagen neben dieser.%}}}
+Diese Vorlage nutzt die Vorgaben des \gls{fb} Wirtschaftswissenschaften, welcher durchaus von anderen \glspl{fb} abweichen kann. Die entsprechenden Änderungen sollten allerdings relativ einfach umzusetzen sein. Gerne addiere ich an spätere Stelle hier entsprechende Vorlagen neben dieser.%}}}
 \subsection{Textformatierung}%{{{
 \label{sec:textformat}
-Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man Grundlegende Funktionen von \gls{latex} umschreibt, und das alles auf 153 Seiten, kostenlos.\footcite{oetiker_not_2018}
+Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenfreie Einführung verweisen, welche Kompakt und gut verständlich die Feinheiten von \gls{latex} erklärt. Über sechs Kapitel wird dann angefangen bei der grundsätzlichen Struktur eines Dokumentes bis hin dazu, wie man grundlegende Funktionen von \gls{latex} umschreibt, und das alles auf 153 Seiten, kostenlos.\footcite{oetiker_not_2018}
 
 \begin{table}[htbp]
   \resizebox{\textwidth}{!}{% gently resize our table to fit the page
@@ -118,7 +118,7 @@ $ SEW(RF) = 186,72 $
 $ i_{m} = 0,1097 \approx 10,97\%$
 \end{lstlisting}
 
-Grundsätzlich unterstützt \gls{latex} aber noch eine weitere Methode, mathematische Sequenzen darzustellen, z.B das sogenannte \glqq Displayed math \grqq\ .
+Grundsätzlich unterstützt \gls{latex} aber noch eine weitere Methode, mathematische Sequenzen darzustellen, z.B. das sogenannte \glqq Displayed math\grqq.
 
 \[
   \varphi = \frac{1 + \sqrt{5}}{2} = 1.618 \ldots
@@ -132,9 +132,9 @@ Code:
 \]
 \end{lstlisting}
 
-Man unterscheidet beide Methoden in 1) \emph{Inline math} (~\ref{lst:inlinemath}) und 2) \emph{Displayed math}(~ref{lst:displayedmath}).\footcite[Vgl. ][S. 276]{kottwitz_latex_2015} \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile. Bei letzterem ist auch die Nummerierung der Zeilen möglich.
+Man unterscheidet beide Methoden in 1) \emph{Inline math} (vergleiche~\ref{lst:inlinemath}) und 2) \emph{Displayed math}(vergleiche~ref{lst:displayedmath}).\footcite[Vgl. ][S. 276]{kottwitz_latex_2015} \emph{Inline math} eignet sich, um Formeln im Text einzufügen, \emph{Displayed math} präsentiert die Formel in einer eigenen Zeile. Bei letzterem ist auch die Nummerierung der Zeilen möglich.
 
-\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel Grätzers \glqq More Math into \LaTeX{}\grqq\footcite[][]{gratzer_more_2016}.
+\gls{latex} bietet darüber hinaus noch sehr viel mehr Einstellmöglichkeiten, um Formeln besser darzustellen. Dazu lohnt sich ein Blick in geeignete Fachliteratur, wie zum Beispiel auch Grätzers \glqq More Math into \LaTeX{}\grqq\footcite{gratzer_more_2016}.
 %}}}
 \subsection{Tabellen}%{{{
 \label{sec:tables}
@@ -170,7 +170,7 @@ kumulierter Barwert & 719.776 &  &  &  &  &  \\ \hline
 \end{table}
 \end{lstlisting}
 
-Je nach gewünschtem Stil kann eine Tabelle noch sehr stark verändert werden. Dies schaut man besten ebenfalls in geeigneter Literatur nach, da es hier den Rahmen sprengen würde.
+Je nach gewünschtem Stil kann eine Tabelle noch sehr stark verändert werden. Dies schaut man am besten ebenfalls in geeigneter Literatur nach, da es hier den Rahmen sprengen würde.
 
 Ein genereller Tipp aber zum Thema Tabellen: nutzt ein externes Tool. Viele Editoren bringen Tools mit, um Tabellen einfacher zu erstellen. Ich finde folgende Webseite sehr gut \href{https://tablesgenerator.com}{https://tablesgenerator.com}.
 %}}}
@@ -208,7 +208,7 @@ Eine zweite Grafik zum rumschieben, dieses mal hat \LaTeX{}\ mehr Freiheiten, du
   \label{fig:bild2}
 \end{figure}
 
-Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens zwangsläufig, immerhin soll \gls{latex} rund um meine beiden Beispielbilder etwas Text zu verarbeiten haben, damit der Leser/Anwender es später selbst etwas einfacher hat, sich das Konzept vor Augen zu führen. Kommentiert einfach etwas Text aus, ändert die Größe der Grafiken oder die angegebenen Parameter und ihr solltet ein Bild davon bekommen, was \LaTeX{}\ sich bei der Sache denkt.
+Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens zwangsläufig, immerhin soll \gls{latex} rund um meine beiden Beispielbilder etwas Text zu verarbeiten haben, damit der Leser/Anwender es später selbst etwas einfacher hat, sich das Konzept vor Augen zu führen. Kommentiert einfach etwas Text raus, ändert die Größe der Grafiken oder die angegebenen Parameter und ihr solltet ein Bild davon bekommen, was \LaTeX{}\ sich bei der Sache denkt.
 
 Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist ein ernstes Thema auf welches man an dieser Stelle aufmerksam machen kann, da sie sehr wichtig für das Ökosystem unseres Planeten sind.
 
@@ -250,7 +250,6 @@ Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisc
 \begin{lstlisting}[float=htpb,caption=Das setzen von Fußnoten mit \protect\LaTeX{},label=lst:footnotes]
 Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
 \end{lstlisting}
-Hiermit sollte man sparsam umgehen.
 %}}}
 \subsection{Code}%{{{
 \label{sec:code}
@@ -279,13 +278,13 @@ Es ist möglich, die dargestellte Sprache anzupassen, das zeigt \textbackslash\{
 Sollte man diese Funktion gar nicht gebrauchen, kann man die letzten Zeilen in der Präambel dafür kommentieren, damit die Pakete nicht zwingend geladen werden müssen. Das sollte die Performance steigern und mögliche Kompatibilitätsschwierigkeiten, sofern vorhanden, zuvorkommen.
 %}}}
 \subsection{Zitieren}%{{{
-Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu sein. Muss es aber gar nicht sein. Denn hier kommt Bib\TeX{}.
+Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu sein. Muss es aber gar nicht. Denn hier kommt \hologo{BibTeX}.
 
 Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwiegend \href{https://tex.stackexchange.com/}{TeX - LaTeX Stack Exchange}), aber auch einem Blick ins Handbuch von biblatex \footcite{lehman_biblatex_2017}, vorzugsweise in der englischen Originalfassung \footcite{kime_biblatex_2019}, da das Paket ständig überarbeitet wird und somit neue Optionen dazukommen, oder bekannte Optionen ersetzt werden, geschrieben.
 
 Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 
-\begin{lstlisting}[float=htpb,caption=Das setzen von Zitations \protect\LaTeX{},label=lst:cites]
+\begin{lstlisting}[float=htpb,caption=Das Setzen von Zitations \protect\LaTeX{},label=lst:cites]
 Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 \end{lstlisting}
 Relevanter Code:
@@ -300,7 +299,7 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfü
 \hline
 \multicolumn{1}{|l|}{\textbf{Option}} & \textbf{Wert} & \textbf{\begin{tabular}[c]{@{}l@{}}nennenswerter \\ Effekt\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{autocite} & footnote & Setzt eine Fußnote \\ \hline
- & cite & setzt den Verweis direkt im Text \\ \hline
+ & cite & setzt den Verweis direkt im Text \\ \cline{2-3}
  & parencite & setzt den Verweis im Text in Klammern \\ \hline
 \multicolumn{1}{|l|}{style} & numeric & \begin{tabular}[c]{@{}l@{}}Literatur wird numerisch im Verzeichnis\\ aufgeführt\end{tabular} \\ \hline
  & numeric-comp & \begin{tabular}[c]{@{}l@{}}Wie oben, aber mehrerer aufeinanderfolgende\\ Werke werden zusammengefasst\end{tabular} \\ \cline{2-3}
@@ -323,13 +322,13 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfü
 \label{tab:bib-style}
 \end{table}
 
-Die Idee hinter biblatex ist, dass man die Werke einmalig in einer Datenbank erfasst und von dort aus mit einem zugewiesenem \glqq citekey\grqq\ referenziert. Die Erstellung und Verwaltung einer Datenbank ist z.B. über \href{https://www.zotero.org/}{Zotero}\ (Quelloffen), \href{https://www.jabref.org/}{JabRef}\ (Quelloffen) und \href{https://www.citavi.com/}{Citavi}\ (Closed Source) möglich. Da es sich aber, wie bei \LaTeX{}\ üblich um eine einfache Textdatei handelt, kann man die Datenbank auch selbst
-schreiben. Das ist vor allem bei kürzeren Werken eine alternative, wo man nur mit wenigen Quellen arbeiten muss.
-Mir hat bei der Verwendung zotero gut geholfen. Auch hier empfiehlt sich ein einarbeiten in das Program, da es doch sehr viele Möglichkeiten zur Verwaltung der genutzten Literatur bietet.
+Die Idee hinter \hologo{BibTeX}\ ist, dass man die Werke einmalig in einer Datenbank erfasst und von dort aus mit einem zugewiesenem \glqq citekey\grqq\ referenziert. Die Erstellung und Verwaltung einer Datenbank ist z.B. über \href{https://www.zotero.org/}{Zotero}\ (Quelloffen), \href{https://www.jabref.org/}{JabRef}\ (Quelloffen) und \href{https://www.citavi.com/}{Citavi}\ (Closed Source) möglich. Da es sich aber, wie bei \LaTeX{}\ üblich um eine einfache Textdatei handelt, kann man die Datenbank auch selbst
+schreiben. Das ist vor allem bei kürzeren Werken eine Alternative, wo man nur mit wenigen Quellen arbeiten muss.
+Mir hat bei der Verwendung zotero gut geholfen. Auch hier empfiehlt sich ein Einarbeiten in das Programm, da es doch sehr viele Möglichkeiten zur Verwaltung der genutzten Literatur bietet.
 
 Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_kundenbindung_2005}, damit wir den genutzten Stil austesten können.
 
-Es ist ebenfalls möglich, ein Zitat im Text in Klammern zu setzen, so wie es z.B. in der Informatik üblicher ist. Dafür ein weiteres Beispielzitat: Lamport\parencite[Siehe ]{lamport_latex_1994} hat das von Don Knuth\parencite[Siehe ]{knuth_tex_1979} erstellte \TeX{} überarbeitet und \LaTeX{}\ programmiert. \LaTeX{}\ macht den Umgang mit \TeX{}\ deutlich einfacher! Vielen Dank an dieser Stelle an Don E. Knuth und L. Lamport, Richard Stallman, Markus Kohm, sowie allen CTAN-Maintainern und Contributern und vielen mehr! Dank euch ist meine Arbeit hier möglich!
+Es ist ebenfalls möglich, ein Zitat im Text in Klammern zu setzen, so wie es z.B. in der Informatik üblicher ist. Dafür ein weiteres Beispielzitat: Lamport \parencite[Siehe][]{lamport_latex_1994} hat das von Don Knuth \parencite[Siehe][]{knuth_tex_1979} erstellte \TeX{} überarbeitet und \LaTeX{}\ programmiert. \LaTeX{}\ macht den Umgang mit \TeX{}\ deutlich einfacher! Vielen Dank an dieser Stelle an Don E. Knuth und L. Lamport, Richard Stallman, Markus Kohm, sowie allen CTAN-Maintainern und Contributern und vielen mehr! Dank euch ist meine Arbeit hier möglich!
 
 Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe ][S. 6 -- 18]{dibona_open_1999}.
 %}}}
@@ -337,7 +336,7 @@ Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe ][S. 
 \label{sec:refs}
 Leider scheinen Querverweise auf Grafiken gerade nicht zu funktionieren, ein Verweis auf Kapitel~\ref{sec:graphics} funktioniert aber. Ich werde mich der Sache zu einem anderen Zeitpunkt noch mal widmen.
 
-Mal schauen ob ein Querverweis zu Code~\ref{bspcode} funktionieren. Tabelle~\ref{tab:textformat} funktioniert auch.
+Mal schauen ob ein Querverweis zu ~\ref{bspcode} funktionieren. Tabelle~\ref{tab:textformat} funktioniert auch.
 %}}}
 \subsection{Verzeichnisse}%{{{
 \label{sec:catalogs}
@@ -356,7 +355,7 @@ Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir 
 %}}}
 \subsubsection{Abbildungsverzeichnis}%{{{
 \label{sec:lof}
-Abbildungen werden über \textbackslash listoffigures aufgelistet. Damit eine Abbildung im Verzeichnis aufgenommen werden, muss die \textbackslash begin\{figure\}\ldots end\{figure\}-Umgebung genutzt werden. Durch die darin genutzte Option \textbackslash caption\{ \ldots \} hat das Kind auch direkt einen Namen.
+Abbildungen werden über \textbackslash listoffigures aufgelistet. Damit eine Abbildung im Verzeichnis aufgenommen wird, muss die \textbackslash begin\{figure\}\ldots end\{figure\}-Umgebung genutzt werden. Durch die darin genutzte Option \textbackslash caption\{ \ldots \} hat das Kind auch direkt einen Namen.
 %}}}
 \subsubsection{Abkürzungsverzeichnis}%{{{
 \label{sec:acros}

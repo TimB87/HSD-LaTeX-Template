@@ -16,7 +16,9 @@
   left=3cm,%
   right=2.5cm,%
   top=2cm,%
-  bottom=2cm]{geometry}
+  bottom=2cm,%
+  %showframe,% for debugging purposes
+  ]{geometry}
 
 %%% don't use fancyhdr to change headers/footers
 %%% this is left as a warning
@@ -116,7 +118,8 @@
 %%% graphics %{{{
 \usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
 \usepackage{tikz} % https://www.ctan.org/pkg/pgf
-\usetikzlibrary{trees} %}}}
+\usetikzlibrary{trees}
+\usetikzlibrary{lindenmayersystems}%}}}
 %%% list related%{{{
 \usepackage{enumitem} % https://ctan.org/pkg/enumitem
 %\usepackage{mdwlist} % https://www.ctan.org/pkg/mdwlist %}}}
