@@ -1,7 +1,7 @@
 % !TEX root = ../../main.tex
 %%% general page related settings %{{{
 \documentclass[12pt,%
-  %draft,%
+  %draft,% used with overfullrule
   %overfullrule=true,% helps debugging overfull hbox warnings
   bibliography=totoc,%
   listof=totoc,%
@@ -12,12 +12,12 @@
 
 \usepackage[automark,headsepline]{scrlayer-scrpage} % https://www.ctan.org/pkg/scrlayer-scrpage
 
-\usepackage[a4paper,%
+\usepackage[a4paper,% do not use documentclass with div if you use geometry to set the page size
   left=3cm,%
   right=2.5cm,%
   top=2cm,%
   bottom=2cm,%
-  %showframe,% for debugging purposes
+  %showframe,% for debugging purposes, prints a frame around the page
   ]{geometry}
 
 %%% don't use fancyhdr to change headers/footers
@@ -45,7 +45,7 @@
 \KOMAoptions{headsepline=.5pt}
 \pagestyle{scrheadings}
 
-\usepackage{setspace} % 1,5 cm Zeilenabstand
+\usepackage{setspace} % 1,5 cm spacing between lines
 \onehalfspacing{}
 
 %%% don't modify parindent! see attached linked for an explanation why
@@ -60,42 +60,48 @@
 
 %%% end general page related settings %}}}
 %%% language settings %{{{
-%\usepackage[ngerman]{babel} % https://www.ctan.org/pkg/babel
 \usepackage{polyglossia} % https://www.ctan.org/pkg/polyglossia
 \setmainlanguage[spelling=new,babelshorthands=true]{german}
 \newcommand\glqq{"`} % babel did provide these commands
 \newcommand\grqq{"'} % before we used polyglossia
-%\usepackage[babel,german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
 \usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
 \usepackage[german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
 %}}}
 %%% font settings %{{{
-%\usepackage[utf8]{inputenc} % not needed with luatex
-\usepackage{fontspec} % luatex needs this one
-\setmainfont{Arial} % we even get to use Arial, woohoo..
+%\usepackage[utf8]{inputenc} % not needed with lualatex or xetex
+\usepackage{fontspec} % luatex/xetex needs this one
+\setmainfont{Arial} % we even get to use Arial, the less exciting Helvetica! woohoo..
 \setkomafont{footnote}{\footnotesize{10}} % footnote font size is 10pt
-%\renewcommand\familydefault{\sfdefault} %defaults to helvetica
-%%% if you don't or can't use luatex, use this
+
+%%% if you don't or can't use luatex/xetex, use this
 %% helvet is an available alternative to Arial, it's actually the original font
 %% with minimal differences you probably don't need to worry about
+
 %\usepackage[scaled=0.9]{helvet} % use together with courier package to avoid pixelated fonts
+%\renewcommand\familydefault{\sfdefault} %defaults to helvetica
 %\usepackage{courier}
-\usepackage{microtype} % https://www.ctan.org/pkg/microtype
+
+%%% microtype is not fully supported by lualatex/xelatex
+%%% this might change, but we will not depend on this one for now
+
+%\usepackage{microtype} % https://www.ctan.org/pkg/microtype
 %}}}
 %%% math related settings % {{{
-\usepackage{siunitx}
+\usepackage{siunitx} % https://www.ctan.org/pkg/siunitx
 \usepackage{amsmath} % https://www.ctan.org/pkg/amsmath
 \usepackage{unicode-math} % https://www.ctan.org/pkg/unicode-math
 \setmathfont{texgyrepagella-math.otf} % the font we use for math
-%\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolet
+%\usepackage{mathptmx} % https://www.ctan.org/pkg/mathptmx -- obsolete
 %\usepackage{nicefrac} % https://www.ctan.org/pkg/nicefrac
 \usepackage{marvosym} % https://www.ctan.org/pkg/marvosym
 %}}}
 %%% references % {{{
 %\usepackage{varioref} % https://www.ctan.org/pkg/varioref
 %\usepackage{cleveref} % https://www.ctan.org/pkg/cleveref
+
+%%% hyperref is included at the bottom of the preamble because it's a very intrusive package
 %}}}
 %%% additional packages %{{{
 \usepackage[table,xcdraw]{xcolor} % https://www.ctan.org/pkg/xcolor
@@ -116,8 +122,11 @@
 \usepackage{float} % https://www.ctan.org/pkg/float
 \usepackage{caption} % https://www.ctan.org/pkg/caption %}}}
 %%% graphics %{{{
+%%% can be disabled if you don't plan on using tikz
 \usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
 \usepackage{tikz} % https://www.ctan.org/pkg/pgf
+
+%%% additional tikz libraries to work with
 \usetikzlibrary{trees}
 \usetikzlibrary{lindenmayersystems}%}}}
 %%% list related%{{{
@@ -140,19 +149,19 @@
   maxbibnames=7,% print 7 names in the bibliography
   maxcitenames=2,% shorten authors if more than 2
   seconds=true,% required by date=iso
-  sortlocale=de% can be disabled if you don't write in german
+  sortlocale=de% can be disabled if you do not write in german
   url=true,% prints url, if available
   urldate=iso,% access date in iso format
-  ]{biblatex} % https://www.ctan.org/pkg/biblatex 
+  ]{biblatex} % https://www.ctan.org/pkg/biblatex
   \DeclareLanguageMapping{ngerman}{ngerman-apa}%}}}
 %%% i want to cite all the ctan packages that are in use in that document%{{{
-\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_nodate,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_packages_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019,charette_polyglossia_2019}%}}}
+\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_nodate,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_packages_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019,charette_polyglossia_2019,wright_siunitx_2018}%}}}
 %%% glossary/xindy/acronym%{{{
 \usepackage[%
   acronym,% acronyms w/ xindy
   %style=tree%
   toc,% adds glossaries to toc
-  xindy,% index w/ xindy
+  xindy,% index & glossaries w/ xindy
   ]{glossaries-extra} % https://www.ctan.org/pkg/glossaries
 %%% abbreviations
 \loadglsentries{meta/acro.tex} % acronym definitions go there
@@ -162,21 +171,25 @@
 \GlsSetXdyLanguage{german}
 \GlsSetXdyCodePage{duden-utf8}
 \loadglsentries{meta/gls.tex} % glossary definitions go there
-\makeglossaries % w/ xindy
-%\makenoidxglossaries{} % w/o xindy
+\makeglossaries % sorted glossaries
+%\makenoidxglossaries{} % unsorted glossaries
 
 %%% index settings
 \usepackage{makeidx} % https://www.ctan.org/pkg/makeidx
 \usepackage{idxlayout} % https://www.ctan.org/pkg/idxlayout
 \makeindex %}}}
-
 %%% proper source code display%{{{
-% disable those lines if you don't display any code
+
+%%% disable those lines if you don't display any code
+
 \usepackage{listings} % https://www.ctan.org/pkg/listings
-% Colors for listings
+
+%%% Colors for listings
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 \definecolor{green}{rgb}{0,0.6,0}
-\lstset{% general code settings
+
+%%% define the default environment to present listings
+\lstset{%
   basicstyle=\footnotesize,%
   breaklines=true,%
   captionpos=b,%
@@ -194,7 +207,7 @@
   xrightmargin=5pt,%
 }
 
-% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Encoding_issue
+%%% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Encoding_issue
 \lstset{literate=
   {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
   {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
@@ -206,20 +219,37 @@
   {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
   {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
   {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ű}{{\H{u} }}1 {Ű}{{\H{U} }}1 {ő}{{\H{o} }}1 {Ő}{{\H{O} }}1
   {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
   {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
   {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
-}
-%}}}
-
+}%}}}
 %%% these packages have to be the last ones%{{{
 \usepackage{scrhack} % needed for listings and komascript
-\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch }}}
+\usepackage{xpatch} % https://www.ctan.org/pkg/xpatch
 \usepackage[breaklinks=true,%
   citecolor=blue,%
   colorlinks=true,%
   linkcolor=black,%
   menucolor=black,%
   unicode,%
-  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref
+  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref %}}}
+%{{{ %% this is the end of our preamble as we know it
+%▒▒▒░░░░░░░░░░▄▐░░░░
+%▒░░░░░░▄▄▄░░▄██▄░░░
+%░░doot▐▀█▀▌░░░░▀█▄░
+%░░░░░░▐█▄█▌doot░░▀█▄
+%░░░░░░░▀▄▀░░░▄▄▄▄▄▀▀
+%░░░░░▄▄▄██▀▀▀▀░░░░░
+%░░░░█▀▄▄▄█░▀▀░░░░░░
+%░░░░▌░▄▄▄▐▌▀▀▀░░░░░
+%░▄░▐░░░▄▄░█░▀▀░░░░░
+%░▀█▌░░░▄░▀█▀░▀░░░░░
+%░░░░░░░░▄▄▐▌▄▄░░░░░
+%░░░░░░░░▀███▀█░▄░░░
+%░░░░░░░▐▌▀▄▀▄▀▐▄░░░
+%░░░░░░░▐▀░░░░░░▐▌░░
+%░░░░░░░█░░░░░░░░█░░
+%░░░░░░▐▌░░░░░░░░░█░
+%%% you have been spooked by the
+%%% trumpet skeleton from the abyss %}}}

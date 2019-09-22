@@ -5,10 +5,10 @@
 \label{sec:umgang}
 \subsection{Seitenaufbau}%{{{
 \label{sec:seit-aufbau}
-Der Seitenaufbau wird vollständing in der Präambel (siehe meta/preambel.tex) definiert. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
+Der Seitenaufbau wird vollständig in der Präambel (siehe meta/preamble.tex) definiert. Das macht den Umgang mit \gls{latex} für eine wissenschaftliche Arbeit so attraktiv. Grundsätzlich erlaubt es der Workflow von \gls{latex}, sich vollständig auf den Inhalt zu konzentrieren und so wenig wie nötig sich mit \glqq Design\grqq\ aufzuhalten.
 
 Die Dokumentenklasse gibt an, um was für ein Dokument es sich handelt\footcite[Vgl. ][S. 9]{oetiker_not_2018}. Dieses Dokument nutzt die Dokumentenklasse \glqq scrreprt\grqq\footcite[S. 51]{kohm_koma_2019}\ aus dem bekannten Paket \hologo{KOMAScript}. Diese hat sich für unseren Einsatzzweck bereits vielfach bewährt und sollte somit ein sicheres Mittel sein.
-Die Klasse wird mit einigen Parametern geladen, wie zum Beispiel \glqq 12pt\grqq, welches die Schriftgröße auf 12 festlegt. Erwähnenswert ist die Funktion \glqq overfullrule\grqq, denn Sie kann zum Schluss dabei helfen, sogenannte overfull hbox errors zu finden. Diese werden zwar im log protokolliert, das finden gestaltet sich allerdings manchmal schwierig. Mit der Option werden an die entsprechende Stellen dann schwarze Kästchen gedruckt, was die Suche extrem vereinfacht. Typerschweise zeigt die Warnung auf, dass
+Die Klasse wird mit einigen Parametern geladen, wie zum Beispiel \glqq 12pt\grqq, welches die Schriftgröße auf 12 festlegt. Erwähnenswert ist die Funktion \glqq overfullrule\grqq, denn Sie kann zum Schluss dabei helfen, sogenannte \glqq overfull hbox Error\grqq\ zu finden. Diese werden zwar im log protokolliert, das finden gestaltet sich allerdings manchmal schwierig. Mit der Option werden an die entsprechende Stellen dann schwarze Kästchen gedruckt, was die Suche extrem vereinfacht. Typischerweise zeigt die Warnung auf, dass
 in der entsprechenden Zeile zu viel dargestellt wird und der Seitenrand überschrieben wird. Dies ist oft damit verbunden, das \LaTeX{}\ nicht wusste, wie es das Wort richtig trennen soll. Diese Wörter lassen sich dann selbst definieren, so dass \LaTeX{}\ die Silbentrennung beim nächsten Durchlauf korrekt durchführen kann.
 Zusätzlich ist die Option \glqq draft\grqq\ bei größeren Dokumenten hilfreich, denn es verarbeitet nicht alle Informationen und spart dadurch Zeit beim kompilieren. Diese Vorlage wird z.B. aus diesen Gründen im ersten Durchlauf ebenfalls nur als \glqq draft\grqq-Variante kompiliert, da wir praktisch nur die Output-Dateien brauchen, die weiter als Input für \hologo{biber}, makeglossaries und xindy dienen.
 
@@ -16,27 +16,27 @@ Das Paket geometry setzt das Seitenlayout auf die gewünschten Einheiten.
 
 Wichtig zum problemfreien Einsatz der KOMA-Klasse ist, dass ihr das Paket \glqq fancyhdr\grqq\ meidet, da es dafür eigene Befehle und Werkzeuge gibt. Ich verweise hier auf den ~\ref{lst:our-heafoo}.
 
-\lstinputlisting[firstline=19,lastline=42,float=htpb,caption=Der relevante Code für Header und Footer,label=lst:our-heafoo]{meta/preambel.tex}
+\lstinputlisting[firstline=23,lastline=46,float=htpb,caption=Der relevante Code für Header und Footer,label=lst:our-heafoo]{meta/preamble.tex}
 
-Im Text stehen euch dann weitere Befehle zur Verfügung. In main.tex wird z.B. einige Male die Seitennummeriung umgestellt. Mit dem Befehlt \textbackslash pagenumberingstil lassen sich die in der Tabelle~\ref{tab:pgnumb} gezeigten Stile einstellen.
+Im Text stehen euch dann weitere Befehle zur Verfügung. In main.tex wird z.B. einige Male die Paginierung umgestellt. Mit dem Befehlt \textbackslash pagenumberingstil lassen sich die in der Tabelle~\ref{tab:pgnumb} gezeigten Stile einstellen.
 
 \begin{table}[htpb]
   \centering
   \begin{tabular}{|c|c|}
     \hline
-    arabic & (arabische Zahlen \\ \hline
+    arabic & arabische Zahlen \\ \hline
     roman & kleine, römische Zahlen \\ \hline
     Roman & große, römische Zahlen \\ \hline
     alph & kleine Buchstaben \\ \hline
     Alph & große Buchstaben \\ \hline
   \end{tabular}
-  \caption{Die verschiedenen Stile der Seitennummerierung}
+  \caption{Die verschiedenen Stile der Paginierung}
   \label{tab:pgnumb}
 \end{table}
 
 Sollten mal Angaben von Abständen oder ähnlichem erfordert sein, so versteht \LaTeX{}\ die Einheiten \emph{mm}, \emph{cm}, \emph{in} (Inch), \emph{pt} (Point = $\frac{1}{72} in$), \emph{em} (Proportional zur Zeichenbreite), und \emph{ex} (Proportional zur Zeichenhöhe)\footcite[Vgl. ][S. 5]{riedel_latex_2011}.
 
-Weitere Informationen über den Umgang mit \hologo{KOMAScript} erhaltet ihr in dem ausgezeichnetem Handbuch des Pakets, welches wenigstens für gezielte Fragen zwingend konsultiert werden sollte. Außerdem gibt es noch die Möglichkeit auf der \href{https://komascript.de/}{Webseite des Paketes} auf ein Forum sowie ein FAQ zurückzugreifen.
+Weitere Informationen über den Umgang mit \hologo{KOMAScript} erhaltet ihr in dem ausgezeichnetem Handbuch des Pakets, welches wenigstens für gezielte Fragen zwingend konsultiert werden sollte. Außerdem gibt es noch die Möglichkeit auf der \href{https://komascript.de/}{Website des Paketes \protect\hologo{KOMAScript}} auf ein Forum sowie ein FAQ zurückzugreifen.
 
 Diese Vorlage nutzt die Vorgaben des \gls{fb} Wirtschaftswissenschaften, welcher durchaus von anderen \glspl{fb} abweichen kann. Die entsprechenden Änderungen sollten allerdings relativ einfach umzusetzen sein. Gerne addiere ich an spätere Stelle hier entsprechende Vorlagen neben dieser.%}}}
 \subsection{Textformatierung}%{{{
@@ -172,7 +172,7 @@ kumulierter Barwert & 719.776 &  &  &  &  &  \\ \hline
 
 Je nach gewünschtem Stil kann eine Tabelle noch sehr stark verändert werden. Dies schaut man am besten ebenfalls in geeigneter Literatur nach, da es hier den Rahmen sprengen würde.
 
-Ein genereller Tipp aber zum Thema Tabellen: nutzt ein externes Tool. Viele Editoren bringen Tools mit, um Tabellen einfacher zu erstellen. Ich finde folgende Webseite sehr gut \href{https://tablesgenerator.com}{https://tablesgenerator.com}.
+Ein genereller Tipp aber zum Thema Tabellen: nutzt ein externes Tool. Viele Editoren bringen Tools mit, um Tabellen einfacher zu erstellen. Ich finde folgende Website sehr gut \href{https://tablesgenerator.com}{https://tablesgenerator.com}.
 %}}}
 \subsection{Grafiken}%{{{
 \label{sec:graphics}
@@ -185,10 +185,9 @@ Grafiken werden von \LaTeX{}\ dahin gesetzt, wo sie am besten hinpassen. Anhand 
      \label{fig:bild}
 \end{figure}
 
-Der Code für Beispielbild 1%~/ref{fig:bild}.
-..an dieser Stelle würde ich gerne mit \textbackslash ref das Bild referenzieren, leider funktioniert das aktuell noch nicht!
+.
 
-Das erste Bild, \glqq Die Besteuerung eines Marktes\grqq, wurde mit dem Parameter \glqq h!\grqq\ aufgerufen. Für \LaTeX{}\ heißt dass, das Bild an Ort und stelle abzulegen.%~\ref{} i need to include all other listings in floats
+Die Abbildung~\ref{fig:bild} wurde mit dem Parameter \glqq h!\grqq\ (vgl. ~\ref{lst:float_h}) aufgerufen. Für \LaTeX{}\ heißt dass, das Bild an Ort und stelle abzulegen.%~\ref{} i need to include all other listings in floats
 
 \begin{lstlisting}[float=htpb,caption=Einbindung einer Grafik so nah wie möglich am Text,label=lst:float_h]
   \begin{figure}[h!]
@@ -199,7 +198,7 @@ Das erste Bild, \glqq Die Besteuerung eines Marktes\grqq, wurde mit dem Paramete
   \end{figure}
 \end{lstlisting}
 
-Eine zweite Grafik zum rumschieben, dieses mal hat \LaTeX{}\ mehr Freiheiten, durch \glqq htbp\grqq.
+Die zweite Grafik, Abbildung~\ref{fig:bild2}, soll die interne Logik verdeutlichen. Dieses mal hat \LaTeX{}\ mehr Freiheiten durch die Parameter \glqq htbp\grqq\ (vgl. ~\ref{lst:float_htbp}).
 
 \begin{figure}[htbp]
   \centering
@@ -208,7 +207,7 @@ Eine zweite Grafik zum rumschieben, dieses mal hat \LaTeX{}\ mehr Freiheiten, du
   \label{fig:bild2}
 \end{figure}
 
-Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens zwangsläufig, immerhin soll \gls{latex} rund um meine beiden Beispielbilder etwas Text zu verarbeiten haben, damit der Leser/Anwender es später selbst etwas einfacher hat, sich das Konzept vor Augen zu führen. Kommentiert einfach etwas Text raus, ändert die Größe der Grafiken oder die angegebenen Parameter und ihr solltet ein Bild davon bekommen, was \LaTeX{}\ sich bei der Sache denkt.
+Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens nicht zwangsläufig, immerhin soll \gls{latex} rund um meine beiden Beispielbilder etwas Text zu verarbeiten haben, damit der Leser/Anwender es später selbst etwas einfacher hat, sich das Konzept vor Augen zu führen. Kommentiert einfach etwas Text raus, ändert die Größe der Grafiken oder die angegebenen Parameter und ihr solltet ein Bild davon bekommen, was \LaTeX{}\ sich bei der Sache denkt.
 
 Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist ein ernstes Thema auf welches man an dieser Stelle aufmerksam machen kann, da sie sehr wichtig für das Ökosystem unseres Planeten sind.
 
@@ -253,7 +252,7 @@ Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und au
 %}}}
 \subsection{Code}%{{{
 \label{sec:code}
-Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sicht \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float\grqq\ ein Label verpassen, dass wir dann referenzieren können.
+Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sich \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float\grqq\ ein Label verpassen, dass wir dann referenzieren können.
 
 \lstset{language=Ruby}
 \begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
@@ -276,6 +275,8 @@ puts listofstrings.sort.uniq
 Es ist möglich, die dargestellte Sprache anzupassen, das zeigt \textbackslash\{language=Ruby\}. Für das Beispiel musste ich aber die begin/end-Umgebung aufbrechen, da ansonsten der Compiler durcheinander kommt.
 
 Sollte man diese Funktion gar nicht gebrauchen, kann man die letzten Zeilen in der Präambel dafür kommentieren, damit die Pakete nicht zwingend geladen werden müssen. Das sollte die Performance steigern und mögliche Kompatibilitätsschwierigkeiten, sofern vorhanden, zuvorkommen.
+
+Erwähnenswert ist, dass listings offensichtlich Probleme hat, wenn in einem Kommentar ein ' steht. Woran das liegt, kann ich bisher nicht einschätzen. Memo an mich selbst: Es gibt alternativ zu dem Paket listing auch noch das Paket minted. Eventuell funktioniert das besser?
 %}}}
 \subsection{Zitieren}%{{{
 Zitation scheint mit eines der heikeligsten Angelegenheiten in einer Thesis zu sein. Muss es aber gar nicht. Denn hier kommt \hologo{BibTeX}.
@@ -288,7 +289,7 @@ Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigen
 Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 \end{lstlisting}
 Relevanter Code:
-\lstinputlisting[firstline=116,lastline=137,float=htpb,caption=Relevanter Code für biblatex,label=lst:our-bib]{meta/preambel.tex}
+\lstinputlisting[firstline=135,lastline=156,float=htpb,caption=Relevanter Code für biblatex,label=lst:our-bib]{meta/preamble.tex}
 
 In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfügbaren Stile gestalten. Wir benötigen den \gls{apa}-Stil.
 
@@ -303,7 +304,7 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfü
  & parencite & setzt den Verweis im Text in Klammern \\ \hline
 \multicolumn{1}{|l|}{style} & numeric & \begin{tabular}[c]{@{}l@{}}Literatur wird numerisch im Verzeichnis\\ aufgeführt\end{tabular} \\ \hline
  & numeric-comp & \begin{tabular}[c]{@{}l@{}}Wie oben, aber mehrerer aufeinanderfolgende\\ Werke werden zusammengefasst\end{tabular} \\ \cline{2-3}
- & alphabetic & \begin{tabular}[c]{@{}l@{}}Erstellt ein Kürzel des Autors und hängt eine\\ fortlaufende Ziffer dran (numeric Verhalten)\end{tabular} \\ \cline{2-3} 
+ & alphabetic & \begin{tabular}[c]{@{}l@{}}Erstellt ein Kürzel des Autors und hängt eine\\ fortlaufende Ziffer dran (numeric Verhalten)\end{tabular} \\ \cline{2-3}
  & authoryear & Sortiert nach Autor und Jahr \\ \cline{2-3}
  & authoryear-comp & siehe oben \\ \cline{2-3}
  & authoryear-ibid & setzt ein ebenda, bzw. ebd. \\ \cline{2-3}
@@ -324,13 +325,13 @@ In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfü
 
 Die Idee hinter \hologo{BibTeX}\ ist, dass man die Werke einmalig in einer Datenbank erfasst und von dort aus mit einem zugewiesenem \glqq citekey\grqq\ referenziert. Die Erstellung und Verwaltung einer Datenbank ist z.B. über \href{https://www.zotero.org/}{Zotero}\ (Quelloffen), \href{https://www.jabref.org/}{JabRef}\ (Quelloffen) und \href{https://www.citavi.com/}{Citavi}\ (Closed Source) möglich. Da es sich aber, wie bei \LaTeX{}\ üblich um eine einfache Textdatei handelt, kann man die Datenbank auch selbst
 schreiben. Das ist vor allem bei kürzeren Werken eine Alternative, wo man nur mit wenigen Quellen arbeiten muss.
-Mir hat bei der Verwendung zotero gut geholfen. Auch hier empfiehlt sich ein Einarbeiten in das Programm, da es doch sehr viele Möglichkeiten zur Verwaltung der genutzten Literatur bietet.
+Mir hat bei der Verwendung Zotero gut geholfen. Auch hier empfiehlt sich ein Einarbeiten in das Programm, da es doch sehr viele Möglichkeiten zur Verwaltung der genutzten Literatur bietet.
 
 Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{billen_kundenbindung_2005}, damit wir den genutzten Stil austesten können.
 
 Es ist ebenfalls möglich, ein Zitat im Text in Klammern zu setzen, so wie es z.B. in der Informatik üblicher ist. Dafür ein weiteres Beispielzitat: Lamport \parencite[Siehe][]{lamport_latex_1994} hat das von Don Knuth \parencite[Siehe][]{knuth_tex_1979} erstellte \TeX{} überarbeitet und \LaTeX{}\ programmiert. \LaTeX{}\ macht den Umgang mit \TeX{}\ deutlich einfacher! Vielen Dank an dieser Stelle an Don E. Knuth und L. Lamport, Richard Stallman, Markus Kohm, sowie allen CTAN-Maintainern und Contributern und vielen mehr! Dank euch ist meine Arbeit hier möglich!
 
-Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe ][S. 6 -- 18]{dibona_open_1999}.
+Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe ][S. 28 -- 48]{dibona_gnu_1999}.
 %}}}
 \subsection{Querverweise}%{{{
 \label{sec:refs}
@@ -340,7 +341,7 @@ Mal schauen ob ein Querverweis zu ~\ref{bspcode} funktionieren. Tabelle~\ref{tab
 %}}}
 \subsection{Verzeichnisse}%{{{
 \label{sec:catalogs}
-\gls{latex} macht es verhältnismäßig einfach, Verzeichnisse zu führen, das ist aber auch einer der Gründe, warum wir den \gls{latex}-\gls{compiler} mehrfach laufen lassen müssen (vgl. Listing~\ref{lst:arara-rules}). \gls{latex} erstellt bei den ersten Durchläufen Hilfsdateien, die dann ferner von anderen Tools aufgegriffen und verarbeitet werden. Bei dem nächsten Compileraufruf weiß \gls{latex} dann genau, wo es welche Verweise setzen muss. Dies geschieht nicht immer Fehlerfrei, deswegen ist ein prüfender Blick vor der Abgabe dennoch zu empfehlen.
+\gls{latex} macht es verhältnismäßig einfach, Verzeichnisse zu führen, das ist aber auch einer der Gründe, warum wir den \gls{latex}-\gls{compiler} mehrfach laufen lassen müssen (vgl. ~\ref{lst:arara-rules}). \gls{latex} erstellt bei den ersten Durchläufen Hilfsdateien, die dann ferner von anderen Tools aufgegriffen und verarbeitet werden. Bei dem nächsten Compileraufruf weiß \gls{latex} dann genau, wo es welche Verweise setzen muss. Dies geschieht nicht immer Fehlerfrei, deswegen ist ein prüfender Blick vor der Abgabe dennoch zu empfehlen.
 
 \lstinputlisting[firstline=4,lastline=14,float=htpb,caption=arara regeln,label=lst:arara-rules]{main.tex}
 Anbei sind folgende hier im Code verwendete erklärt.
@@ -351,7 +352,7 @@ Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingef�
 
 \lstinputlisting[firstline=52,lastline=54,float=htpb,caption=Unser Inhaltsverzeichnis,label=lst:ourtoc]{main.tex}
 
-Wie wir anhand von Listing~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen.\footcite[Vgl. ][S. 207ff.]{schlosser_wissenschaftliche_2014}
+Wie wir anhand von ~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen.\footcite[Vgl. ][S. 207ff.]{schlosser_wissenschaftliche_2014}
 %}}}
 \subsubsection{Abbildungsverzeichnis}%{{{
 \label{sec:lof}
@@ -363,13 +364,13 @@ Das Abkürzungsverzeichnis wird über das Paket glossaries erstellt. Die Definit
 
 Der Code für glossaries wird einmalig für mehrere Zwecke verwendet, hier allerdings einmalig eingeblendet.
 
-\lstinputlisting[firstline=140,lastline=149,float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preambel.tex}
+\lstinputlisting[firstline=159,lastline=168,float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preamble.tex}
 %}}}
 \subsubsection{Glossar}%{{{
 \label{sec:glossaries}
 Ein Glossar soll dem Leser Fachbegriffe näher bringen. In einem gesonderten Verzeichnis im Anhang werden die definierten Begriffe dann aufgelistet.
 
-\lstinputlisting[firstline=151,lastline=156,float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preambel.tex}
+\lstinputlisting[firstline=170,lastline=175,float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preamble.tex}
 
 Die Glossareinträge sind in meta/gls.tex definiert.
 %}}}
@@ -377,11 +378,11 @@ Die Glossareinträge sind in meta/gls.tex definiert.
 \label{sec:xindy}
 Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 
-\begin{lstlisting}[float=htpb,caption=Das setzen von Indextoken mit \protect\LaTeX{},label=lst:indextoken]
+\begin{lstlisting}[float=htpb,caption=Das Setzen von Indextoken mit \protect\LaTeX{},label=lst:indextoken]
 Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 \end{lstlisting}
 
 Mit einem Index kann man Schlagworte und Themengruppen zusammenfassen und dem Leser helfen, diese im Dokument zu finden.
 
-\lstinputlisting[firstline=156,lastline=161,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preambel.tex}%}}}
+\lstinputlisting[firstline=177,lastline=180,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preamble.tex}%}}}
 %}}}

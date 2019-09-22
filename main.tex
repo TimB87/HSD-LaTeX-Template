@@ -14,11 +14,7 @@
 % arara: lualatex: { shell: true, synctex: true }
 
 %%% we source our input files to get a cleaner main.tex
-\input{meta/preambel.tex} % to fragment
-%input{meta/packages} % or not to fragment
-%input{meta/macros} % that
-%input{meta/hyphenations} % is the
-%input{meta/options} % question
+\input{meta/preamble.tex} % to fragment
 
 % bib resources
 \addbibresource{literature/literature.bib}
@@ -42,13 +38,6 @@
 %%% this fixes overfull hbox errors in our toc
 \makeatletter\renewcommand\@pnumwidth{2em}\makeatother
 
-%\usepackage{tocloft}
-% Page references below from
-% http://mirrors.ctan.org/macros/latex/contrib/tocloft/tocloft.pdf
-%\setlength{\cftfignumwidth}{0.7in} % from p. 9
-%\renewcommand{\cftfigpresnum}{\figurename{} } % from p. 9
-%\renewcommand{\cftfigaftersnum}{: } % from p. 9
-
 \begin{document}
 
 \pagenumbering{Roman} % Roman page numbering style
@@ -68,20 +57,10 @@
 \newpage
 
 %%% table of figures
-%{%
-%  \let\oldnumberline\numberline%
-%  \renewcommand{\numberline}{\figurename~\oldnumberline}% adds 'Figure' before the number
-%  \listoffigures%
-%}
 \listoffigures
 \newpage
 
 %%% table of tables
-%{%
-%    \let\oldnumberline\numberline%
-%    \renewcommand{\numberline}{\tablename~\oldnumberline}% same as above for tables
-%    \listoftables%
-%}
 \listoftables
 \newpage
 
@@ -123,14 +102,14 @@
 
 %%% print bibliography
 \newpage
-\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
+%\renewcommand{\refname}{Literaturverzeichnis} % rename "Literatur" to "Literaturverzeichnis"
 \phantomsection % fixes wrong page numbering
 
 %\printbibliography % print the bibliography as a whole
 
 %%% you can also split your bibliography by type like this
-\printbibliography[keyword=main] % print all cites used throughout our work
-\printbibliography[keyword=ctan,heading=subbibliography,title={CTAN Pakete}] % additionally, cite all packages used
+\printbibliography[keyword=main,title={Literaturverzeichnis}] % print all cites used throughout our work
+\printbibliography[keyword=ctan,heading=subbibintoc,title={CTAN Pakete}] % additionally, cite all packages used
 
 %%% appendix
 \newpage
