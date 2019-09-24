@@ -16,7 +16,7 @@ Das Paket geometry setzt das Seitenlayout auf die gewünschten Einheiten.
 
 Wichtig zum problemfreien Einsatz der KOMA-Klasse ist, dass ihr das Paket \glqq fancyhdr\grqq\ meidet, da es dafür eigene Befehle und Werkzeuge gibt. Ich verweise hier auf den ~\ref{lst:our-heafoo}.
 
-\lstinputlisting[firstline=23,lastline=46,float=htpb,caption=Der relevante Code für Header und Footer,label=lst:our-heafoo]{meta/preamble.tex}
+\lstinputlisting[language=TeX,firstline=23,lastline=46,float=htpb,caption=Der relevante Code für Header und Footer,label=lst:our-heafoo]{meta/preamble.tex}
 
 Im Text stehen euch dann weitere Befehle zur Verfügung. In main.tex wird z.B. einige Male die Paginierung umgestellt. Mit dem Befehlt \textbackslash pagenumberingstil lassen sich die in der Tabelle~\ref{tab:pgnumb} gezeigten Stile einstellen.
 
@@ -66,7 +66,7 @@ Einige grundlegende Befehle findet man aber bereits in Tabelle~\ref{tab:textform
 \subsection{Allgemeiner Umgang mit Zahlen}%{{{
 \label{sec:allgzahl}
 Mit der Schreibumgebung \textbackslash num des Paketes siunitx ist es möglich, Zahlen gut leserlich im Text darzustellen, wenn es noch nicht um die Darstellung von reiner Mathematik geht. Beispielsweise in einem Satz: Zum Zeitpunkt der Erstellung hat der Bau des neuen Berliner Flughafens BER \num[group-separator={.}]{4645889099}\EUR\ gekostet.
-\begin{lstlisting}[float=htpb,caption=Darstellung von Zahlen in \protect\LaTeX{},label=lst:zahlen]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Darstellung von Zahlen in \protect\LaTeX{},label=lst:zahlen]
 Zum Zeitpunkt der Erstellung hat der Bau des neuen Berliner Flughafens BER \num[group-separator={.}]{4645889099}\EUR\ gekostet.
 \end{lstlisting}
 
@@ -77,7 +77,7 @@ Das Paket kann durchaus noch vieles mehr, so wie zum Beispiel die korrekte Darst
 \si{\square\volt\cubic\lumen\per\farad} \\
 \si{\metre\squared\per\gray\cubic\lux}
 
-\begin{lstlisting}[float=htpb,caption=Darstellungen von Einheiten mit siunitx,label=lst:einheiten]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Darstellungen von Einheiten mit siunitx,label=lst:einheiten]
 \si{\kilo\gram\metre\per\square\second} \\
 \si{\gram\per\cubic\centi\metre}
 \\
@@ -104,7 +104,7 @@ $ SEW(RF) = 186,72 $
 $ i_{m} = 0,1097 \approx 10,97\%$
 
 Der Code hierfür sieht wie folgt aus:
-\begin{lstlisting}[float=htpb,caption=Darstellungen von mathematischen Formeln,label=lst:inlinemath]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Darstellungen von mathematischen Formeln,label=lst:inlinemath]
 $ SEW\footnote{Summe der Endwerte} (RF\footnote{Rückflüsse}) = \sum_{t=1}^{n} [ ( E_{t} - A_{t}) \times (1+i)\ ^{N-t}] $
 
 $ SEW(RF) = 5\times1,1^{5}+10\times1,1^{4}+15\times1,1^{3}+10\times1,1^{2}+30\times1,1^{1}+35 = 122,76$
@@ -126,7 +126,7 @@ Grundsätzlich unterstützt \gls{latex} aber noch eine weitere Methode, mathemat
 
 Code:
 
-\begin{lstlisting}[float=htpb,caption=Darstellungen von Mathe mit der \glqq displayed math\grqq-Methode,label=lst:dspmath]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Darstellungen von Mathe mit der \glqq displayed math\grqq-Methode,label=lst:dspmath]
 \[
   \varphi = \frac{1 + \sqrt{5}}{2} = 1.618 \ldots
 \]
@@ -155,7 +155,7 @@ kumulierter Barwert & 719.776 &  &  &  &  &  \\ \hline
 \end{table}
 
 Der dazugehörige Code:
-\begin{lstlisting}[float=htpb,caption=Darstellungen einer Tabelle in \protect\LaTeX{},label=lst:bsptabelle]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Darstellungen einer Tabelle in \protect\LaTeX{},label=lst:bsptabelle]
 \begin{table}[htbp]
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
@@ -189,7 +189,7 @@ Grafiken werden von \LaTeX{}\ dahin gesetzt, wo sie am besten hinpassen. Anhand 
 
 Die Abbildung~\ref{fig:bild} wurde mit dem Parameter \glqq h!\grqq\ (vgl. ~\ref{lst:float_h}) aufgerufen. Für \LaTeX{}\ heißt dass, das Bild an Ort und stelle abzulegen.%~\ref{} i need to include all other listings in floats
 
-\begin{lstlisting}[float=htpb,caption=Einbindung einer Grafik so nah wie möglich am Text,label=lst:float_h]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Einbindung einer Grafik so nah wie möglich am Text,label=lst:float_h]
   \begin{figure}[h!]
     \centering
        \includegraphics[]{ProdKonsRentemitSteuern.pdf}
@@ -211,7 +211,7 @@ Hier schreibe ich noch mal etwas Text hin, der keinen Sinn ergibt, wenigstens ni
 
 Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist ein ernstes Thema auf welches man an dieser Stelle aufmerksam machen kann, da sie sehr wichtig für das Ökosystem unseres Planeten sind.
 
-\begin{lstlisting}[float=htpb,caption=Automatische Einbindung einer Grafik,label=lst:float_htbp]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Automatische Einbindung einer Grafik,label=lst:float_htbp]
   \begin{figure}[htbp]
     \centering
        \includegraphics[width=1\linewidth]{PMSteuer.pdf}
@@ -229,7 +229,7 @@ Zusätzlich erhält dieser Block einen neuen Absatz. Das Thema Bienensterben ist
     level distance=20mm},
     level 2/.style={sibling distance=15mm,
     level distance=10mm}]
-  \node {Planzen}
+  \node {Pflanzen}
     child {node {Blumen}
     child {node {Rosen}}
     child {node {Nelken}}
@@ -246,7 +246,7 @@ Folgendes Beispiel stammt von Christine Römer\footcite{dtk17.1:roemer:tikz} und
 \subsection{Fußnoten}%{{{
 \label{sec:footn}
 Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
-\begin{lstlisting}[float=htpb,caption=Das setzen von Fußnoten mit \protect\LaTeX{},label=lst:footnotes]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Das setzen von Fußnoten mit \protect\LaTeX{},label=lst:footnotes]
 Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
 \end{lstlisting}
 %}}}
@@ -285,11 +285,11 @@ Dieses Sektion wurde außerdem mit Hilfe der üblichen Internetadressen (vorwieg
 
 Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 
-\begin{lstlisting}[float=htpb,caption=Das Setzen von Zitations \protect\LaTeX{},label=lst:cites]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Das Setzen von Zitations \protect\LaTeX{},label=lst:cites]
 Es sei zu erwähnen, das biber\footcite[][]{kime_biber_2019} ebenfalls ein eigenes Handbuch hat, dass weiterhelfen kann!
 \end{lstlisting}
 Relevanter Code:
-\lstinputlisting[firstline=135,lastline=156,float=htpb,caption=Relevanter Code für biblatex,label=lst:our-bib]{meta/preamble.tex}
+\lstinputlisting[language=TeX,firstline=135,lastline=156,float=htpb,caption=Relevanter Code für biblatex,label=lst:our-bib]{meta/preamble.tex}
 
 In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfügbaren Stile gestalten. Wir benötigen den \gls{apa}-Stil.
 
@@ -331,26 +331,26 @@ Das hier ist ein Testzitat für einen Aufsatz in einem Sammelwerk\footcite[][]{b
 
 Es ist ebenfalls möglich, ein Zitat im Text in Klammern zu setzen, so wie es z.B. in der Informatik üblicher ist. Dafür ein weiteres Beispielzitat: Lamport \parencite[Siehe][]{lamport_latex_1994} hat das von Don Knuth \parencite[Siehe][]{knuth_tex_1979} erstellte \TeX{} überarbeitet und \LaTeX{}\ programmiert. \LaTeX{}\ macht den Umgang mit \TeX{}\ deutlich einfacher! Vielen Dank an dieser Stelle an Don E. Knuth und L. Lamport, Richard Stallman, Markus Kohm, sowie allen CTAN-Maintainern und Contributern und vielen mehr! Dank euch ist meine Arbeit hier möglich!
 
-Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe ][S. 28 -- 48]{dibona_gnu_1999}.
+Abschließend ein Verweis direkt im Text auf Richard Stallman, \cite[siehe][S. 28 -- 48]{dibona_gnu_1999}.
 %}}}
 \subsection{Querverweise}%{{{
 \label{sec:refs}
-Leider scheinen Querverweise auf Grafiken gerade nicht zu funktionieren, ein Verweis auf Kapitel~\ref{sec:graphics} funktioniert aber. Ich werde mich der Sache zu einem anderen Zeitpunkt noch mal widmen.
+Hier ein Verweis auf die Abbildung~\ref{fig:bild} im Kapitel~\ref{sec:graphics}.
 
-Mal schauen ob ein Querverweis zu ~\ref{bspcode} funktionieren. Tabelle~\ref{tab:textformat} funktioniert auch.
+Mal schauen ob ein Querverweis zu~\ref{bspcode} funktioniert. Tabelle~\ref{tab:textformat} funktioniert auch.
 %}}}
 \subsection{Verzeichnisse}%{{{
 \label{sec:catalogs}
 \gls{latex} macht es verhältnismäßig einfach, Verzeichnisse zu führen, das ist aber auch einer der Gründe, warum wir den \gls{latex}-\gls{compiler} mehrfach laufen lassen müssen (vgl. ~\ref{lst:arara-rules}). \gls{latex} erstellt bei den ersten Durchläufen Hilfsdateien, die dann ferner von anderen Tools aufgegriffen und verarbeitet werden. Bei dem nächsten Compileraufruf weiß \gls{latex} dann genau, wo es welche Verweise setzen muss. Dies geschieht nicht immer Fehlerfrei, deswegen ist ein prüfender Blick vor der Abgabe dennoch zu empfehlen.
 
-\lstinputlisting[firstline=4,lastline=14,float=htpb,caption=arara regeln,label=lst:arara-rules]{main.tex}
+\lstinputlisting[language=TeX,firstline=4,lastline=14,float=htpb,caption=arara regeln,label=lst:arara-rules]{main.tex}
 Anbei sind folgende hier im Code verwendete erklärt.
 %}}}
 \subsubsection{Inhaltsverzeichnis}%{{{
 \label{sec:toc}
 Ein Inhaltsverzeichnis wird einfach über \textbackslash tableofcontents eingefügt\footcite[Vgl. ][S. 7ff]{ochsner_textverarbeitungssystem_2015}.
 
-\lstinputlisting[firstline=52,lastline=54,float=htpb,caption=Unser Inhaltsverzeichnis,label=lst:ourtoc]{main.tex}
+\lstinputlisting[language=TeX,firstline=52,lastline=54,float=htpb,caption=Unser Inhaltsverzeichnis,label=lst:ourtoc]{main.tex}
 
 Wie wir anhand von ~\ref{lst:ourtoc} in Zeile 2 sehen können, haben wir hier schon die Möglichkeit genutzt, die Tiefe des Inhaltsverzeichnisses anzupassen. Für weitere Optionen ist weiterführende Literatur empfehlenswert, mir hat das Werk von Schlosser gut weitergeholfen.\footcite[Vgl. ][S. 207ff.]{schlosser_wissenschaftliche_2014}
 %}}}
@@ -364,13 +364,13 @@ Das Abkürzungsverzeichnis wird über das Paket glossaries erstellt. Die Definit
 
 Der Code für glossaries wird einmalig für mehrere Zwecke verwendet, hier allerdings einmalig eingeblendet.
 
-\lstinputlisting[firstline=159,lastline=168,float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preamble.tex}
+\lstinputlisting[language=TeX,firstline=159,lastline=168,float=htpb,caption=Relavanter Code für das Abkürzungsverzeichnis,label=lst:our-acros]{meta/preamble.tex}
 %}}}
 \subsubsection{Glossar}%{{{
 \label{sec:glossaries}
 Ein Glossar soll dem Leser Fachbegriffe näher bringen. In einem gesonderten Verzeichnis im Anhang werden die definierten Begriffe dann aufgelistet.
 
-\lstinputlisting[firstline=170,lastline=175,float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preamble.tex}
+\lstinputlisting[language=TeX,firstline=170,lastline=175,float=htpb,caption=Relevanter Code für unser Glossar,label=lst:our-glo]{meta/preamble.tex}
 
 Die Glossareinträge sind in meta/gls.tex definiert.
 %}}}
@@ -378,11 +378,11 @@ Die Glossareinträge sind in meta/gls.tex definiert.
 \label{sec:xindy}
 Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 
-\begin{lstlisting}[float=htpb,caption=Das Setzen von Indextoken mit \protect\LaTeX{},label=lst:indextoken]
+\begin{lstlisting}[language=TeX,float=htpb,caption=Das Setzen von Indextoken mit \protect\LaTeX{},label=lst:indextoken]
 Schreiben sie von \index{Alpha}Alpha bis \index{Omega}Omega.
 \end{lstlisting}
 
 Mit einem Index kann man Schlagworte und Themengruppen zusammenfassen und dem Leser helfen, diese im Dokument zu finden.
 
-\lstinputlisting[firstline=177,lastline=180,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preamble.tex}%}}}
+\lstinputlisting[language=TeX,firstline=177,lastline=180,float=htpb,caption=Relevanter Code für unseren Index,label=lst:our-idx]{meta/preamble.tex}%}}}
 %}}}
