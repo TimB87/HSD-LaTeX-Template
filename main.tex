@@ -110,7 +110,8 @@
 
 %%% you can also split your bibliography by type like this
 \printbibliography[keyword=main,title={Literaturverzeichnis}] % print all cites used throughout our work
-\printbibliography[keyword=ctan,heading=subbibintoc,title={CTAN Pakete}] % additionally, cite all packages used
+\defbibnote{prectan}{\emph{Hier werden alle in diesem Dokument genutzten CTAN Pakete aufgelistet}}
+\printbibliography[keyword=ctan,heading=subbibintoc,title={CTAN Pakete},prenote=prectan] % additionally, cite all packages used
 
 %%% appendix
 \newpage

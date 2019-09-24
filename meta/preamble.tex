@@ -73,6 +73,7 @@
 %\usepackage[utf8]{inputenc} % not needed with lualatex or xetex
 \usepackage{fontspec} % luatex/xetex needs this one
 \setmainfont{Arial} % we even get to use Arial, the less exciting Helvetica! woohoo..
+\setkomafont{disposition}{\bfseries} % use sans serif for chapters as well
 \setkomafont{footnote}{\footnotesize{10}} % footnote font size is 10pt
 
 %%% if you don't or can't use luatex/xetex, use this
@@ -121,7 +122,9 @@
 %\usepackage{colortbl} % https://www.ctan.org/pkg/colortbl %}}}
 %%% floats %{{{
 \usepackage{float} % https://www.ctan.org/pkg/float
-\usepackage{caption} % https://www.ctan.org/pkg/caption %}}}
+\usepackage[]{caption} % https://www.ctan.org/pkg/caption
+\captionsetup{font=footnotesize}
+%}}}
 %%% graphics %{{{
 %%% can be disabled if you don't plan on using tikz
 \usepackage{graphicx} % https://www.ctan.org/pkg/graphicx
