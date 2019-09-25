@@ -12,7 +12,7 @@ Jede Komponente diesen Dokumentes ist daraus ausgelegt, das vollständig zu unte
 Folgende Komponenten sind im Einsatz:
 \begin{description}
   \item[arara] Verwaltet, wie die weiteren Programme aufgerufen werden, damit am Ende ein fehlerfreies Dokument erscheint
-  \item[\protect\hologo{LuaLaTeX}] Ist eine moderne alternative zu dem klassischem \glqq \hologo{pdfLaTeX}\grqq , welches z.B. keine native \gls{utf8}-unterstützung hat
+  \item[\protect\hologo{LuaLaTeX}] Ist eine moderne alternative zu dem klassischem \glqq \hologo{pdfLaTeX}\grqq , welches z. B. keine native \gls{utf8}-unterstützung hat
   \item[xindy] Erstellt Abkürzungsverzeichnis und Index
   \item[makeglossaries] Erstellt das Glossar
   \item[\protect\hologo{biber}] Ist in der Lage, bibtex Dateien in \gls{utf8} zu verarbeiten
@@ -23,7 +23,7 @@ Als Nutzer sollte man damit kaum in Kontakt kommen. Solltest du aber diese Vorla
 \subsection{Vorteile von \protect\LaTeX{}}%{{{
 \label{sec:vort-von}
 \LaTeX{} ist, anders als Word, eine deskriptive Umgebung. Das ermöglicht einen anderen Arbeitsfluss und produziert ein, meiner Meinung nach, deutlich hübscheres Dokument mit weniger Aufwand, außerdem existiert ja nun auch diese Vorlage, auf die du zurückgreifen kannst. Der Code ist kommentiert und hilft hoffentlich, die richtigen Anpassungen einfach zu finden. In Zukunft findet sich hier eventuell ein Kapitel, das kurz die Struktur erklärt.
-Zu den Vorteilen zählt z.B. Datta, dass \gls{latex}, auf Grund seiner Eigenschaft sich nicht mit dem Design aufhalten zu müssen, besser für wissenschaftliche Texte eignet, da es weniger Zeit bedarf, große und komplexe Arbeiten zu schreiben.\footcite[Vgl. ][S. 1f.]{datta_latex_2017}
+Zu den Vorteilen zählt z. B. Datta, dass \gls{latex}, auf Grund seiner Eigenschaft sich nicht mit dem Design aufhalten zu müssen, besser für wissenschaftliche Texte eignet, da es weniger Zeit bedarf, große und komplexe Arbeiten zu schreiben.\footcite[Vgl. ][S. 1f.]{datta_latex_2017}
 
 Außerdem handelt es sich um Freie Software, hierfür empfiehlt sich ein Blick zur \gls{fsf}.
 %}}}
@@ -36,10 +36,10 @@ Es ist geraten, sich vorher mit der Arbeitsumgebung vertraut zu machen. Eine Suc
 Unter Linux findet man texlive in der Regel in dem jeweiligen Paketmanager der Distribution. Sobald die Arbeitsumgebung eingerichtet ist, kann prinzipiell über ein Terminal mit dem Befehl \glqq arara main.tex\grqq\ das pdf kompiliert werden.
 Geeignete Editoren, wie zum Beispiel texmaker, findet man ebenfalls im Paketmanager. Wichtig ist, dass die Dateien mit \gls{utf8}-Unterstützung geladen werden.
 
-Um den Support zu erweitern, würde ich mich über entsprechende \gls{pull}\footnote{\href{https://help.github.com/en/articles/about-pull-requests}{About pull requests on github.com}} freuen, die Vorlage sollte z.B. auch relativ einfach mit \hologo{XeLaTeX}\ funktionieren.%}}}
+Um den Support zu erweitern, würde ich mich über entsprechende \gls{pull}\footnote{\href{https://help.github.com/en/articles/about-pull-requests}{About pull requests on github.com}} freuen, die Vorlage sollte z. B. auch relativ einfach mit \hologo{XeLaTeX}\ funktionieren.%}}}
 \subsection{Detaileinstellungen}%{{{ 
 \label{detail-grundl}
-Wenn z.B. über \textbackslash usepackage\{fancyhdr\} in der Präambel das gleichnamige Paket geladen wird, um z.B. die Kopf-/Fußzeile des Dokumentes zu verändern, werden andere, dem \TeX{}-Compiler standardmäßig zur Verfügung stehende Befehle überschrieben. Dieses Verhalten führt dazu, dass alle Pakete und die genutzte Dokumentenklasse ein regelrechtes Ökosystem zusammen bilden, da im schlimmsten Fall der \gls{compiler} das Dokument nicht erstellen kann.
+Wenn z. B. über \textbackslash usepackage\{fancyhdr\} in der Präambel das gleichnamige Paket geladen wird, um z. B. die Kopf-/Fußzeile des Dokumentes zu verändern, werden andere, dem \TeX{}-Compiler standardmäßig zur Verfügung stehende Befehle überschrieben. Dieses Verhalten führt dazu, dass alle Pakete und die genutzte Dokumentenklasse ein regelrechtes Ökosystem zusammen bilden, da im schlimmsten Fall der \gls{compiler} das Dokument nicht erstellen kann.
 
 Bei der Erstellung dieser Vorlage wurde darauf geachtet, die genutzte Dokumentenklasse so \glqq harmonisch\grqq\ wie möglich einzurichten. Das bedeutet, dass keine Befehle ungewollt überschrieben worden sind und jedes Paket genau das Verhalten zeigen sollte, welches im jeweiligem Handbuch beschrieben ist. Andernfalls habt ihr einen Bug gefunden\dots \dots und ihr wisst ja was man mit Bugs tut.
 
@@ -51,7 +51,7 @@ main.tex ist mehr ein reines Grundgerüst, das sich den Inhalt weiterer \TeX{}-D
 \input{graphics/structure.tex}
 
 Der Quelltext von main.tex beinhaltet den Link zur jeweiligen Dokumentation der verwendeten Pakete. Oftmals bringen diese eine Vielzahl weiterer Optionen mit sich, die es sich durchaus zu erkunden lohnt.
-Weitere Details findet man im Netz, z.B. interessante Informationen darüber, was ein gutes Dokument ausmacht (Beispielsweise bezogen auf das Thema \textbackslash parskip und \textbackslash parindent oder der Einsatz von \textbackslash fancyhdr zusammen mit einer KOMA-Klasse).%}}}
+Weitere Details findet man im Netz, z. B. interessante Informationen darüber, was ein gutes Dokument ausmacht (Beispielsweise bezogen auf das Thema \textbackslash parskip und \textbackslash parindent oder der Einsatz von \textbackslash fancyhdr zusammen mit einer KOMA-Klasse).%}}}
 \subsection{Danksagung}%{{{
 \label{sec:thx}
 Bei der Erstellung des Templates, von der Idee bis zum ersten Release, haben mir einige Personen geholfen, denen ich hiermit meinen herzlichen Dank ausprechen möchte. Ohne euch wäre das alles eine ganze Ecke schwerer gewesen! 
