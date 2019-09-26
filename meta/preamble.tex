@@ -200,7 +200,7 @@
   commentstyle=\color{green}\itshape,% comment style
   frame=single,%
   keywordstyle=\color{blue}\bfseries,% keyword style
-  language=TeX,%
+  language=[LaTeX]TeX,%
   numbers=left,%
   numbersep=5pt,%
   numberstyle=\tiny,%
@@ -210,6 +210,17 @@
   title=\lstname,%
   xleftmargin=5pt,%
   xrightmargin=5pt,%
+}
+
+\lstset{morekeywords={%
+    lstset, textbackslash, includegraphics, num, EUR,%
+    KOMAoptions, cfoot, rohead, rehead, headmark, pagemark,%
+    clearpairofpagestyles, usepackage, makeindex,%
+    makeglossaries, loadglsentries, GlsSetXdyCodePage,%
+    GlsSetXdyLanguage, setabbreviationstyle, setcounter,%
+    tableofcontents, arara, lualatex, xindy, biber,%
+    DeclareLanguageMapping%
+    },emphstyle={\color{blue}\bfseries}%
 }
 
 %%% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Encoding_issue
