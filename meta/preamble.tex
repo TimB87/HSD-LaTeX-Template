@@ -8,14 +8,14 @@
 
 % !TEX root = ../../main.tex
 %%% general page related settings %{{{
-\documentclass[12pt,%
-  %draft,% used with overfullrule
+\documentclass[fontsize=12pt,%
+  %draft,%
   %overfullrule=true,% helps debugging overfull hbox warnings
   bibliography=totoc,%
   listof=totoc,%
   listof=entryprefix,%
   toc=sectionentrywithdots,%
-  oneside,%
+  twoside=false,%
   ]{scrartcl} % https://www.ctan.org/pkg/scrartcl
 
 \usepackage[automark,headsepline]{scrlayer-scrpage} % https://www.ctan.org/pkg/scrlayer-scrpage
@@ -167,7 +167,7 @@
   ]{biblatex} % https://www.ctan.org/pkg/biblatex
   \DeclareLanguageMapping{ngerman}{ngerman-apa}%}}}
 %%% i want to cite all the ctan packages that are in use in that document%{{{
-\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_nodate,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_packages_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019,charette_polyglossia_2019,wright_siunitx_2018}%}}}
+\nocite{talbot_glossaries_2019,kohm_koma_2019,kime_biber_2019,oetiker_not_2018,lehman_biblatex_2017,kime_biblatex_2019,oetiker_acronym_2015,the_latex_project_team_users_2018,cereda_arara_2019,mittelbach_new_2019,braams_babel_2019,sommerfeldt_customizing_2011,cubitt_cleveref_2018,carlisle_colortbl_2018,lehman_csquotes_2019,bezos_customizing_2019,van_zandt_documentation_2010,lingnau_improved_2001,fairbairns_footmisc_2011,carlisle_graphics_2017,oberdiek_hologo_2017,rahtz_hypertext_2018,oberdiek_hyphsubst_2016,titz_idxlayout_2012,heinz_listings_2019,braams_standard_2014,henlich_marvosym_2012,schlicht_microtype_2019,van_oostrum_multirow_2019,tantau_tikz_2019,schroder_ragged2e-package_2019,robertson_experimental_2019,reichert_units.sty_1998,mittelbach_frank_varioref_2016,kern_extending_2016,gregorio_xpatch_2012,talbot_glossaries-extra.sty_2019,wilson_appendix_2009,hansen_multibib_2008,wright_siunitx_2018,kime_apa_2019,charette_polyglossia_2019,wright_siunitx_2018,oberdiek_bookmark_2019}%}}}
 %%% glossary/xindy/acronym%{{{
 \usepackage[%
   acronym,% acronyms w/ xindy
@@ -258,7 +258,8 @@
   linkcolor=black,%
   menucolor=black,%
   unicode,%
-  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref %}}}
+  urlcolor=black]{hyperref} % https://www.ctan.org/pkg/hyperref
+\usepackage{bookmark} % https://www.ctan.org/pkg/bookmark %}}}
 %{{{ %% this is the end of our preamble as we know it
 %▒▒▒░░░░░░░░░░▄▐░░░░
 %▒░░░░░░▄▄▄░░▄██▄░░░

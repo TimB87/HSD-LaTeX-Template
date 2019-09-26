@@ -54,15 +54,15 @@ Da dies hier den Rahmen sprengen würde, möchte ich auf eine sehr gute, kostenf
 \begin{table}[htbp]
   \resizebox{\textwidth}{!}{% gently resize our table to fit the page
   \centering
-    \begin{tabular}{|l|l|l|}
-    \hline
+    \begin{tabular}{lll}
+    %\hline
     Befehl & Effekt & Anmerkung \\ \hline
-    \textbackslash emph\{Befehl\} & \emph{Befehl} & Bevorzugt, wählt automatisch zwischen textbf und textit \\ \hline
-    \textbackslash textbf\{Befehl\} & \textbf{Befehl} &  \\ \hline
-    \textbackslash textit\{Befehl\} & \textit{Befehl} &  \\ \hline
-    \textbackslash textsl\{Befehl\} & \textsl{Befehl} &  \\ \hline
+    \textbackslash emph\{Befehl\} & \emph{Befehl} & Bevorzugt, wählt automatisch zwischen textbf und textit \\% \hline
+    \textbackslash textbf\{Befehl\} & \textbf{Befehl} &  \\% \hline
+    \textbackslash textit\{Befehl\} & \textit{Befehl} &  \\% \hline
+    \textbackslash textsl\{Befehl\} & \textsl{Befehl} &  \\% \hline
     \textbackslash underline\{Befehl\} & \underline{Befehl} & Sollte angepasst werden, da das Standardverhalten \\ %\cline{1-2}
-    & & womöglich ein unerwartetes Ergebnis produziert \\ \hline
+    & & womöglich ein unerwartetes Ergebnis produziert \\ %\hline
     \end{tabular}%
   }
   \caption{Grundlegende Textformatierung}
@@ -258,7 +258,7 @@ Fußnoten werden über den Befehl \textbackslash footnote gesetzt und automatisc
 Fußnoten werden über den Befehl \footnote{Meine erste Fußnote} gesetzt und automatisch im Footer fortlaufend Nummeriert aufgeführt.\footnote{\href{https://de.wikibooks.org/wiki/LaTeX-W\%C3\%B6rterbuch:_footnote}{Mehr auf Wikibooks}}
 \end{lstlisting}
 %}}}
-\subsection{Code}%{{{
+\subsection{Quellcode}%{{{
 \label{sec:code}
 Code wird am Besten, genau wie eine Grafik (siehe Kapitel~\ref{sec:graphics}), in einer eigenen Umgebung eingefügt. Erstens kümmert sich \gls{latex} nun selbstständig um die Platzierung, zweitens können wir dem \glqq Float\grqq\ ein Label verpassen, dass wir dann referenzieren können.
 
@@ -270,7 +270,7 @@ puts listofstrings.sort.uniq
 \end{lstlisting}
 
 Der Code hierfür:
-\begin{lstlisting}[language=Ruby,float=htpb,caption=Darstellung eines beliebigen Codes in der Sprache ruby,label=lst:ruby]
+\begin{lstlisting}[float=htpb,caption=Darstellung eines beliebigen Codes in der Sprache ruby,label=lst:ruby]
 \textbackslash begin{lstlisting}[float=htpb,caption=Beispielcode,label=bspcode]
 #!/usr/bin/env ruby
 
@@ -299,7 +299,7 @@ Relevanter Code:
 
 In Tabelle ~\ref{tab:bib-style} will ich eine kleine Übersicht über die verfügbaren Stile gestalten. Wir benötigen den \gls{apa}-Stil.
 
-\begin{table}[htbp]
+\begin{table}[h]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{l|l|l|}
