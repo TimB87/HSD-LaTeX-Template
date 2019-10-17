@@ -11,35 +11,34 @@
 
 \section{Einleitung}%{{{
 \label{sec:einl}
-Mit dieser Vorlage soll den Studierenden der \gls{hsd}\footnote{\href{https://www.hs-duesseldorf.de}{Website der Hochschule Düsseldorf}} eine Vorlage zur Erstellung einer Thesis mit \gls{latex} an die Hand gegeben werden, die der \gls{po} im Allgemeinen entspricht und die einfach nach den Bedürfnissen des jeweiligen betreuenden Professors angepasst werden kann. Bei \gls{latex} handelt es sich um eine \glqq professionelle Typeset-Entwicklungsumgebung\grqq, wenn man so möchte. Da \gls{latex} schon
-relativ alt ist (zum Zeitpunkt der Erstellung dieser Vorlage etwa 36 Jahre, um genau zu sein) muss man einige Feinheiten beachten. Die Motivation zur Erstellung dieser Vorlage war, selbst Sicherheit mit dem Umgang von \gls{latex} zu erhalten, um später auf dieses Werkzeug zurückgreifen zu können. Und ganz im Sinne der Philosophie dieser Software soll diese Vorlage später auch dir, frei (wie in Freiheit, nicht wie kostenfrei) zur Verfügung stehen.
+Dieses Dokument bietet den Studierenden der HSD eine Vorlage zur Erstellung einer Thesis mit Latex. Dabei entspricht die Formatierung im Allgemeinen der aktuellen Prüfungsordnung und kann bei Bedarf nach den spezifischen Vorgaben der betreuenden Dozenten angepasst werden. Bei \gls{latex} handelt es sich um eine \glqq professionelle Typeset-Entwicklungsumgebung\grqq. Da \gls{latex} schon relativ alt ist (zum Zeitpunkt der Erstellung dieser Vorlage etwa 36 Jahre) gibt es im Umgang mit \gls{latex} einige Feinheiten zu beachten. Die Motivation zur Erstellung dieser Vorlage war, selbst Sicherheit im Umgang mit \gls{latex} zu erhalten, um später auf dieses Werkzeug zurückgreifen zu können. Und ganz im Sinne der Philosophie dieser Software wird diese Vorlage später auch dir, frei (wie in Freiheit, nicht wie kostenfrei) zur Verfügung stehen.
 
-Eine dieser Feinheiten ist die Unterstützung von erweiterten Zeichencodierungen, genaugenommen \gls{utf8}-Unterstützung.
-Jede Komponente diesen Dokumentes ist daraus ausgelegt, das vollständig zu unterstützen. Das ist wichtig, damit wir keine Schwierigkeiten bekommen, \glqq besondere Zeichen\grqq, so wie zum Beispiel Umlaute (siehe anhand des Namens einiger Autoren in diesem Inhaltsverzeichnis), darzustellen.
+Zu den o.g. Feinheiten zählt zum Beispiel die Unterstützung von erweiterten Zeichencodierungen, die \gls{utf8}-Unterstützung. Dieses Dokument ist vollständig darauf ausgelegt.
+Das ist wichtig, damit Sonderzeichen wie z.B. Umlaute problemlos dargestellt werden können (für Beispiele wirf mal einen Blick ins Inhaltsverzeichnis).
 
 Folgende Komponenten sind im Einsatz:
 \begin{description}
-  \item[arara] Verwaltet, wie die weiteren Programme aufgerufen werden, damit am Ende ein fehlerfreies Dokument erscheint
+  \item[arara] Verwaltet wie die weiteren Programme aufgerufen werden, damit am Ende ein fehlerfreies Dokument erscheint
   \item[\protect\hologo{LuaLaTeX}] Ist eine moderne alternative zu dem klassischem \glqq \hologo{pdfLaTeX}\grqq , welches z. B. keine native \gls{utf8}-unterstützung hat
   \item[xindy] Erstellt Abkürzungsverzeichnis und Index
   \item[makeglossaries] Erstellt das Glossar
-  \item[\protect\hologo{biber}] Ist in der Lage, bibtex Dateien in \gls{utf8} zu verarbeiten
+  \item[\protect\hologo{biber}] Kann bibtex Dateien in \gls{utf8} verarbeiten
 \end{description}
 
-Als Nutzer sollte man damit kaum in Kontakt kommen. Solltest du aber diese Vorlage mit verbessern wollen, freue ich mich über deinen \gls{pull}.
+Als Nutzer kommst du damit kaum in Kontakt. Solltest du aber diese Vorlage mit verbessern wollen, freue ich mich über deinen \gls{pull}.
 %}}}
 \subsection{Vorteile von \protect\LaTeX{}}%{{{
 \label{sec:vort-von}
-\LaTeX{} ist, anders als Word, eine deskriptive Umgebung. Das ermöglicht einen anderen Arbeitsfluss und produziert ein, meiner Meinung nach, deutlich hübscheres Dokument mit weniger Aufwand, außerdem existiert ja nun auch diese Vorlage, auf die du zurückgreifen kannst. Der Code ist kommentiert und hilft hoffentlich, die richtigen Anpassungen einfach zu finden. In Zukunft findet sich hier eventuell ein Kapitel, das kurz die Struktur erklärt.
-Zu den Vorteilen zählt z. B. Datta, dass \gls{latex}, auf Grund seiner Eigenschaft sich nicht mit dem Design aufhalten zu müssen, besser für wissenschaftliche Texte eignet, da es weniger Zeit bedarf, große und komplexe Arbeiten zu schreiben.\footcite[Vgl. ][S. 1f.]{datta_latex_2017}
+\gls{latex} ist, anders als Word, eine deskriptive Umgebung. Das ermöglicht einen anderen Arbeitsfluss und du kannst, meiner Meinung nach, mit geringem Aufwand ein deutlich schöneres Dokument erstellen. Zumal du auf diese Vorlage zurückgreifen kannst. Der Code ist kommentiert und hilft hoffentlich, die richtigen Anpassungen leicht zu finden. In Zukunft findet sich hier eventuell ein Kapitel, das kurz die Struktur erklärt.
+Zu den Vorzügen von \gls{latex}, z.B. von Datta herausgestellt, zählt, dass es besonders für komplexe wissenschaftliche Arbeiten eine erhebliche Zeitersparnis bringt, da es nicht notwendig ist, sich lange mit dem Design aufzuhalten.\footcite[Vgl. ][S. 1f.]{datta_latex_2017}
 
 Außerdem handelt es sich um Freie Software, hierfür empfiehlt sich ein Blick zur \gls{fsf}.
 %}}}
 \subsection{Grundlegender Umgang}%{{{
 \label{sec:grundl}
-Diese Vorlage wurde unter einem Linux System mit Hilfe der \gls{tex}-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Website der Software texlive}} \glspl{kompilieren}. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Mac-Systemen funktioniert, hierfür erfolgt aber meinerseits keine Prüfung. Da aber laut Grätzer ein weiter Arbeiten sogar auf dem iPad möglich ist\footcite[Vgl. ][S. 179ff]{gratzer_practical_2014}, erwarte ich wenige Schwierigkeiten für euch.
+Diese Vorlage wurde unter einem Linux System mithilfe der \gls{tex}-Umgebung texlive\footnote{\href{https://tug.org/texlive/}{Website der Software texlive}} \glspl{kompilieren}. Es ist davon auszugehen, dass die Vorlage auf Windows sowie Mac-Systemen funktioniert, das habe ich allerdings nicht geprüft. Da laut Grätzer ein weiterarbeiten sogar auf dem iPad möglich ist, solltest du keine Schwierigkeiten haben.\footcite[Vgl. ][S. 179ff]{gratzer_practical_2014}
 
-Es ist geraten, sich vorher mit der Arbeitsumgebung vertraut zu machen. Eine Suchmaschine hilft bei der Einrichtung der TeX-Umgebung sowie der Auswahl eines geeigneten Editors. texlive wird meinerseits empfohlen, da es wohl das aktivste Projekt ist das a) bei der Erstellung diesen Templates genutzt wurde, b) auf allen gängigen Plattformen funktioniert und c) \protect\hologo{LuaLaTeX}, xindy und \protect\hologo{biber}\ automatisch unterstützt. Den Support der anderen Projekte habe ich mir nicht angeschaut.
+Mach dich bestenfalls vorher mit der Arbeitsumgebung vertraut. Eine Suchmaschine hilft dir bei der Einrichtung der TeX-Umgebung sowie der Auswahl eines geeigneten Editors. texlive wird meinerseits als \gls{tex}-Umgebung empfohlen, da es wohl das aktivste Projekt ist das a) bei der Erstellung dieses Templates genutzt wurde, b) auf allen gängigen Plattformen funktioniert und c) \protect\hologo{LuaLaTeX}, xindy und \protect\hologo{biber}\ automatisch unterstützt. Den Support der anderen Projekte habe ich mir nicht angeschaut.
 
 Unter Linux findet man texlive in der Regel in dem jeweiligen Paketmanager der Distribution. Sobald die Arbeitsumgebung eingerichtet ist, kann prinzipiell über ein Terminal mit dem Befehl \glqq arara main.tex\grqq\ das pdf kompiliert werden.
 Geeignete Editoren, wie zum Beispiel texmaker, findet man ebenfalls im Paketmanager. Wichtig ist, dass die Dateien mit \gls{utf8}-Unterstützung geladen werden.
@@ -47,14 +46,14 @@ Geeignete Editoren, wie zum Beispiel texmaker, findet man ebenfalls im Paketmana
 Um den Support zu erweitern, würde ich mich über entsprechende \gls{pull}\footnote{\href{https://help.github.com/en/articles/about-pull-requests}{About pull requests on github.com}} freuen, die Vorlage sollte z. B. auch relativ einfach mit \hologo{XeLaTeX}\ funktionieren.%}}}
 \subsection{Detaileinstellungen}%{{{ 
 \label{detail-grundl}
-Wenn z. B. über \textbackslash usepackage\{fancyhdr\} in der Präambel das gleichnamige Paket geladen wird, um z. B. die Kopf-/Fußzeile des Dokumentes zu verändern, werden andere, dem \TeX{}-Compiler standardmäßig zur Verfügung stehende Befehle überschrieben. Dieses Verhalten führt dazu, dass alle Pakete und die genutzte Dokumentenklasse ein regelrechtes Ökosystem zusammen bilden, da im schlimmsten Fall der \gls{compiler} das Dokument nicht erstellen kann.
+Wenn z. B. über \textbackslash usepackage\{fancyhdr\} in der Präambel das gleichnamige Paket geladen wird, um z. B. die Kopf-/Fußzeile des Dokumentes zu verändern, werden andere, dem \TeX{}-Compiler standardmäßig zur Verfügung stehende Befehle überschrieben. Wenn das passiert, ist vorsicht geboten, da ggf. das zu erwartende Verhalten des \glspl{compiler} stark verändert wird oder das Dokument gar nicht erstellt werden kann.
 
-Bei der Erstellung dieser Vorlage wurde darauf geachtet, die genutzte Dokumentenklasse so \glqq harmonisch\grqq\ wie möglich einzurichten. Das bedeutet, dass keine Befehle ungewollt überschrieben worden sind und jedes Paket genau das Verhalten zeigen sollte, welches im jeweiligem Handbuch beschrieben ist. Andernfalls habt ihr einen Bug gefunden\dots \dots und ihr wisst ja was man mit Bugs tut.
+Bei der Erstellung dieser Vorlage wurde darauf geachtet, die genutzte Dokumentenklasse so \glqq harmonisch\grqq\ wie möglich einzurichten. Das bedeutet, dass Befehle nicht versehentlich überschrieben wurden und jedes Paket genau das Verhalten zeigen sollte, welches im jeweiligem Handbuch beschrieben ist. Andernfalls habt ihr einen Bug gefunden\dots \dots und ihr wisst ja was man mit Bugs tut.
 
-Im oben genannten Beispiel werden einige Befehle überschrieben. Das ist nicht kritisch, kann aber zu obskuren Verhalten führen, der euer Dokument ruinieren könnte. Um euch also Kopfschmerzen zu sparen, um einen Fehler zu finden, sollte man auf solche Warnungen im log stets achten.%}}}
+Im oben genannten Beispiel werden einige Befehle überschrieben. Das ist nicht kritisch, kann aber zu obskurem Verhalten führen, was euer Dokument ruinieren könnte. Du sparst dir also eine Menge Kopfschmerzen und Fehlersuche, wenn du die Warnungen im log beachtest.%}}}
 \subsection{Struktur}%{{{
 \label{sec:struct}
-main.tex ist mehr ein reines Grundgerüst, das sich den Inhalt weiterer \TeX{}-Do\-ku\-men\-te hinzuzieht, um unser Dokument zu erstellen. Die Struktur ist wie folgt aufgebaut:
+main.tex ist ein reines Grundgerüst, das sich den Inhalt weiterer \TeX{}-Do\-ku\-men\-te hinzuzieht, um das Dokument zu erstellen. Die Struktur ist wie folgt aufgebaut:
 
 \input{graphics/structure.tex}
 
@@ -62,11 +61,10 @@ Der Quelltext von main.tex beinhaltet den Link zur jeweiligen Dokumentation der 
 Weitere Details findet man im Netz, z. B. interessante Informationen darüber, was ein gutes Dokument ausmacht (Beispielsweise bezogen auf das Thema \textbackslash parskip und \textbackslash parindent oder der Einsatz von \textbackslash fancyhdr zusammen mit einer KOMA-Klasse).%}}}
 \subsection{Danksagung}%{{{
 \label{sec:thx}
-Bei der Erstellung des Templates, von der Idee bis zum ersten Release, haben mir einige Personen geholfen, denen ich hiermit meinen herzlichen Dank ausprechen möchte. Ohne euch wäre das alles eine ganze Ecke schwerer gewesen! 
+Bei der Erstellung des Templates, von der Idee bis zum ersten Release, haben mir einige Personen geholfen, denen ich hiermit meinen herzlichen Dank aussprechen möchte. Ohne euch wäre das alles eine ganze Ecke schwerer gewesen! 
 
 Die Nennung erfolgt alphabetisch.
 \begin{description}
-  \item[Marie] Für alles
   \item[Prof. Dr.-Ing. Michael Protogerakis] Codereview, Ideen und Feedback
   \item[Sophia Ring] Korrekturlesen und auch sonstiges Heldentum
   \item[Prof. Dr. Holger Schmidt] Codereview, Ideen und Feedback sowie Anhang B
@@ -74,12 +72,12 @@ Die Nennung erfolgt alphabetisch.
 \end{description}%}}}
 \subsection{Haftungsausschluss}%{{{
 \label{sec:haftausschl}
-Diese Vorlage ist nach besten Gewissen geschrieben worden, aber eine Garantie auf Erfolg kann ich leider nicht abgeben. Ihr schafft das schon!
+Diese Vorlage ist nach besten Gewissen geschrieben worden, aber eine Garantie auf Erfolg kann ich leider nicht abgeben. Du schaffst das schon!
 \dots%}}}
 \subsection{Lizenz}%{{{
 \label{sec:licence}
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit \href{https://creativecommons.org/licenses/by-sa/4.0/}{https://creativecommons.org/\-licenses/\-by-sa/\-4.0/} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 \begin{figure}[hb]
   \centering
-  \includegraphics[width=0.7\columnwidth]{graphics/ccheart_red.pdf}
+  \includegraphics[width=0.5\columnwidth]{graphics/ccheart_red.pdf}
 \end{figure}%}}}
