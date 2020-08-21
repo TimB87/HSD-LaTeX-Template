@@ -75,7 +75,7 @@
 \usepackage{hyphsubst} % https://www.ctan.org/pkg/hyphsubst
 \HyphSubstIfExists{ngerman-x-latest}{%
 \HyphSubstLet{ngerman}{ngerman-x-latest}}{}
-\usepackage[german=guillemets]{csquotes} % https://www.ctan.org/pkg/csquotes
+\usepackage[german=guillemets,german=quotes]{csquotes} % https://www.ctan.org/pkg/csquotes
 %}}}
 %%% font settings %{{{
 %\usepackage[utf8]{inputenc} % not needed with lualatex or xetex
@@ -147,7 +147,7 @@
 %%% biblatex%{{{
 \usepackage[autocite=footnote,% automatically use \footcite
   style=apa,%
-  apabackref=false,% prints backrefs in \printbibliography
+  %%%%apabackref=false,% prints backrefs in \printbibliography
   backend=biber,%
   bibencoding=utf8,% tries to encode with UTF-8
   bibwarn=true,% can be disabled, else shows warnings via buildlog
@@ -158,7 +158,7 @@
   giveninits=false,% prints a full name if set to false
   isbn=true,%
   %issn=false,%
-  maxbibnames=7,% print 7 names in the bibliography
+  %%%%maxbibnames=7,% print 7 names in the bibliography
   maxcitenames=2,% shorten authors if more than 2
   seconds=true,% required by date=iso
   sortlocale=de% can be disabled if you do not write in german
