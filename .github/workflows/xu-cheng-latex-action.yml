@@ -11,3 +11,4 @@ jobs:
         with:
           root_file: main.tex
           compiler: arara
+          args: ""
