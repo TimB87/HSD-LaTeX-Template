@@ -12,3 +12,4 @@ jobs:
           root_file: main.tex
           compiler: arara
           args: ""
+          pre_compile: "apt-get install --reinstall texlive-lualatex"
