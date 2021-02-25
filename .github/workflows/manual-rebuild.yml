@@ -1,0 +1,24 @@
+name: manually trigger a rebuild
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "Log level: ${{ github.event.inputs.logLevel }}"
+        echo "Tags: ${{ github.event.inputs.tags }}" 
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Compile LaTeX document
+        uses: dante-ev/latex-action@master
+        with:
+          root_file: main.tex
+          compiler: arara
