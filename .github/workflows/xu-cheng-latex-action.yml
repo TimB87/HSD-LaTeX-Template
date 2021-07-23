@@ -6,17 +6,16 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Install fonts and rebuild font cache
-        run: |
-          echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-          sudo apt-get install ttf-mscorefonts-installer
-          sudo fc-cache -vfr
-          fc-cache -vfr
+      #- name: Install fonts and rebuild font cache
+      #  run: |
+      #    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+      #    sudo apt-get install ttf-mscorefonts-installer
+      #    sudo fc-cache -vfr
+      #    fc-cache -vfr
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           pre_compile: |
-            # fix xindy on current ubuntu images
             ln -sf /opt/texlive/texdir/texmf-dist/scripts/xindy/xindy.pl /opt/texlive/texdir/bin/x86_64-linuxmusl/xindy
             ln -sf /opt/texlive/texdir/texmf-dist/scripts/xindy/texindy.pl /opt/texlive/texdir/bin/x86_64-linuxmusl/texindy
             wget https://sourceforge.net/projects/xindy/files/xindy-source-components/2.4/xindy-kernel-3.0.tar.gz
@@ -27,8 +26,6 @@ jobs:
             make
             cp -f xindy.mem /opt/texlive/texdir/bin/x86_64-linuxmusl/
             cd ../../
-            
-            # install arial
             echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
             sudo apt-get install ttf-mscorefonts-installer
             sudo fc-cache -vfr
