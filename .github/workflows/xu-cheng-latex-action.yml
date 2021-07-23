@@ -22,4 +22,4 @@ jobs:
             cd ../../
           root_file: main.tex
           compiler: arara
-          args: ""
+          args: " -v "
