@@ -26,3 +26,8 @@ jobs:
           root_file: main.tex
           compiler: arara
           args: " -v "
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: main.pdf
+          path: main.pdf
