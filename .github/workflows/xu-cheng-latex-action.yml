@@ -26,11 +26,7 @@ jobs:
             make
             cp -f xindy.mem /opt/texlive/texdir/bin/x86_64-linuxmusl/
             cd ../../
-            echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-            sudo apt-get install ttf-mscorefonts-installer
-            sudo fc-cache -vfr
-            fc-cache -vfr
-            fc-match Arial
+          extra_system_packages: ttf-mscorefonts-installer
           root_file: main.tex
           compiler: arara
           args: " -v "
