@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
+      - name: Install fonts
+        uses: sudo apt-get install ttf-mscorefonts-installer
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
