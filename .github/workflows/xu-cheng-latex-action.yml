@@ -6,12 +6,6 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      #- name: Install fonts and rebuild font cache
-      #  run: |
-      #    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
-      #    sudo apt-get install ttf-mscorefonts-installer
-      #    sudo fc-cache -vfr
-      #    fc-cache -vfr
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
@@ -26,7 +20,9 @@ jobs:
             make
             cp -f xindy.mem /opt/texlive/texdir/bin/x86_64-linuxmusl/
             cd ../../
-          extra_system_packages: ttf-mscorefonts-installer
+            apk add msttcorefonts-installer fontconfig
+            update-ms-fonts
+            fc-cache -f
           root_file: main.tex
           compiler: arara
           args: " -v "
